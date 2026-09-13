@@ -1,0 +1,20 @@
+node_modules/
+.next/
+out/
+.vercel/
+.sites-runtime/
+*.tsbuildinfo
+.env*
+!.env.example
+test-results/
+playwright-report/
+blob-report/
+artifacts/
+tmp/
+coverage/
+*.log
+
+# Local review report and duplicate source assets; public/ keeps every live asset.
+/PHASE-5-REPORT.md
+/images/
+/work/

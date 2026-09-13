@@ -1,0 +1,2 @@
+// Runs before body paint. User-controlled values are validated, never interpolated.
+export const themeBootstrap = `(function(){var p='system';try{var v=localStorage.getItem('portfolio-theme');if(v==='light'||v==='dark')p=v;}catch(e){}var d=document.documentElement;d.dataset.themePreference=p;d.dataset.theme=p==='system'?(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'):p;})();`;
