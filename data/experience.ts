@@ -1,20 +1,20 @@
 export const salesJourney = [
   {
     title: "Sales Representative", organization: "Kahla Optical",
-    focus: "Consultative selling · customer needs · product recommendation · objection handling · negotiation · follow-up · closing",
+    focus: "Identified customer needs, recommended optical products, handled objections, followed up with customers and closed sales in a target-driven retail environment.",
   },
   {
     title: "Inventory / Sales Coordination", organization: "Kahla Optical",
-    focus: "Product availability · sales support · inventory coordination · operational continuity",
+    focus: "Managed contact-lens stock availability and coordinated replenishment to support customer purchases and daily sales operations.",
   },
   {
     title: "Branch Management", organization: "Kahla Optical",
-    focus: "Branch operations · customer service · sales coordination · problem-solving · daily management",
+    focus: "Progressed to branch responsibility, overseeing daily operations, customer service, sales coordination, inventory availability and issue resolution.",
   },
   {
     title: "Growth Manager", organization: "Innovation for Solar System",
     responsibility: "Leading and coordinating Sales & Marketing activities.",
-    focus: "B2B sales · CRM · pipeline development · commercial systems · account development · customer success · sales execution",
+    focus: "B2B prospecting and account development, supported by qualification, customer-visit, proposal follow-up, partnership and customer-success workflows. CRM, pipeline management and reporting support these activities.",
   },
   {
     title: "Solar Sales Instructor", organization: "Innovation for Solar System",

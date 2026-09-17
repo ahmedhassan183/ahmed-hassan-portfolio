@@ -19,8 +19,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: meta.title, description: meta.description,
     alternates: { canonical: `/${locale}`, languages: languageAlternates },
     robots: isPreview ? { index: false, follow: false } : { index: true, follow: true },
-    openGraph: { title: meta.title, description: meta.description, type: "website", url: `/${locale}`, locale: locale === "ar" ? "ar_EG" : "en_US", alternateLocale: locale === "ar" ? "en_US" : "ar_EG", images: [{ url: absoluteUrl("/opengraph-image"), width: 1200, height: 630, alt: "Ahmed Hassan — Sales & Business Development" }] },
-    twitter: { card: "summary_large_image", title: meta.title, description: meta.description, images: [{ url: absoluteUrl("/opengraph-image"), alt: "Ahmed Hassan — Sales & Business Development" }] },
+    openGraph: { title: meta.title, description: meta.description, type: "website", url: `/${locale}`, locale: locale === "ar" ? "ar_EG" : "en_US", alternateLocale: locale === "ar" ? "en_US" : "ar_EG", images: [{ url: absoluteUrl("/opengraph-image"), width: 1200, height: 630, alt: "Ahmed Hassan — Growth & Business Development" }] },
+    twitter: { card: "summary_large_image", title: meta.title, description: meta.description, images: [{ url: absoluteUrl("/opengraph-image"), alt: "Ahmed Hassan — Growth & Business Development" }] },
   };
 }
 

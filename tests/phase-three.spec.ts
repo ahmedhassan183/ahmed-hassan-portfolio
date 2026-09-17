@@ -50,7 +50,7 @@ for (const width of [320, 375, 768, 1024, 1440]) {
       await page.getByRole("navigation", { name: "Main navigation", exact: true }).getByRole("link", { name: "Experience" }).click();
     }
     await expect(page).toHaveURL(/#experience$/);
-    await expect(page.locator("#experience-heading")).toHaveText("From Hands-On Selling to Building Sales Systems.");
+    await expect(page.locator("#experience-heading")).toHaveText("From Hands-On Selling to Growth & Business Development.");
     await expect(page.locator(".sales-journey > li")).toHaveCount(5);
     await expect(page.locator(".journey-role h3")).toHaveText(["Sales Representative", "Inventory / Sales Coordination", "Branch Management", "Growth Manager", "Solar Sales Instructor"]);
     await expect(page.locator(".journey-step").nth(3)).toContainText("Leading and coordinating Sales & Marketing activities.");
@@ -70,7 +70,7 @@ for (const width of [320, 375, 768, 1024, 1440]) {
 
 test("real prepared portrait renders through next/image", async ({ page }) => {
   await page.goto("/");
-  const portrait = page.getByAltText("Ahmed Hassan — Sales and Business Development professional", { exact: true });
+  const portrait = page.getByAltText("Ahmed Hassan — Growth and Business Development professional", { exact: true });
   await expect(portrait).toBeVisible();
   await expect(portrait).toHaveAttribute("src", /\/_next\/image\?/);
   await expect.poll(() => portrait.evaluate((element: HTMLImageElement) => element.complete && element.naturalWidth > 0)).toBe(true);

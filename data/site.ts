@@ -1,12 +1,12 @@
 export const site = {
   name: "Ahmed Hassan",
-  title: "Sales & Business Development Professional",
+  title: "Growth & Business Development Professional",
   description:
-    "Sales & Business Development professional combining consultative selling, B2B prospecting, account development, CRM, pipeline management and sales operations — with strong renewable-energy experience.",
+    "Growth & Business Development professional combining consultative selling, B2B prospecting and account development with CRM, pipeline management and sales operations in renewable energy.",
   portrait: {
     // Add the prepared portrait here and rebuild; missing assets show a fallback.
     src: "/images/ahmed-hassan-hero.png",
-    alt: "Ahmed Hassan — Sales and Business Development professional",
+    alt: "Ahmed Hassan — Growth and Business Development professional",
     objectPosition: "50% 16%",
   },
   resumeUrl: "/Ahmed-Hassan-Sales-Business-Development-Resume.pdf",

@@ -9,10 +9,10 @@ for (const width of [320, 375, 768, 1024, 1440]) {
     page.on("console", (message) => { if (message.type() === "error") errors.push(message.text()); });
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/");
-    await page.getByRole("link", { name: "Explore My Sales Work" }).click();
+    await page.getByRole("link", { name: "Explore My Commercial Work" }).click();
     await expect(page).toHaveURL(/#sales$/);
     const authority = page.locator("#sales");
-    await expect(authority.getByRole("heading", { level: 2 })).toHaveText("I Don’t Just Work the Sales Pipeline. I Build and Lead It.");
+    await expect(authority.getByRole("heading", { level: 2 })).toHaveText("Develop Opportunities. Support Every Step of the Sale.");
     await expect(authority.getByRole("article")).toHaveCount(3);
     for (const [index, capability] of salesCapabilities.entries()) {
       const block = authority.getByRole("article").nth(index);
@@ -30,7 +30,7 @@ for (const width of [320, 375, 768, 1024, 1440]) {
     }
     await expect(page).toHaveURL(/#systems$/);
     await expect(page.locator("#systems-heading")).toHaveText("BUILT, NOT JUST LEARNED.");
-    await expect(page.locator("#systems .section-description")).toHaveText("Real commercial systems designed and built to bring structure to sales execution.");
+    await expect(page.locator("#systems .section-description")).toHaveText("Workbooks and workflows supporting account qualification, proposals, follow-up and after-sales service.");
     const entries = page.locator(".system-entry");
     await expect(entries).toHaveCount(4);
     await expect(page.locator(".system-title")).toHaveText(salesSystems.map((system) => system.title));
