@@ -97,7 +97,7 @@ test("sales positioning and portrait composition fit a common laptop viewport", 
   await page.goto("/");
   await expect(page).toHaveTitle("Ahmed Hassan | Growth & Business Development | B2B Sales & Sales Operations");
   await expect(page.locator(".eyebrow")).toHaveText("Growth & Business Development · B2B Sales · Sales Operations");
-  await expect(page.locator(".hero-description")).toHaveText("Growth Manager at Innovation for Solar System, combining hands-on consultative selling, B2B prospecting, qualification, proposals, follow-up and account development with CRM, pipeline management and commercial systems.");
+  await expect(page.locator(".hero-description")).toHaveText("Growth Manager at Innovation for Solar System, combining direct solar sales, field visits and agricultural partnership development with B2B prospecting, account growth, CRM and commercial systems.");
   if (publicAssetExists(site.portrait.src)) {
     await expect(page.locator(".portrait-image")).toHaveAttribute("alt", site.portrait.alt);
   } else {

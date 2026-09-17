@@ -27,6 +27,10 @@ export function Experience({ d }: { d: Dictionary }) {
             </li>
           ))}
         </ol>
+        <aside className="current-bd" aria-label={d.experience.currentBd.label}>
+          <p className="current-bd-label">{d.experience.currentBd.label}</p>
+          <div><h3>{d.experience.currentBd.title}</h3><p>{d.experience.currentBd.description}</p></div>
+        </aside>
         <aside className="solar-domain" aria-labelledby="solar-domain-heading">
           <h3 id="solar-domain-heading">{d.experience.solarLabel}</h3>
           <ul>{solarDomains.map((domain) => <li key={domain}>{domain}</li>)}</ul>

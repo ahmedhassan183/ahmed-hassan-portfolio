@@ -14,7 +14,7 @@ export const salesJourney = [
   {
     title: "Growth Manager", organization: "Innovation for Solar System",
     responsibility: "Leading and coordinating Sales & Marketing activities.",
-    focus: "B2B prospecting and account development, supported by qualification, customer-visit, proposal follow-up, partnership and customer-success workflows. CRM, pipeline management and reporting support these activities.",
+    focus: "Personally closed 18 solar installation opportunities and completed 120+ site surveys and customer visits. Initiated and developed two agricultural-association relationships, including the Senour channel that has resulted in 7 solar stations totaling 320 kW to date. Develops B2B accounts and updates a live CRM daily to track opportunities, follow-up dates and next actions.",
   },
   {
     title: "Solar Sales Instructor", organization: "Innovation for Solar System",

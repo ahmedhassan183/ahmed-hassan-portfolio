@@ -72,6 +72,21 @@ export function SelectedSalesSystems({ d, locale }: { d: Dictionary; locale: Loc
                   <div className="system-purpose"><dt>{d.work.purpose}</dt><dd>{system.purpose}</dd></div>
                 </dl>
                 </div>
+                {system.id === "b2b-market-account-development" && (
+                  <aside className="market-evidence">
+                    <div>
+                      <h4>{d.work.marketProof.processLabel}</h4>
+                      <p>{d.work.marketProof.process}</p>
+                    </div>
+                    <div>
+                      <h4>{d.work.marketProof.channelLabel}</h4>
+                      <p>{d.work.marketProof.role}</p>
+                      <p>{d.work.marketProof.model}</p>
+                      <p><strong>{d.work.marketProof.senour}</strong></p>
+                      <p>{d.work.marketProof.fayoum}</p>
+                    </div>
+                  </aside>
+                )}
                 {flagship && (
                   <div className="flagship-workflow">
                     <h4>{d.work.workflowHeading}</h4>

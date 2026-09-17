@@ -5,7 +5,7 @@ export const salesCapabilities = [
     id: "sell",
     title: "SELL",
     icon: "strategy",
-    description: "Consultative retail selling through follow-up and closing, alongside B2B prospecting and proposal workflows in solar.",
+    description: "Closed 18 solar installation opportunities and completed 120+ site surveys and customer visits, building on consultative retail sales experience.",
     skills: [
       "Consultative Selling", "B2B Prospecting", "Needs Discovery & Qualification", "Product Recommendation",
       "Objection Handling", "Proposals", "Negotiation", "Follow-Up", "Retail Sales Closing", "Customer Relationships",
@@ -15,7 +15,7 @@ export const salesCapabilities = [
     id: "build",
     title: "BUILD",
     icon: "pipeline",
-    description: "CRM and sales workflows that connect each opportunity to an owner, a next action and a follow-up date.",
+    description: "Built and maintained a live CRM with daily updates to opportunities, follow-up dates and next actions, alongside market intelligence and sales workflows.",
     skills: [
       "CRM", "Pipeline Structure", "Opportunity Stages", "Next-Action Logic",
       "Account Mapping", "Sales Reporting", "Proposal Follow-Up", "Commercial Workflows",
@@ -25,7 +25,7 @@ export const salesCapabilities = [
     id: "grow",
     title: "GROW",
     icon: "crm",
-    description: "Account development, customer-success workflows and annual maintenance services designed to support retention and referrals.",
+    description: "Opened two agricultural-association relationships and developed customer channels, supported by account follow-up and after-sales service workflows.",
     skills: [
       "Account Development", "Customer Success", "Retention Workflows",
       "Recurring-Service Design", "Referral Workflows", "Maintenance Lifecycle",
@@ -38,7 +38,7 @@ export const salesSystems = [
     id: "b2b-market-account-development",
     category: "B2B SALES SYSTEM",
     title: "B2B Market Intelligence & Account Development",
-    description: "A structured market and prospecting system designed to organize target accounts, prioritize opportunities and turn broad B2B prospecting into focused account development.",
+    description: "A market map and live CRM used to prioritize accounts, track opportunities and keep follow-up moving. Ahmed's agricultural-association partnerships provide separate, real-world business-development evidence.",
     problem: "No structured view of target companies, decision-makers and account priorities.",
     built: "A B2B market database combining account mapping, qualification, opportunity prioritization, contact planning and follow-up structure.",
     purpose: "Focus sales effort on the accounts with the strongest commercial potential.",

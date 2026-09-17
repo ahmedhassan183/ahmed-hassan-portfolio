@@ -1,6 +1,12 @@
 # Commercial Evidence Audit — Portfolio V2 Phase 2A
 
-Internal working document. Audit date: 18 September 2026. No public portfolio copy or assets were changed for this audit.
+Internal working document. Phase 2A audit date: 18 September 2026. The original matrix below is a pre-confirmation snapshot; the Phase 2B update immediately below records later user-approved facts and additional Sahara source files.
+
+## Phase 2B approved evidence update — 18 September 2026
+
+Ahmed explicitly confirmed and approved for portfolio use: more than 25 installation prospects/customer opportunities personally handled (not necessarily B2B accounts); **18 solar installation opportunities personally closed** as Growth Manager; **120+ site surveys/customer visits**; two agricultural-association relationships he initiated and developed; and the **Senour association channel resulting in 7 solar stations totaling 320 kW to date**. The separate Fayoum partnership covers an agricultural community of approximately **7,000 feddans** with solar, irrigation and greenhouse opportunities; that area is partnership scope, not installed or contracted work. Ahmed also confirmed that he personally used and updated the CRM daily to manage accounts, opportunities, stages, follow-up dates and next actions. These are user-confirmed claims; transaction-level source records were not supplied in the workspace. Do not calculate conversion or attribute installation engineering to Ahmed.
+
+Additional read-only sources found in Downloads: `Sahara_2026_Growth_Manager_Playbook.docx`, `Sahara_2026_Field_Kit.docx`, and `Sahara_2026_Targets_CRM.xlsx`. They substantiate a **pre-event execution design**: 20 tiered target accounts, sector-specific openings, qualification and objection scripts, a dated route, next-step and same-day follow-up rules, message library, lead-tracker fields, follow-up queue and dashboard formulas. The workbook's lead-tracker account rows and follow-up queue are blank at this pre-event snapshot. Its dashboard labels distinguish targets from actuals; target counts are not achieved outcomes. After the event, actuals may be audited in sequence: Target Accounts → Conversations → Qualified Leads → Meetings → RFQs → Site Visits → Partnerships → Deals. Do not populate or publish any of those Sahara actuals now.
 
 ## Scope and standard of proof
 
@@ -8,7 +14,7 @@ Sources reviewed: the current two-page resume (`public/Ahmed-Hassan-Sales-Busine
 
 “Verified” below means supported by an available source at the stated level. It does **not** mean independently confirmed against company records. HIGH = directly visible in an artifact or unambiguous role documentation; MEDIUM = Ahmed's resume/brief and/or a derived preview without the original; LOW = insufficient evidence. A publishable statement must retain the exact scope and must avoid confidential customer or company data. “YES WITH CONTEXT” means the fact may be stated only with its limitation (for example, *mapped market entries*, not customers acquired). No estimates, plans, targets, or demo outputs are treated as achieved sales results.
 
-## Evidence matrix
+## Phase 2A evidence matrix — before user confirmation
 
 | Evidence / Metric | Value | Role / Company | Time Period | Source | Evidence Type | Confidence | Can Be Published? | Notes / Limitation |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -91,7 +97,7 @@ No supplied evidence distinguishes “used by Ahmed only,” “used by Sales te
 
 ## Possible future proof points near the Hero
 
-Choose **3–5 only after Ahmed supplies source records and permits publication**: (1) unique B2B prospects/accounts personally contacted in a defined period; (2) completed customer/decision-maker meetings or site visits; (3) qualified opportunities created/advanced; (4) actual customer quotations sent or followed up; (5) closed-won deals or attributable revenue/project value. If outcomes cannot be documented, use verified activity counts with precise labels and period; do not substitute 47 mapped entries or 20 prioritized accounts for sales results. No metric is currently cleared for a results-style Hero claim.
+At the Phase 2A snapshot, the proposed candidates were: (1) unique B2B prospects/accounts personally contacted in a defined period; (2) completed customer/decision-maker meetings or site visits; (3) qualified opportunities created/advanced; (4) actual customer quotations sent or followed up; (5) closed-won deals or attributable revenue/project value. Do not substitute 47 mapped entries or 20 prioritized accounts for sales results. The later Phase 2B approval above supersedes this snapshot's publication status for 18 closes, 120+ visits and the Senour channel result; other candidates remain unverified.
 
 ## Questions Ahmed Must Answer
 

@@ -17,6 +17,10 @@ for (const locale of ["en", "ar"] as const) {
         await expect(page.locator("html")).toHaveAttribute("dir", locale === "ar" ? "rtl" : "ltr");
         await expect(page.locator("html")).toHaveAttribute("data-theme", theme);
         await expect(page.getByRole("heading", { level: 1 })).toHaveText(d.hero.before + d.hero.accent + d.hero.after);
+        await expect(page.locator(".commercial-proof li strong")).toHaveText(d.hero.proof.map((item) => item.value));
+        await expect(page.locator(".commercial-proof li span")).toHaveText(d.hero.proof.map((item) => item.label));
+        await expect(page.locator(".market-evidence")).toContainText(d.work.marketProof.senour);
+        await expect(page.locator(".current-bd")).toContainText(d.experience.currentBd.title);
         await expect(page.locator(".node-title")).toHaveText([...d.hero.stages]);
         await expect(page.locator(".capability-heading h3")).toHaveText(d.authority.capabilities.map((item) => item.title));
         await expect(page.locator(".system-title")).toHaveText(d.work.projects.map((item) => item.title));
