@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
-import { flagshipSecondaryArtifacts, salesSystems } from "../data/sales";
+import { flagshipSecondaryArtifacts, salesSystems, supportingWork } from "../data/sales";
 
 for (const width of [320, 375, 768, 1024, 1440]) {
   test(`Phase 3 evidence, journey and real assets at ${width}px`, async ({ page }) => {
@@ -9,12 +9,12 @@ for (const width of [320, 375, 768, 1024, 1440]) {
     page.on("console", (message) => { if (message.type() === "error") errors.push(message.text()); });
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/");
-    const flagship = page.locator(".system-entry--flagship");
+    const flagship = page.locator(".system-entry--solar");
     await expect(flagship.locator(".system-title")).toHaveText("Solar PV Engineering, Costing & Quotation System");
-    await expect(flagship.locator(".flagship-badge")).toHaveText("FLAGSHIP BUILD");
+    await expect(flagship.locator(".flagship-badge")).toHaveText("FLAGSHIP CASE");
     await expect(flagship.locator(".flagship-proof li")).toHaveText(["40Interconnected Worksheets", "1,500+Formulas", "8Structured Data Tables", "4Charts", "NoMacros"]);
     await expect(flagship.locator(".flagship-capabilities h4")).toHaveText(["ENGINEERING", "COMMERCIAL", "FINANCIAL", "CONTROL & QA"]);
-    await expect(flagship.locator(".engineering-workflow li")).toHaveText(["Customer Input", "Engineering Design", "BOQ", "Costing", "Quotation", "Financial Analysis", "Dashboard"]);
+    await expect(flagship.locator(".engineering-workflow li")).toHaveText(["Customer Input", "Engineering Design", "BOQ", "Costing", "Pricing", "Client Quotation", "Financial Analysis", "Dashboard"]);
     await expect(flagship.locator(".flagship-assurance")).toContainText("The client-facing quotation is separated from internal purchase cost, margin and profit information.");
     await expect(page.locator(".maintenance-tiers li")).toHaveText(["Economic", "Advanced", "Premium"]);
     await flagship.locator(".system-summary").press("Enter");
@@ -22,7 +22,7 @@ for (const width of [320, 375, 768, 1024, 1440]) {
     await flagship.locator(".system-summary").press("Space");
     await expect(flagship.locator(".system-body")).toBeVisible();
 
-    for (const artifact of [...salesSystems.map((system) => system.artifact), ...flagshipSecondaryArtifacts]) {
+    for (const artifact of [...salesSystems.map((system) => system.artifact), supportingWork[0].artifact, ...flagshipSecondaryArtifacts]) {
         const secondaryIndex = flagshipSecondaryArtifacts.findIndex((item) => item.path === artifact.path);
         if (secondaryIndex >= 0) await flagship.getByRole("tab").nth(secondaryIndex + 1).click();
         const image = page.getByAltText(artifact.alt, { exact: true });

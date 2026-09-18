@@ -1,5 +1,5 @@
 import { site, navigation } from "@/data/site";
-import { salesCapabilities, salesSystems, flagshipProof, flagshipWorkflow, flagshipCapabilities, flagshipSecondaryArtifacts } from "@/data/sales";
+import { salesCapabilities, salesSystems, supportingWork, flagshipProof, flagshipWorkflow, flagshipCapabilities, flagshipSecondaryArtifacts } from "@/data/sales";
 import { salesJourney, solarDomains } from "@/data/experience";
 
 export const en = {
@@ -22,19 +22,21 @@ export const en = {
   },
   authority: { label: "SALES CAPABILITY", heading: "Develop Opportunities. ", accent: "Support Every Step of the Sale.", description: "From customer needs and proposals to follow-up and account development, my commercial work is supported by CRM, clear next actions and after-sales workflows.", capabilities: salesCapabilities },
   work: {
-    label: "SELECTED SYSTEMS", heading: "BUILT, NOT JUST LEARNED.", description: "Workbooks and workflows supporting account qualification, proposals, follow-up and after-sales service.",
-    projects: salesSystems, problem: "Problem", built: "What I Built", purpose: "Business Purpose", flagship: "FLAGSHIP BUILD", scope: "ONE CONNECTED WORKBOOK", proofLabel: "System proof points", proof: flagshipProof, capabilities: flagshipCapabilities, workflow: flagshipWorkflow, workflowHeading: "FROM CUSTOMER INPUT TO COMMERCIAL DECISION", stagesLabel: "Connected sales-engineering stages", stages: ["ENGINEERING", "COSTING", "QUOTATION", "FINANCIAL REVIEW"],
+    label: "FLAGSHIP CASE STUDIES", heading: "BUILT, NOT JUST LEARNED.", description: "Three cases show business development, solar commercial decision-making and a structured after-sales product.",
+    projects: salesSystems, problem: "Context / Problem", role: "My Role", built: "Action / System", adoption: "Live Use / Status", purpose: "Business Value", flagship: "FLAGSHIP CASE", scope: "ONE CONNECTED WORKBOOK", proofLabel: "System proof points", proof: flagshipProof, capabilities: flagshipCapabilities, workflow: flagshipWorkflow, workflowHeading: "FROM CUSTOMER INPUT TO COMMERCIAL DECISION", stagesLabel: "Connected sales-engineering stages", stages: ["ENGINEERING", "COSTING", "QUOTATION", "FINANCIAL REVIEW"],
     assurance: [{ title: "Commercial control.", text: "The client-facing quotation is separated from internal purchase cost, margin and profit information." }, { title: "Built to be reviewed.", text: "Engineering alerts, dashboard summaries, a user guide and built-in formula test scenarios support review." }],
-    intent: "Designed to reduce fragmentation, standardize proposal preparation and connect technical design with commercial decision-making.", tiersLabel: "Maintenance packages", tiers: ["Economic", "Advanced", "Premium"], primaryLabel: "Solar PV Engineering System", secondary: flagshipSecondaryArtifacts,
+    intent: "Designed for technical and commercial decision support; no customer adoption or sales result is attributed to this workbook.", tiersLabel: "Maintenance packages", tiers: ["Economic", "Advanced", "Premium"], primaryLabel: "Solar PV Engineering System", secondary: flagshipSecondaryArtifacts,
     marketProof: {
-      processLabel: "MARKET & LIVE CRM",
-      process: "47 mapped market entries and 20 prioritized accounts support account planning. Ahmed updates his live CRM daily to track opportunities, follow-up dates and next actions.",
-      channelLabel: "AGRICULTURAL ASSOCIATION CHANNEL DEVELOPMENT",
+      processLabel: "SYSTEM EVIDENCE",
+      process: "47 mapped market entries · 20 prioritized accounts · a CRM Ahmed updated daily for stages, follow-up dates and next actions.",
+      channelLabel: "COMMERCIAL EVIDENCE",
       role: "Ahmed initiated and developed two agricultural-association relationships as Growth Manager.",
       model: "The association referral model connects interested members with Innovation for qualification, surveys, proposals and suitable projects.",
+      sales: "In his wider Growth Manager work, Ahmed personally closed 18 solar installation opportunities and completed 120+ site surveys and customer visits. These results are not attributed to the market database.",
       senour: "Senour: 7 solar stations totaling 320 kW through the channel to date.",
       fayoum: "A second partnership in Fayoum covers an agricultural community of approximately 7,000 feddans, with opportunities in solar energy, irrigation and greenhouses.",
     },
+    supporting: { label: "SUPPORTING WORK", heading: "Systems behind the commercial work.", description: "Operating plans and field tools that support the three flagship cases.", items: supportingWork },
   },
-  experience: { label: "EXPERIENCE", heading: "From Hands-On Selling to Growth & Business Development.", journey: salesJourney, solarLabel: "SOLAR DOMAIN", domains: solarDomains, currentBd: { label: "CURRENT BUSINESS DEVELOPMENT", title: "Sahara 2026 Field Execution System", description: "Built a targeted Business Development operating system for Sahara 2026 covering 20 prioritized accounts across agricultural associations, irrigation, pumps, greenhouses, farms and solar partnerships — with qualification, CRM capture, follow-up and next-step workflows." } },
+  experience: { label: "EXPERIENCE", heading: "From Hands-On Selling to Growth & Business Development.", journey: salesJourney, solarLabel: "SOLAR DOMAIN", domains: solarDomains },
 };

@@ -340,8 +340,8 @@ h1 { font-size: clamp(2.75rem, 4.05vw, 3.625rem); line-height: 1.09; letter-spac
 .flagship-capabilities { display: grid; gap: 20px; }
 .flagship-capabilities h4, .flagship-workflow h4 { margin: 0 0 9px; font-size: .6875rem; letter-spacing: .09em; color: var(--color-navy); font-weight: 600; }
 .flagship-capabilities p { margin: 0; font-size: .875rem; line-height: 1.8; color: var(--text-muted); }
-.system-entry--flagship:nth-child(even) .system-fields { grid-column: 1 / -1; grid-row: 2; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px; padding-top: 30px; border-top: 1px solid var(--border); }
-.system-entry--flagship .system-purpose { grid-column: auto; }
+.system-entry--solar:nth-child(even) .system-fields { grid-column: 1 / -1; grid-row: 2; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 25px 36px; padding-top: 30px; border-top: 1px solid var(--border); }
+.system-entry--solar .system-purpose { grid-column: 1 / -1; }
 .system-entry--flagship .system-fields dd { font-size: .9375rem; }
 .secondary-previews { margin-top: 16px; }
 .secondary-previews > summary { cursor: pointer; padding: 13px 0; min-height: 44px; color: var(--text-body); font-size: .75rem; }
@@ -372,6 +372,32 @@ h1 { font-size: clamp(2.75rem, 4.05vw, 3.625rem); line-height: 1.09; letter-spac
 .flagship-intent { color: var(--text-secondary); font-size: .875rem; line-height: 1.8; margin: 22px 0 0; max-width: 92ch; }
 .maintenance-tiers { display: flex; flex-wrap: wrap; list-style: none; gap: 12px; padding: 0; margin: -12px 0 36px; }
 .maintenance-tiers li { color: var(--text-body); border: 1px solid var(--line-strong); padding: 7px 15px; font-size: .75rem; border-radius: 3px; }
+.supporting-work { border-top: 1px solid var(--line-strong); margin-top: 62px; padding-top: 50px; }
+.supporting-intro { display: grid; grid-template-columns: 180px minmax(0, 1fr) minmax(0, 1fr); align-items: baseline; gap: 24px; margin-bottom: 25px; }
+.supporting-intro .section-label { margin: 0; }
+.supporting-intro h3 { margin: 0; color: var(--color-navy); font-size: clamp(1.35rem, 2.2vw, 1.75rem); line-height: 1.3; font-weight: 550; letter-spacing: -.035em; }
+.supporting-intro p { margin: 0; color: var(--text-muted); font-size: .875rem; line-height: 1.7; }
+.supporting-entry { display: grid; grid-template-columns: 60px minmax(0, 1fr) minmax(0, 235px); gap: 24px; align-items: start; border-top: 1px solid var(--border); padding-block: 24px; }
+.supporting-number { color: var(--text-secondary); font-size: 1.25rem; line-height: 1.25; font-variant-numeric: tabular-nums; }
+.supporting-copy h4 { margin: 0 0 9px; color: var(--color-navy); font-size: 1.0625rem; line-height: 1.4; font-weight: 550; }
+.supporting-copy p { margin: 0; max-width: 75ch; color: var(--text-muted); font-size: .875rem; line-height: 1.7; }
+.supporting-copy .supporting-status { margin-top: 8px; color: var(--text-secondary); font-size: .8125rem; }
+.supporting-visual { min-width: 0; }
+.supporting-visual .work-preview-media { aspect-ratio: 4 / 3; }
+.supporting-visual .work-preview-caption { padding: 10px; }
+@media (max-width: 899px) {
+  .supporting-intro { grid-template-columns: 1fr 1fr; }
+  .supporting-intro .section-label { grid-column: 1 / -1; }
+  .supporting-entry { grid-template-columns: 40px minmax(0, 1fr) minmax(0, 190px); gap: 18px; }
+}
+@media (max-width: 580px) {
+  .supporting-work { margin-top: 42px; padding-top: 34px; }
+  .supporting-intro { grid-template-columns: 1fr; gap: 10px; }
+  .supporting-intro .section-label { grid-column: auto; }
+  .supporting-entry { grid-template-columns: 30px minmax(0, 1fr); gap: 12px; padding-block: 19px; }
+  .supporting-number { font-size: 1rem; }
+  .supporting-visual { grid-column: 2; width: min(100%, 290px); margin-top: 2px; }
+}
 .experience { background: var(--surface-high); border-top: 1px solid var(--border); }
 .experience-intro { max-width: 710px; margin-bottom: 45px; }
 .sales-journey { list-style: none; margin: 0; padding: 0; }
@@ -384,10 +410,6 @@ h1 { font-size: clamp(2.75rem, 4.05vw, 3.625rem); line-height: 1.09; letter-spac
 .journey-focus p { margin: 0; color: var(--text-muted); font-size: .875rem; line-height: 1.8; }
 .journey-focus .journey-responsibility { color: var(--text-body); margin-bottom: 8px; }
 .journey-step--solar .journey-number { background: var(--blue-soft); color: var(--link); }
-.current-bd { display: grid; grid-template-columns: 180px 1fr; gap: 25px; border-top: 1px solid var(--line-strong); margin-top: 30px; padding-top: 30px; }
-.current-bd-label { color: var(--text-secondary); font-size: .6875rem; letter-spacing: .1em; font-weight: 550; line-height: 1.6; margin: 4px 0 0; }
-.current-bd h3 { margin: 0 0 8px; color: var(--color-navy); font-size: 1rem; font-weight: 550; }
-.current-bd div p { max-width: 86ch; margin: 0; color: var(--text-muted); font-size: .875rem; line-height: 1.8; }
 .solar-domain { display: grid; grid-template-columns: 180px 1fr; gap: 25px; border-top: 1px solid var(--line-strong); margin-top: 30px; padding-top: 30px; }
 .solar-domain h3 { color: var(--text-secondary); font-size: .6875rem; letter-spacing: .1em; margin: 4px 0 0; font-weight: 550; }
 .solar-domain ul { display: flex; flex-wrap: wrap; list-style: none; gap: 13px 22px; padding: 0; margin: 0; }
@@ -403,14 +425,14 @@ h1 { font-size: clamp(2.75rem, 4.05vw, 3.625rem); line-height: 1.09; letter-spac
   .system-details, .system-entry:nth-child(even) .system-details { grid-template-columns: 1fr; }
   .system-entry:nth-child(even) .system-visual, .flagship-scope { grid-column: auto; grid-row: auto; }
   .system-entry:nth-child(even) .system-fields { grid-column: auto; grid-row: auto; }
-  .system-entry--flagship:nth-child(even) .system-fields { grid-column: auto; grid-row: auto; grid-template-columns: 1fr; gap: 22px; }
+  .system-entry--solar:nth-child(even) .system-fields { grid-column: auto; grid-row: auto; grid-template-columns: 1fr; gap: 22px; }
+  .system-entry--solar .system-purpose { grid-column: auto; }
   .flagship-capabilities { grid-template-columns: 1fr 1fr; gap: 24px; }
   .flagship-scope-label { margin-bottom: 20px; }
   .secondary-preview-grid { grid-template-columns: 1fr 1fr; }
   .secondary-preview-grid .work-preview-media { aspect-ratio: 1; }
   .journey-step { grid-template-columns: 36px 1fr 1.3fr; column-gap: 22px; }
   .solar-domain { grid-template-columns: 1fr; gap: 18px; }
-  .current-bd { grid-template-columns: 1fr; gap: 12px; }
 }
 @media (max-width: 580px) {
   .system-category { font-size: .625rem; letter-spacing: .07em; }

@@ -20,7 +20,8 @@ for (const locale of ["en", "ar"] as const) {
         await expect(page.locator(".commercial-proof li strong")).toHaveText(d.hero.proof.map((item) => item.value));
         await expect(page.locator(".commercial-proof li span")).toHaveText(d.hero.proof.map((item) => item.label));
         await expect(page.locator(".market-evidence")).toContainText(d.work.marketProof.senour);
-        await expect(page.locator(".current-bd")).toContainText(d.experience.currentBd.title);
+        await expect(page.locator(".supporting-entry")).toHaveCount(d.work.supporting.items.length);
+        await expect(page.locator(".supporting-entry").nth(1)).toContainText(d.work.supporting.items[1].title);
         await expect(page.locator(".node-title")).toHaveText([...d.hero.stages]);
         await expect(page.locator(".capability-heading h3")).toHaveText(d.authority.capabilities.map((item) => item.title));
         await expect(page.locator(".system-title")).toHaveText(d.work.projects.map((item) => item.title));

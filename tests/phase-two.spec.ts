@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
-import { salesCapabilities, salesSystems, flagshipSecondaryArtifacts } from "../data/sales";
+import { salesCapabilities, salesSystems, supportingWork, flagshipSecondaryArtifacts } from "../data/sales";
 
 for (const width of [320, 375, 768, 1024, 1440]) {
   test(`Phase 2 navigation, content and system interaction at ${width}px`, async ({ page }) => {
@@ -30,23 +30,26 @@ for (const width of [320, 375, 768, 1024, 1440]) {
     }
     await expect(page).toHaveURL(/#systems$/);
     await expect(page.locator("#systems-heading")).toHaveText("BUILT, NOT JUST LEARNED.");
-    await expect(page.locator("#systems .section-description")).toHaveText("Workbooks and workflows supporting account qualification, proposals, follow-up and after-sales service.");
+    await expect(page.locator("#systems .section-description")).toHaveText("Three cases show business development, solar commercial decision-making and a structured after-sales product.");
     const entries = page.locator(".system-entry");
-    await expect(entries).toHaveCount(4);
+    await expect(entries).toHaveCount(3);
+    await expect(entries.locator(".flagship-badge")).toHaveText(["FLAGSHIP CASE", "FLAGSHIP CASE", "FLAGSHIP CASE"]);
     await expect(page.locator(".system-title")).toHaveText(salesSystems.map((system) => system.title));
     await expect(entries.nth(0)).toHaveAttribute("open", "");
-    await expect(page.locator(".system-entry[open]")).toHaveCount(4);
-    const artifacts = [...salesSystems.map((system) => system.artifact), ...flagshipSecondaryArtifacts];
+    await expect(page.locator(".system-entry[open]")).toHaveCount(3);
+    const artifacts = [...salesSystems.map((system) => system.artifact), supportingWork[0].artifact, ...flagshipSecondaryArtifacts];
     await expect(page.locator(".work-preview-placeholder")).toHaveCount(0);
     await expect(page.locator(".work-preview-image")).toHaveCount(artifacts.length);
     for (const [index, system] of salesSystems.entries()) {
       const entry = entries.nth(index);
       await expect(entry).toHaveAttribute("open", "");
       await expect(entry.locator(".system-problem dd")).toHaveText(system.problem);
+      await expect(entry.locator(".system-role dd")).toHaveText(system.role);
       await expect(entry.locator(".system-built dd")).toHaveText(system.built);
+      await expect(entry.locator(".system-adoption dd")).toHaveText(system.adoption);
       await expect(entry.locator(".system-purpose dd")).toHaveText(system.purpose);
       await expect(entry.locator(".system-details")).toBeVisible();
-      await expect(entry.locator(".system-built dt")).toHaveText("What I Built");
+      await expect(entry.locator(".system-built dt")).toHaveText("Action / System");
       await expect(entry.getByAltText(system.artifact.alt, { exact: true })).toBeVisible();
       if (width < 900) {
         // Compare both rectangles in one frame while native anchor scrolling may be active.
@@ -60,11 +63,13 @@ for (const width of [320, 375, 768, 1024, 1440]) {
       expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
     }
     // Keyboard users can collapse, open and move between each full-row disclosure.
-    await entries.nth(3).locator("summary").press("Enter");
-    await expect(entries.nth(3)).not.toHaveAttribute("open");
-    await entries.nth(3).locator("summary").press("Space");
-    await expect(entries.nth(3)).toHaveAttribute("open", "");
-    await expect(page.locator(".system-entry[open]")).toHaveCount(4);
+    await expect(page.locator(".supporting-entry")).toHaveCount(3);
+    await expect(page.locator(".supporting-entry").first().getByAltText(supportingWork[0].artifact.alt, { exact: true })).toBeVisible();
+    await entries.nth(2).locator("summary").press("Enter");
+    await expect(entries.nth(2)).not.toHaveAttribute("open");
+    await entries.nth(2).locator("summary").press("Space");
+    await expect(entries.nth(2)).toHaveAttribute("open", "");
+    await expect(page.locator(".system-entry[open]")).toHaveCount(3);
     await page.locator("#systems").focus();
     await page.evaluate(async () => {
       await document.fonts.ready;
@@ -83,13 +88,13 @@ for (const width of [375, 1440]) {
     await page.setViewportSize({ width, height: 900 });
     await page.emulateMedia({ reducedMotion: "reduce" });
     await page.goto("/#systems");
-    await page.locator(".system-summary").nth(3).press("Enter");
-    await page.locator(".system-summary").nth(3).press("Enter");
-    const panel = page.locator(".system-entry").nth(3).locator(".system-details");
+    await page.locator(".system-summary").nth(2).press("Enter");
+    await page.locator(".system-summary").nth(2).press("Enter");
+    const panel = page.locator(".system-entry").nth(2).locator(".system-details");
     await expect(panel).toBeVisible();
     await expect(panel).toHaveCSS("animation-name", "none");
     await expect(panel).toHaveCSS("opacity", "1");
-    await expect(page.locator(".system-summary").nth(3)).toBeFocused();
+    await expect(page.locator(".system-summary").nth(2)).toBeFocused();
     const accessibility = await new AxeBuilder({ page }).include("#sales").include("#systems").withTags(["wcag2a", "wcag2aa", "wcag21aa"]).analyze();
     expect(accessibility.violations).toEqual([]);
   });
@@ -105,6 +110,8 @@ test.describe("Phase 2 without client JavaScript", () => {
     await page.locator(".system-summary").nth(1).click();
     await expect(page.locator(".system-entry").nth(1)).toHaveAttribute("open", "");
     await expect(page.locator(".system-entry").nth(1).locator(".system-built dd")).toBeVisible();
-    await expect(page.locator(".system-entry[open]")).toHaveCount(4);
+    await expect(page.locator(".system-entry[open]")).toHaveCount(3);
+    await expect(page.locator(".supporting-entry")).toHaveCount(3);
+    await expect(page.locator(".supporting-entry").first().getByAltText(supportingWork[0].artifact.alt, { exact: true })).toBeVisible();
   });
 });
