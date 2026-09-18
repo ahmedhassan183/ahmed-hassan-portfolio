@@ -12,7 +12,7 @@ for (const width of [320, 375, 768, 1024, 1440]) {
     await page.getByRole("link", { name: "Explore My Commercial Work" }).click();
     await expect(page).toHaveURL(/#sales$/);
     const authority = page.locator("#sales");
-    await expect(authority.getByRole("heading", { level: 2 })).toHaveText("Develop Opportunities. Support Every Step of the Sale.");
+    await expect(authority.getByRole("heading", { level: 2 })).toHaveText("From the first conversation to the next opportunity.");
     await expect(authority.getByRole("article")).toHaveCount(3);
     for (const [index, capability] of salesCapabilities.entries()) {
       const block = authority.getByRole("article").nth(index);

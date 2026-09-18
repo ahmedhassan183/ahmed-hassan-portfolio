@@ -5,7 +5,7 @@ import { salesJourney, solarDomains } from "@/data/experience";
 export const en = {
   name: site.name,
   meta: { title: `${site.name} | Growth & Business Development | B2B Sales & Sales Operations`, description: "Ahmed Hassan works in Growth & Business Development, combining consultative selling, B2B prospecting and account development with CRM and sales operations in renewable energy." },
-  contact: { label: "LET’S CONNECT", heading: "Looking for someone who can sell, build the sales process, and move opportunities forward?", description: "I’m open to Growth, Business Development and B2B Sales opportunities where I can combine hands-on selling and account development with CRM and sales operations.", talk: "Let’s Talk", email: "Email", linkedin: "LinkedIn", whatsapp: "WhatsApp", phone: "Primary Mobile", secondaryPhone: "Secondary Mobile", links: "Direct contact", role: "Growth & Business Development" },
+  contact: { label: "LET’S CONNECT", heading: "Looking for someone who can develop B2B opportunities, sell directly and bring structure to the sales process?", description: "Open to Growth, Business Development and B2B Sales roles in renewable energy and beyond.", talk: "Contact Ahmed", email: "Email", linkedin: "LinkedIn", whatsapp: "WhatsApp", phone: "Primary Mobile", secondaryPhone: "Secondary Mobile", links: "Direct contact", role: "Growth & Business Development" },
   nav: { items: navigation, main: "Main navigation", mobile: "Mobile navigation", open: "Open navigation", close: "Close navigation", home: "home", skip: "Skip to content", language: "Language", theme: "Theme", light: "Light", dark: "Dark", system: "System" },
   ui: {
     resume: "Download Resume", resumeUnavailable: "Download Resume — resume not yet available", resumeSoon: "Resume will be available soon.",
@@ -20,7 +20,7 @@ export const en = {
     flow: "THE SALES SYSTEM", flowContext: "CRM / Pipeline", stages: ["Prospecting", "Qualification", "Opportunity", "Proposal", "Follow-Up", "Closing", "Account Growth"],
     proofLabel: "Commercial proof", proof: [{ value: "18", label: "Solar installation opportunities personally closed" }, { value: "120+", label: "Site surveys & customer visits" }, { value: "7 stations", label: "320 kW through Senour Agricultural Association" }],
   },
-  authority: { label: "SALES CAPABILITY", heading: "Develop Opportunities. ", accent: "Support Every Step of the Sale.", description: "From customer needs and proposals to follow-up and account development, my commercial work is supported by CRM, clear next actions and after-sales workflows.", capabilities: salesCapabilities },
+  authority: { label: "HOW I SELL & GROW", heading: "From the first conversation ", accent: "to the next opportunity.", description: "Direct selling, daily opportunity discipline and partner development, backed by the cases below.", capabilities: salesCapabilities },
   work: {
     label: "FLAGSHIP CASE STUDIES", heading: "BUILT, NOT JUST LEARNED.", description: "Three cases show business development, solar commercial decision-making and a structured after-sales product.",
     projects: salesSystems, problem: "Context / Problem", role: "My Role", built: "Action / System", adoption: "Live Use / Status", purpose: "Business Value", flagship: "FLAGSHIP CASE", scope: "ONE CONNECTED WORKBOOK", proofLabel: "System proof points", proof: flagshipProof, capabilities: flagshipCapabilities, workflow: flagshipWorkflow, workflowHeading: "FROM CUSTOMER INPUT TO COMMERCIAL DECISION", stagesLabel: "Connected sales-engineering stages", stages: ["ENGINEERING", "COSTING", "QUOTATION", "FINANCIAL REVIEW"],
@@ -36,7 +36,7 @@ export const en = {
       senour: "Senour: 7 solar stations totaling 320 kW through the channel to date.",
       fayoum: "A second partnership in Fayoum covers an agricultural community of approximately 7,000 feddans, with opportunities in solar energy, irrigation and greenhouses.",
     },
-    supporting: { label: "SUPPORTING WORK", heading: "Systems behind the commercial work.", description: "Operating plans and field tools that support the three flagship cases.", items: supportingWork },
+    supporting: { label: "SUPPORTING WORK", heading: "Operating tools in brief.", description: "Current plans and field tools behind the work above.", items: supportingWork },
   },
-  experience: { label: "EXPERIENCE", heading: "From Hands-On Selling to Growth & Business Development.", journey: salesJourney, solarLabel: "SOLAR DOMAIN", domains: solarDomains },
+  experience: { label: "EXPERIENCE", heading: "From Hands-On Selling to Growth & Business Development.", periods: [{ organization: "Kahla Optical", dates: "2021–2025" }, { organization: "Innovation for Solar System", dates: "2025–Present" }], journey: salesJourney, training: { label: "Sales Enablement / Training Responsibility", description: "Within the Growth Manager role, Ahmed delivers practical solar-sales training and helps assess sales candidates." }, solarLabel: "SOLAR / RENEWABLE ENERGY EXPERTISE", domains: solarDomains },
 };

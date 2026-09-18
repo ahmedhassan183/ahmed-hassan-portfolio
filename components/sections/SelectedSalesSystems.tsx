@@ -108,26 +108,6 @@ export function SelectedSalesSystems({ d, locale }: { d: Dictionary; locale: Loc
             </details>
           );})}
         </RevealGroup>
-        <div className="supporting-work" aria-labelledby="supporting-heading">
-          <div className="supporting-intro">
-            <SectionLabel>{d.work.supporting.label}</SectionLabel>
-            <h3 id="supporting-heading">{d.work.supporting.heading}</h3>
-            <p>{d.work.supporting.description}</p>
-          </div>
-          <div className="supporting-list">
-            {d.work.supporting.items.map((item, index) => (
-              <article className="supporting-entry" key={item.id}>
-                <span className="supporting-number" aria-hidden="true">0{index + 1}</span>
-                <div className="supporting-copy">
-                  <h4>{item.title}</h4>
-                  <p>{item.description}</p>
-                  <p className="supporting-status">{item.status}</p>
-                </div>
-                {item.artifact && <div className="supporting-visual"><WorkPreview artifact={item.artifact} ui={d.ui} name={d.name} /></div>}
-              </article>
-            ))}
-          </div>
-        </div>
       </Container>
     </section>
   );

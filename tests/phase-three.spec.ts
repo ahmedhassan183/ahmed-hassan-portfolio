@@ -51,10 +51,13 @@ for (const width of [320, 375, 768, 1024, 1440]) {
     }
     await expect(page).toHaveURL(/#experience$/);
     await expect(page.locator("#experience-heading")).toHaveText("From Hands-On Selling to Growth & Business Development.");
-    await expect(page.locator(".sales-journey > li")).toHaveCount(5);
-    await expect(page.locator(".journey-role h3")).toHaveText(["Sales Representative", "Inventory / Sales Coordination", "Branch Management", "Growth Manager", "Solar Sales Instructor"]);
+    await expect(page.locator(".sales-journey > li")).toHaveCount(4);
+    await expect(page.locator(".journey-role h3")).toHaveText(["Sales Representative", "Inventory / Sales Coordination", "Branch Management", "Growth Manager"]);
+    await expect(page.locator(".experience-periods")).toContainText("2021–2025");
+    await expect(page.locator(".experience-periods")).toContainText("2025–Present");
     await expect(page.locator(".journey-step").nth(3)).toContainText("Leading and coordinating Sales & Marketing activities.");
-    await expect(page.locator(".journey-step").nth(4)).toContainText("Supporting responsibility within the Growth Manager role.");
+    await expect(page.locator(".training-note")).toContainText("Sales Enablement / Training Responsibility");
+    await expect(page.locator(".training-note")).toContainText("Within the Growth Manager role");
     await expect(page.locator(".solar-domain li")).toHaveCount(8);
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
     await page.emulateMedia({ reducedMotion: "reduce" });
