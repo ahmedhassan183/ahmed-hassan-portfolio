@@ -21,12 +21,12 @@ export function Contact({ d }: { d: Dictionary }) {
             <ResumeLink copy={d.ui} available={publicAssetExists(site.resumeUrl)} />
           </div>
           <nav className="contact-links" aria-label={d.contact.links}>
+            <a href={c.linkedin} target="_blank" rel="noopener noreferrer">{d.contact.linkedin}<span aria-hidden="true">↗</span></a>
             <a href={`mailto:${c.email}`}>{d.contact.email}</a>
             <a href={c.whatsapp} target="_blank" rel="noopener noreferrer">{d.contact.whatsapp}</a>
             <a className="contact-phone" href={`tel:${c.phone}`}><span>{d.contact.phone}</span><bdi>{c.phoneDisplay}</bdi></a>
             <a className="contact-phone" href={`tel:${c.secondaryPhone}`}><span>{d.contact.secondaryPhone}</span><bdi>{c.secondaryPhoneDisplay}</bdi></a>
             <a href={c.secondaryWhatsapp} target="_blank" rel="noopener noreferrer">{d.contact.whatsapp} · {d.contact.secondaryPhone}</a>
-            <a href={c.linkedin} target="_blank" rel="noopener noreferrer">{d.contact.linkedin}<span aria-hidden="true">↗</span></a>
           </nav>
         </div>
       </div>

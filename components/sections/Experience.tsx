@@ -28,13 +28,13 @@ export function Experience({ d }: { d: Dictionary }) {
             </li>
           ))}
         </ol>
-        <aside className="training-note" aria-label={d.experience.training.label}>
-          <h3>{d.experience.training.label}</h3>
-          <p>{d.experience.training.description}</p>
-        </aside>
         <aside className="solar-domain" aria-labelledby="solar-domain-heading">
           <h3 id="solar-domain-heading">{d.experience.solarLabel}</h3>
           <ul>{solarDomains.map((domain) => <li key={domain}>{domain}</li>)}</ul>
+        </aside>
+        <aside className="training-note" aria-label={d.experience.training.label}>
+          <h3>{d.experience.training.label}</h3>
+          <p>{d.experience.training.description}</p>
         </aside>
       </Container>
     </section>

@@ -4,7 +4,7 @@ import { publicAssetExists } from "../lib/public-assets";
 import { site } from "../data/site";
 import { readFile } from "node:fs/promises";
 
-const filename = "Ahmed-Hassan-Sales-Business-Development-Resume.pdf";
+const filename = "Ahmed-Hassan-Sales-Business-Development-Resume-V2.pdf";
 
 for (const locale of ["en", "ar"] as const) for (const theme of ["light", "dark"] as const) for (const width of [375, 1440]) {
   test(`final contact and all resume placements: ${locale} ${theme} ${width}px`, async ({ page, request }) => {
