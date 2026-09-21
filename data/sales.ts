@@ -1,34 +1,31 @@
-// Portfolio content supplied by Ahmed. These describe capabilities and systems,
-// not measured outcomes or additional official job titles.
+// Portfolio content supplied or approved by Ahmed. System specifications and
+// commercial outcomes are kept distinct; Growth Manager is the official title.
 export const salesCapabilities = [
   {
     id: "sell",
     title: "SELL",
     icon: "strategy",
-    description: "Hands-on experience working directly with customers from needs discovery through closing and follow-up.",
+    description: "I qualify the need, survey the site, explain the fit and follow through to a decision.",
     skills: [
-      "Consultative Selling", "Lead Qualification", "Customer Needs Discovery", "Product Recommendation",
-      "Objection Handling", "Negotiation", "Follow-Up", "Closing",
+      "Needs Discovery", "Consultative Selling", "Objection Handling", "Closing",
     ],
   },
   {
     id: "build",
     title: "BUILD",
     icon: "pipeline",
-    description: "Building the systems, workflows and commercial structure behind repeatable sales execution.",
+    description: "I update opportunity stages, follow-up dates and next actions in the CRM each day.",
     skills: [
-      "CRM Design", "Pipeline Management", "Opportunity Stages", "Follow-Up Logic",
-      "Account Development", "Sales Reporting", "Proposal Follow-Up", "Sales Process Design",
+      "CRM", "Pipeline Management", "Account Mapping", "Reporting",
     ],
   },
   {
-    id: "lead-train",
-    title: "LEAD & TRAIN",
+    id: "grow",
+    title: "GROW",
     icon: "crm",
-    description: "Leading commercial activity and delivering practical sales training within the solar-energy sector.",
+    description: "I develop partner channels and keep the customer relationship moving beyond the first sale.",
     skills: [
-      "Sales & Marketing Leadership", "Sales Coordination", "Sales Reviews", "Sales Enablement",
-      "Solar Sales Training", "Candidate Assessment", "Sales Talent Development",
+      "Partnerships", "Account Development", "Referrals", "After-Sales",
     ],
   },
 ] as const;
@@ -36,16 +33,18 @@ export const salesCapabilities = [
 export const salesSystems = [
   {
     id: "b2b-market-account-development",
-    category: "B2B SALES SYSTEM",
-    title: "B2B Market Intelligence & Account Development",
-    description: "A structured market and prospecting system designed to organize target accounts, prioritize opportunities and turn broad B2B prospecting into focused account development.",
-    problem: "No structured view of target companies, decision-makers and account priorities.",
-    built: "A B2B market database combining account mapping, qualification, opportunity prioritization, contact planning and follow-up structure.",
-    purpose: "Focus sales effort on the accounts with the strongest commercial potential.",
+    category: "BUSINESS DEVELOPMENT · LIVE CRM",
+    title: "B2B Market Intelligence, CRM & Agricultural Channel Development",
+    description: "Daily CRM use and prioritized B2B accounts, alongside separate agricultural-channel results.",
+    problem: "B2B opportunities and follow-up needed a clear account-priority view.",
+    role: "As Growth Manager, Ahmed handled account development, agricultural partnerships, field-commercial activity and opportunity tracking.",
+    built: "Mapped the market, prioritized accounts, organized CRM stages and next actions, and opened agricultural-association relationships.",
+    adoption: "Ahmed used and updated the CRM daily during live commercial work. Team-wide adoption is not claimed.",
+    purpose: "Keep account priorities, opportunities and follow-up dates visible while developing agricultural channels.",
     artifact: {
       path: "/work/crm-market-system.webp",
       type: "WORKBOOK",
-      label: "B2B Market Intelligence & Account Development",
+      label: "B2B Market Intelligence, CRM & Agricultural Channel Development",
       alt: "Sanitized view of Ahmed’s B2B market and CRM workbook",
     },
   },
@@ -53,10 +52,12 @@ export const salesSystems = [
     id: "solar-pv-engineering",
     category: "SALES ENGINEERING · COMMERCIAL TOOL",
     title: "Solar PV Engineering, Costing & Quotation System",
-    description: "An end-to-end Excel-based system connecting customer requirements, solar engineering, BOQ, costing, pricing, financial analysis and client-ready commercial proposals.",
+    description: "One Excel workbook connects customer inputs, solar design, BOQ, costing, pricing and client quotation.",
     problem: "Solar proposals often require engineering calculations, costing and commercial preparation across disconnected sheets and manual processes.",
-    built: "A connected Excel system that carries project inputs through technical design, quantity calculation, costing, pricing, commercial quotation and financial evaluation.",
-    purpose: "Create a structured sales-engineering workflow and make proposal preparation more consistent, reviewable and commercially controlled.",
+    role: "Ahmed designed and built the Excel system, linking technical inputs to costing, pricing and client quotation outputs.",
+    built: "Connected customer inputs, engineering design, BOQ, costing, pricing, quotation, financial analysis and a review dashboard in one workbook.",
+    adoption: "A working system and demo outputs are documented. Real-customer or company-wide adoption has not been verified.",
+    purpose: "Connect solar engineering, costing and commercial decision-making in one controlled workflow.",
     artifact: {
       path: "/work/solar-pv-engineering-system.webp",
       type: "CONNECTED EXCEL SYSTEM",
@@ -65,34 +66,45 @@ export const salesSystems = [
     },
   },
   {
-    id: "90-day-sales-execution",
-    category: "SALES OPERATIONS",
-    title: "90-Day Sales Execution Operating System",
-    description: "A practical operating system translating commercial strategy into daily and weekly execution across sales, CRM, customer development and KPI reviews.",
-    problem: "Strategy existed without a consistent execution cadence.",
-    built: "A 90-day operating framework with clear ownership, daily activity, weekly reviews, CRM updates, sales follow-up and KPI tracking.",
-    purpose: "Connect strategic goals with repeatable commercial execution.",
-    artifact: {
-      path: "/work/90-day-sales-system.webp",
-      type: "OPERATING MANUAL",
-      label: "90-Day Sales Execution Operating System",
-      alt: "Sanitized excerpt from Ahmed’s 90-Day Execution Operating Manual",
-    },
-  },
-  {
     id: "maintenance-revenue-product",
-    category: "CUSTOMER GROWTH · RECURRING REVENUE",
-    title: "Maintenance Revenue Product",
-    description: "A structured annual maintenance product designed to turn after-sales service into a long-term customer relationship and recurring commercial offering.",
-    problem: "Maintenance existed as an unstructured post-sale service.",
-    built: "Three service tiers, service scope, SLA, emergency response structure, technical reporting, annual agreement and renewal journey.",
-    purpose: "Support retention, account development and recurring revenue opportunities.",
+    category: "CUSTOMER LIFECYCLE · SERVICE PRODUCT",
+    title: "Maintenance & Recurring Revenue Product",
+    description: "A three-tier annual service product for after-sales care, response and renewal.",
+    problem: "Post-installation care needed a defined service scope, response model and renewal path.",
+    role: "Ahmed designed the service tiers, SLA, annual agreement, reporting and renewal journey.",
+    built: "Economic, Advanced and Premium levels defining service scope, visit frequency, cleaning, inspection and maintenance, emergency-response priorities and reports.",
+    adoption: "Product and service system developed for commercial use. Signed contracts and customer adoption have not been verified.",
+    purpose: "Create a structured post-sale relationship and recurring-service opportunity.",
     artifact: {
       path: "/work/maintenance-product.webp",
       type: "SERVICE PRODUCT",
-      label: "Maintenance Revenue Product",
+      label: "Maintenance & Recurring Revenue Product",
       alt: "Sanitized view of Ahmed’s annual maintenance agreement and three-tier service structure",
     },
+  },
+] as const;
+
+export const supportingWork = [
+  {
+    id: "90-day-sales-execution",
+    title: "90-Day Sales Execution Operating System",
+    description: "A 13-sprint plan for daily activity, CRM updates and weekly reviews.",
+    status: "Planning framework; completion and team adoption are unverified.",
+    artifact: { path: "/work/90-day-sales-system.webp", type: "OPERATING MANUAL", label: "90-Day Sales Execution Operating System", alt: "Sanitized excerpt from Ahmed’s 90-Day Execution Operating Manual" },
+  },
+  {
+    id: "sahara-2026",
+    title: "Sahara 2026 Field Execution System",
+    description: "Pre-event outreach for 20 prioritized accounts across associations, irrigation and solar partners, with qualification, CRM capture and same-day next steps.",
+    status: "Current preparation; event targets are not achieved results.",
+    artifact: null,
+  },
+  {
+    id: "growth-playbook",
+    title: "Strategic & Commercial Growth Playbook",
+    description: "A commercial roadmap connecting business diagnosis, sales priorities and execution.",
+    status: "Planning framework; no outcome attributed to the document.",
+    artifact: null,
   },
 ] as const;
 
@@ -105,7 +117,7 @@ export const flagshipProof = [
   { value: "No", label: "Macros" },
 ] as const;
 
-export const flagshipWorkflow = ["Customer Input", "Engineering Design", "BOQ", "Costing", "Quotation", "Financial Analysis", "Dashboard"] as const;
+export const flagshipWorkflow = ["Customer Input", "Engineering Design", "BOQ", "Costing", "Pricing", "Client Quotation", "Financial Analysis", "Dashboard"] as const;
 
 export const flagshipCapabilities = [
   { title: "ENGINEERING", detail: "Customer inputs · load analysis · PV sizing · energy production · strings · inverters · irrigation · pumps & motors · VFD · batteries · DC / AC / motor cables · protection · grounding" },

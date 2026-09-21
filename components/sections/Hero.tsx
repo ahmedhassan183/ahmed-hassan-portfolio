@@ -37,6 +37,9 @@ export function Hero({ d }: { d: Dictionary }) {
           <p>{d.hero.steps.map((step, index) => <Fragment key={step}>{index > 0 && <> <span aria-hidden="true">→</span> </>}{step}</Fragment>)}</p>
           <span className="baseline-note">{d.hero.note}</span>
         </div>
+        <ul className="commercial-proof" aria-label={d.hero.proofLabel}>
+          {d.hero.proof.map((item) => <li key={item.value}><strong><bdi>{item.value}</bdi></strong><span>{item.label}</span></li>)}
+        </ul>
       </Container>
     </section>
   );

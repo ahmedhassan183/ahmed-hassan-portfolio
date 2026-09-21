@@ -10,11 +10,13 @@ for (const width of [320, 375, 768, 1024, 1440]) {
     page.on("console", (message) => { if (message.type() === "error") errors.push(message.text()); });
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/");
-    await expect(page.getByRole("heading", { level: 1 })).toHaveText("I Build B2B Sales Pipelines — And the Systems That Move Them Forward.");
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText("I Develop B2B Opportunities — And Build the Sales Systems That Move Them Forward.");
     await expect(page.locator(".flow-stages > li")).toHaveCount(7);
     await expect(page.locator(".node-title")).toHaveText(["Prospecting", "Qualification", "Opportunity", "Proposal", "Follow-Up", "Closing", "Account Growth"]);
-    await expect(page.getByRole("link", { name: "Explore My Sales Work" })).toHaveAttribute("href", "#sales");
-    await expect(page.getByText("THE SALES SYSTEM", { exact: false })).toBeVisible();
+    await expect(page.getByRole("link", { name: "Explore My Commercial Work" })).toHaveAttribute("href", "#sales");
+    await expect(page.locator(".hero").getByRole("link", { name: "Contact Ahmed" })).toHaveAttribute("href", "#contact");
+    await expect(page.locator("#flow-title")).toContainText("THE SALES SYSTEM");
+    await expect(page.locator("#flow-title")).toBeVisible();
     await expect(page.locator(".portrait-frame")).toBeVisible();
     await expect(page.locator(".portrait-role")).toHaveText("Growth Manager · Sales & Marketing Lead");
     await expect(page.locator(".portrait-badge")).toHaveText("Solar Sales Instructor");
@@ -93,9 +95,9 @@ test("sales positioning and portrait composition fit a common laptop viewport", 
   await page.setViewportSize({ width: 1366, height: 768 });
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
-  await expect(page).toHaveTitle("Ahmed Hassan | Sales & Business Development | B2B Sales & Sales Operations");
-  await expect(page.locator(".eyebrow")).toHaveText("B2B Sales · Sales Operations · Sales Leadership");
-  await expect(page.locator(".hero-description")).toHaveText("Growth Manager leading Sales & Marketing at Innovation for Solar System, combining hands-on consultative selling with B2B prospecting, CRM, pipeline management, account development and solar-sales training.");
+  await expect(page).toHaveTitle("Ahmed Hassan | Growth & Business Development | B2B Sales & Sales Operations");
+  await expect(page.locator(".eyebrow")).toHaveText("Growth & Business Development · B2B Sales · Sales Operations");
+  await expect(page.locator(".hero-description")).toHaveText("Growth Manager at Innovation for Solar System, combining direct solar sales, field visits and agricultural partnership development with B2B prospecting, account growth, CRM and commercial systems.");
   if (publicAssetExists(site.portrait.src)) {
     await expect(page.locator(".portrait-image")).toHaveAttribute("alt", site.portrait.alt);
   } else {

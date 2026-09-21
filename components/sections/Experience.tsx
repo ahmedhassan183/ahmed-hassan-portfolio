@@ -11,6 +11,7 @@ export function Experience({ d }: { d: Dictionary }) {
         <div className="experience-intro">
           <SectionLabel>{d.experience.label}</SectionLabel>
           <h2 id="experience-heading" className="section-heading">{d.experience.heading}</h2>
+          <p className="experience-periods"><span><bdi>{d.experience.periods[0].organization}</bdi> · <bdi>{d.experience.periods[0].dates}</bdi></span><span aria-hidden="true">→</span><span><bdi>{d.experience.periods[1].organization}</bdi> · <bdi>{d.experience.periods[1].dates}</bdi></span></p>
         </div>
         <ol className="sales-journey">
           {salesJourney.map((step, index) => (
@@ -30,6 +31,10 @@ export function Experience({ d }: { d: Dictionary }) {
         <aside className="solar-domain" aria-labelledby="solar-domain-heading">
           <h3 id="solar-domain-heading">{d.experience.solarLabel}</h3>
           <ul>{solarDomains.map((domain) => <li key={domain}>{domain}</li>)}</ul>
+        </aside>
+        <aside className="training-note" aria-label={d.experience.training.label}>
+          <h3>{d.experience.training.label}</h3>
+          <p>{d.experience.training.description}</p>
         </aside>
       </Container>
     </section>

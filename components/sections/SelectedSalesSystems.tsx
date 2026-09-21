@@ -36,14 +36,14 @@ export function SelectedSalesSystems({ d, locale }: { d: Dictionary; locale: Loc
         </div>
         <RevealGroup className="systems-list">
           {salesSystems.map((system, index) => {
-            const flagship = system.id === "solar-pv-engineering";
+            const solar = system.id === "solar-pv-engineering";
             return (
-            <details className={`system-entry${flagship ? " system-entry--flagship" : ""}`} key={system.id} data-reveal open>
+            <details className={`system-entry system-entry--flagship${solar ? " system-entry--solar" : ""}`} key={system.id} data-reveal open>
               <summary className="system-summary" aria-controls={`${system.id}-details`}>
                 <h3>
                   <span className="system-number" aria-hidden="true">0{index + 1}</span>
                   <span className="system-heading-content">
-                    <span className="system-category">{system.category}{flagship && <span className="flagship-badge">{d.work.flagship}</span>}</span>
+                    <span className="system-category">{system.category}<span className="flagship-badge">{d.work.flagship}</span></span>
                     <span className="system-title">{system.title}</span>
                   </span>
                   <span className="system-toggle" aria-hidden="true"><span /><span /></span>
@@ -51,28 +51,46 @@ export function SelectedSalesSystems({ d, locale }: { d: Dictionary; locale: Loc
               </summary>
               <div className="system-body" id={`${system.id}-details`}>
                 <p className="system-description">{system.description}</p>
-                {flagship && (
+                {solar && (
                   <ul className="flagship-proof" aria-label={d.work.proofLabel}>
                     {flagshipProof.map((proof) => <li key={proof.label}><strong><bdi>{proof.value}</bdi></strong><span>{proof.label}</span></li>)}
                   </ul>
                 )}
                 <div className="system-details">
                   <div className="system-visual">
-                    {flagship ? (
+                    {solar ? (
                       <ArtifactGallery ui={d.ui} locale={locale} items={[
                         { path: system.artifact.path, label: d.work.primaryLabel, panel: <WorkPreview artifact={system.artifact} ui={d.ui} name={d.name} /> },
                         ...flagshipSecondaryArtifacts.map((artifact) => ({ path: artifact.path, label: artifact.label, panel: <WorkPreview artifact={artifact} ui={d.ui} name={d.name} /> })),
                       ]} />
                     ) : <WorkPreview artifact={system.artifact} ui={d.ui} name={d.name} />}
                   </div>
-                  {flagship && <FlagshipScope d={d} />}
+                  {solar && <FlagshipScope d={d} />}
                 <dl className="system-fields">
                   <div className="system-problem"><dt>{d.work.problem}</dt><dd>{system.problem}</dd></div>
+                  <div className="system-role"><dt>{d.work.role}</dt><dd>{system.role}</dd></div>
                   <div className="system-built"><dt>{d.work.built}</dt><dd>{system.built}</dd></div>
+                  <div className="system-adoption"><dt>{d.work.adoption}</dt><dd>{system.adoption}</dd></div>
                   <div className="system-purpose"><dt>{d.work.purpose}</dt><dd>{system.purpose}</dd></div>
                 </dl>
                 </div>
-                {flagship && (
+                {system.id === "b2b-market-account-development" && (
+                  <aside className="market-evidence">
+                    <div>
+                      <h4>{d.work.marketProof.processLabel}</h4>
+                      <p>{d.work.marketProof.process}</p>
+                    </div>
+                    <div>
+                      <h4>{d.work.marketProof.channelLabel}</h4>
+                      <p>{d.work.marketProof.role}</p>
+                      <p>{d.work.marketProof.model}</p>
+                      <p>{d.work.marketProof.sales}</p>
+                      <p><strong>{d.work.marketProof.senour}</strong></p>
+                      <p>{d.work.marketProof.fayoum}</p>
+                    </div>
+                  </aside>
+                )}
+                {solar && (
                   <div className="flagship-workflow">
                     <h4>{d.work.workflowHeading}</h4>
                     <ol className="engineering-workflow">{flagshipWorkflow.map((stage) => <li key={stage}>{stage}</li>)}</ol>

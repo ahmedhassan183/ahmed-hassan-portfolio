@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
-import { flagshipSecondaryArtifacts, salesSystems } from "../data/sales";
+import { flagshipSecondaryArtifacts, salesSystems, supportingWork } from "../data/sales";
 
 for (const width of [320, 375, 768, 1024, 1440]) {
   test(`Phase 3 evidence, journey and real assets at ${width}px`, async ({ page }) => {
@@ -9,12 +9,12 @@ for (const width of [320, 375, 768, 1024, 1440]) {
     page.on("console", (message) => { if (message.type() === "error") errors.push(message.text()); });
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/");
-    const flagship = page.locator(".system-entry--flagship");
+    const flagship = page.locator(".system-entry--solar");
     await expect(flagship.locator(".system-title")).toHaveText("Solar PV Engineering, Costing & Quotation System");
-    await expect(flagship.locator(".flagship-badge")).toHaveText("FLAGSHIP BUILD");
+    await expect(flagship.locator(".flagship-badge")).toHaveText("FLAGSHIP CASE");
     await expect(flagship.locator(".flagship-proof li")).toHaveText(["40Interconnected Worksheets", "1,500+Formulas", "8Structured Data Tables", "4Charts", "NoMacros"]);
     await expect(flagship.locator(".flagship-capabilities h4")).toHaveText(["ENGINEERING", "COMMERCIAL", "FINANCIAL", "CONTROL & QA"]);
-    await expect(flagship.locator(".engineering-workflow li")).toHaveText(["Customer Input", "Engineering Design", "BOQ", "Costing", "Quotation", "Financial Analysis", "Dashboard"]);
+    await expect(flagship.locator(".engineering-workflow li")).toHaveText(["Customer Input", "Engineering Design", "BOQ", "Costing", "Pricing", "Client Quotation", "Financial Analysis", "Dashboard"]);
     await expect(flagship.locator(".flagship-assurance")).toContainText("The client-facing quotation is separated from internal purchase cost, margin and profit information.");
     await expect(page.locator(".maintenance-tiers li")).toHaveText(["Economic", "Advanced", "Premium"]);
     await flagship.locator(".system-summary").press("Enter");
@@ -22,7 +22,7 @@ for (const width of [320, 375, 768, 1024, 1440]) {
     await flagship.locator(".system-summary").press("Space");
     await expect(flagship.locator(".system-body")).toBeVisible();
 
-    for (const artifact of [...salesSystems.map((system) => system.artifact), ...flagshipSecondaryArtifacts]) {
+    for (const artifact of [...salesSystems.map((system) => system.artifact), supportingWork[0].artifact, ...flagshipSecondaryArtifacts]) {
         const secondaryIndex = flagshipSecondaryArtifacts.findIndex((item) => item.path === artifact.path);
         if (secondaryIndex >= 0) await flagship.getByRole("tab").nth(secondaryIndex + 1).click();
         const image = page.getByAltText(artifact.alt, { exact: true });
@@ -50,11 +50,14 @@ for (const width of [320, 375, 768, 1024, 1440]) {
       await page.getByRole("navigation", { name: "Main navigation", exact: true }).getByRole("link", { name: "Experience" }).click();
     }
     await expect(page).toHaveURL(/#experience$/);
-    await expect(page.locator("#experience-heading")).toHaveText("From Hands-On Selling to Building Sales Systems.");
-    await expect(page.locator(".sales-journey > li")).toHaveCount(5);
-    await expect(page.locator(".journey-role h3")).toHaveText(["Sales Representative", "Inventory / Sales Coordination", "Branch Management", "Growth Manager", "Solar Sales Instructor"]);
+    await expect(page.locator("#experience-heading")).toHaveText("From Hands-On Selling to Growth & Business Development.");
+    await expect(page.locator(".sales-journey > li")).toHaveCount(4);
+    await expect(page.locator(".journey-role h3")).toHaveText(["Sales Representative", "Inventory / Sales Coordination", "Branch Management", "Growth Manager"]);
+    await expect(page.locator(".experience-periods")).toContainText("2021–2025");
+    await expect(page.locator(".experience-periods")).toContainText("2025–Present");
     await expect(page.locator(".journey-step").nth(3)).toContainText("Leading and coordinating Sales & Marketing activities.");
-    await expect(page.locator(".journey-step").nth(4)).toContainText("Supporting responsibility within the Growth Manager role.");
+    await expect(page.locator(".training-note")).toContainText("Sales Enablement / Training Responsibility");
+    await expect(page.locator(".training-note")).toContainText("Within the Growth Manager role");
     await expect(page.locator(".solar-domain li")).toHaveCount(8);
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
     await page.emulateMedia({ reducedMotion: "reduce" });
@@ -70,7 +73,7 @@ for (const width of [320, 375, 768, 1024, 1440]) {
 
 test("real prepared portrait renders through next/image", async ({ page }) => {
   await page.goto("/");
-  const portrait = page.getByAltText("Ahmed Hassan — Sales and Business Development professional", { exact: true });
+  const portrait = page.getByAltText("Ahmed Hassan — Growth and Business Development professional", { exact: true });
   await expect(portrait).toBeVisible();
   await expect(portrait).toHaveAttribute("src", /\/_next\/image\?/);
   await expect.poll(() => portrait.evaluate((element: HTMLImageElement) => element.complete && element.naturalWidth > 0)).toBe(true);

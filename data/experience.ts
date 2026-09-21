@@ -1,26 +1,21 @@
 export const salesJourney = [
   {
     title: "Sales Representative", organization: "Kahla Optical",
-    focus: "Consultative selling · customer needs · product recommendation · objection handling · negotiation · follow-up · closing",
+    focus: "Discovered customer needs, recommended optical products, handled objections, followed up and closed sales in a target-driven store.",
   },
   {
     title: "Inventory / Sales Coordination", organization: "Kahla Optical",
-    focus: "Product availability · sales support · inventory coordination · operational continuity",
+    focus: "Coordinated contact-lens availability and replenishment to support daily sales.",
   },
   {
     title: "Branch Management", organization: "Kahla Optical",
-    focus: "Branch operations · customer service · sales coordination · problem-solving · daily management",
+    focus: "Progressed to branch responsibility across customer service, sales coordination, stock availability and issue resolution.",
   },
   {
     title: "Growth Manager", organization: "Innovation for Solar System",
     responsibility: "Leading and coordinating Sales & Marketing activities.",
-    focus: "B2B sales · CRM · pipeline development · commercial systems · account development · customer success · sales execution",
-  },
-  {
-    title: "Solar Sales Instructor", organization: "Innovation for Solar System",
-    responsibility: "Supporting responsibility within the Growth Manager role.",
-    focus: "Practical sales training · solar-energy fundamentals · customer qualification · objection handling · sales process · candidate assessment",
+    focus: "Personally closed 18 solar installation opportunities and completed 120+ site surveys and customer visits. Initiated and developed two agricultural-association relationships. Develops B2B accounts and updates the CRM daily.",
   },
 ] as const;
 
-export const solarDomains = ["Solar Energy Sales", "Agricultural Solar", "Industrial / Commercial Prospects", "Solar Customer Qualification", "Solar Sales Training", "Maintenance Services", "Solar Sales Engineering", "Commercial Proposals"] as const;
+export const solarDomains = ["Direct Solar Sales", "Agricultural Solar", "Solar Pumping & Irrigation", "Site Surveys", "Customer Qualification", "Association Channels", "Commercial / Technical Handoff", "Maintenance & After-Sales"] as const;
