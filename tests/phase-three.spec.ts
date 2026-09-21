@@ -56,7 +56,7 @@ for (const width of [320, 375, 768, 1024, 1440]) {
     await expect(page.locator(".experience-periods")).toContainText("2021–2025");
     await expect(page.locator(".experience-periods")).toContainText("2025–Present");
     await expect(page.locator(".journey-step").nth(3)).toContainText("Leading and coordinating Sales & Marketing activities.");
-    await expect(page.locator(".training-note")).toContainText("Sales Enablement / Training Responsibility");
+    await expect(page.locator(".training-note")).toContainText("SALES ENABLEMENT & TALENT DEVELOPMENT");
     await expect(page.locator(".training-note")).toContainText("Within the Growth Manager role");
     await expect(page.locator(".solar-domain li")).toHaveCount(8);
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);

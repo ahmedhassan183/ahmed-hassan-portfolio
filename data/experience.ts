@@ -14,7 +14,7 @@ export const salesJourney = [
   {
     title: "Growth Manager", organization: "Innovation for Solar System",
     responsibility: "Leading and coordinating Sales & Marketing activities.",
-    focus: "Personally closed 18 solar installation opportunities and completed 120+ site surveys and customer visits. Initiated and developed two agricultural-association relationships. Develops B2B accounts and updates the CRM daily.",
+    focus: "Personally closed 18 solar installation opportunities and completed 120+ site surveys and customer visits. Initiated and developed two agricultural-association relationships. Develops B2B accounts and updates the CRM daily. Designed and delivered practical solar-sales training, assessed participants and supported internal talent selection; two trainees were hired into Innovation immediately after completing the program.",
   },
 ] as const;
 
