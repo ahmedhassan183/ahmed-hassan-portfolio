@@ -6,7 +6,7 @@ const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const input = path.join(scriptDirectory, "Ahmed-Hassan-Resume.html");
 const output = path.resolve(
   scriptDirectory,
-  "../public/Ahmed-Hassan-Sales-Business-Development-Resume-V3-Review.pdf",
+  "../public/Ahmed-Hassan-Sales-Business-Development-Resume.pdf",
 );
 
 const browser = await chromium.launch({

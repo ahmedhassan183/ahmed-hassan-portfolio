@@ -1,7 +1,6 @@
 import { expect, test } from "@playwright/test";
 import { readFile } from "node:fs/promises";
 
-const reviewResume = "/Ahmed-Hassan-Sales-Business-Development-Resume-V3-Review.pdf";
 const canonicalResume = "/Ahmed-Hassan-Sales-Business-Development-Resume.pdf";
 
 for (const locale of ["en", "ar"] as const) {
@@ -57,16 +56,15 @@ test("evidence patch preserves hierarchy, flagship count and Sahara status", asy
   }
 });
 
-test("review resume remains separate from the canonical website resume", async ({ page, request }) => {
+test("approved V3 resume is the canonical website resume", async ({ page, request }) => {
   await page.goto("/en");
   await expect(page.locator(".resume-link")).toHaveCount(4);
   for (const link of await page.locator(".resume-link").all()) await expect(link).toHaveAttribute("href", canonicalResume);
-  await expect(page.locator(`a[href="${reviewResume}"]`)).toHaveCount(0);
 
-  const response = await request.get(reviewResume);
-  expect(response.status()).toBe(404);
-  const reviewPdf = await readFile(`public${reviewResume}`);
+  const response = await request.get(canonicalResume);
+  expect(response.status()).toBe(200);
   const canonicalPdf = await readFile(`public${canonicalResume}`);
-  expect(reviewPdf.subarray(0, 5).toString()).toBe("%PDF-");
-  expect(reviewPdf).not.toEqual(canonicalPdf);
+  expect(response.headers()["content-type"]).toContain("application/pdf");
+  expect((await response.body()).subarray(0, 5).toString()).toBe("%PDF-");
+  expect(await response.body()).toEqual(canonicalPdf);
 });
