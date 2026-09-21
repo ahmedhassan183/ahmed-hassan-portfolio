@@ -77,9 +77,13 @@ test("system theme, manual override, persistence and cross-tab synchronization",
   await page.emulateMedia({ colorScheme: "dark" });
   await page.goto("/en");
   await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+  const select = page.locator(".desktop-preferences select");
+  await select.selectOption("light");
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
+  await select.selectOption("system");
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
   await page.emulateMedia({ colorScheme: "light" });
   await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
-  const select = page.locator(".desktop-preferences select");
   await select.selectOption("dark");
   await page.reload();
   await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");

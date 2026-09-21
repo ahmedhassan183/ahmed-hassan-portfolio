@@ -9,8 +9,8 @@ export const site = {
     alt: "Ahmed Hassan — Growth and Business Development professional",
     objectPosition: "50% 16%",
   },
-  resumeUrl: "/Ahmed-Hassan-Sales-Business-Development-Resume-V2.pdf",
-  resumeFilename: "Ahmed-Hassan-Sales-Business-Development-Resume-V2.pdf",
+  resumeUrl: "/Ahmed-Hassan-Sales-Business-Development-Resume.pdf",
+  resumeFilename: "Ahmed-Hassan-Sales-Business-Development-Resume.pdf",
   contact: {
     linkedin: "https://www.linkedin.com/in/ahmedhassan-growth",
     email: "a7md07san@gmail.com",
