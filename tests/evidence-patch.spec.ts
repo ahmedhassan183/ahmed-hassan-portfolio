@@ -57,16 +57,16 @@ test("evidence patch preserves hierarchy, flagship count and Sahara status", asy
   }
 });
 
-test("review resume is available without replacing the canonical website resume", async ({ page, request }) => {
+test("review resume remains separate from the canonical website resume", async ({ page, request }) => {
   await page.goto("/en");
   await expect(page.locator(".resume-link")).toHaveCount(4);
   for (const link of await page.locator(".resume-link").all()) await expect(link).toHaveAttribute("href", canonicalResume);
   await expect(page.locator(`a[href="${reviewResume}"]`)).toHaveCount(0);
 
   const response = await request.get(reviewResume);
-  expect(response.status()).toBe(200);
-  expect(response.headers()["content-type"]).toContain("application/pdf");
-  expect((await response.body()).subarray(0, 5).toString()).toBe("%PDF-");
-  expect(await response.body()).toEqual(await readFile(`public${reviewResume}`));
-  expect(await response.body()).not.toEqual(await readFile(`public${canonicalResume}`));
+  expect(response.status()).toBe(404);
+  const reviewPdf = await readFile(`public${reviewResume}`);
+  const canonicalPdf = await readFile(`public${canonicalResume}`);
+  expect(reviewPdf.subarray(0, 5).toString()).toBe("%PDF-");
+  expect(reviewPdf).not.toEqual(canonicalPdf);
 });
