@@ -38,5 +38,28 @@ export const en = {
     },
     supporting: { label: "SUPPORTING WORK", heading: "Operating tools in brief.", description: "Current plans and field tools behind the work above.", items: supportingWork },
   },
-  experience: { label: "EXPERIENCE", heading: "From Hands-On Selling to Growth & Business Development.", periods: [{ organization: "Kahla Optical", dates: "2021–2025" }, { organization: "Innovation for Solar System", dates: "2025–Present" }], journey: salesJourney, training: { label: "Sales Enablement / Training Responsibility", description: "Within the Growth Manager role, Ahmed delivers practical solar-sales training and helps assess sales candidates." }, solarLabel: "SOLAR / RENEWABLE ENERGY EXPERTISE", domains: solarDomains },
+  experience: {
+    label: "EXPERIENCE", heading: "From Hands-On Selling to Growth & Business Development.", periods: [{ organization: "Kahla Optical", dates: "2021–2025" }, { organization: "Innovation for Solar System", dates: "2025–Present" }], journey: salesJourney,
+    training: {
+      label: "SALES ENABLEMENT & TALENT DEVELOPMENT",
+      description: "Within the Growth Manager role, Ahmed designs and delivers practical Solar Sales training, assesses participants for commercial readiness and supports internal talent selection.",
+      steps: [
+        { label: "TRAIN", description: "Practical training in qualification, needs discovery, consultative selling, pricing, objections, negotiation and follow-up." },
+        { label: "ASSESS", description: "Participant evaluation focused on commercial readiness and application of the sales process." },
+        { label: "DEVELOP TALENT", description: "Selected two trainees who were hired into Innovation immediately after completing the program." },
+      ],
+      outcome: "2 trainees hired after course completion",
+    },
+    partnership: {
+      label: "INDUSTRY–ACADEMIC PARTNERSHIP DEVELOPMENT",
+      heading: "Applied Renewable-Energy Training Partnership",
+      context: "Connect renewable-energy academic learning with supervised real-project cases from industry.",
+      roleLabel: "ROLE", role: "Proposal & Partnership Development",
+      developedLabel: "WHAT AHMED DEVELOPED", developed: "Formal applied-training proposal · official approval request · program structure · cooperation framework",
+      modelLabel: "PROGRAM MODEL", model: ["Real Project Case", "Site Survey", "Analysis", "Preliminary Design", "Economic Review", "Report / Presentation"],
+      outcomeLabel: "OUTCOME", outcome: "Formal cooperation established between Innovation and the Technological Institute.",
+      statusLabel: "STATUS", status: "Partnership established. Applied execution and Pilot outcomes pending.",
+    },
+    solarLabel: "SOLAR / RENEWABLE ENERGY EXPERTISE", domains: solarDomains,
+  },
 };
