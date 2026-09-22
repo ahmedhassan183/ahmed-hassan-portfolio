@@ -5,7 +5,7 @@ import { salesJourney, solarDomains } from "@/data/experience";
 export const en = {
   name: site.name,
   meta: { title: `${site.name} | Growth & Business Development | B2B Sales & Sales Operations`, description: "Ahmed Hassan works in Growth & Business Development, combining consultative selling, B2B prospecting and account development with CRM and sales operations in renewable energy." },
-  contact: { label: "LET’S CONNECT", heading: "Looking for someone who can develop B2B opportunities, sell directly and bring structure to the sales process?", description: "Open to Growth, Business Development and B2B Sales roles in renewable energy and beyond.", talk: "Contact Ahmed", email: "Email", linkedin: "LinkedIn", whatsapp: "WhatsApp", phone: "Primary Mobile", secondaryPhone: "Secondary Mobile", links: "Direct contact", role: "Growth & Business Development" },
+  contact: { label: "CONTACT", heading: "Let’s discuss your next commercial opportunity.", description: "Available for conversations around B2B Sales, Business Development, Sales Operations, and commercial roles in renewable energy and beyond.", talk: "Contact Ahmed", email: "Email", linkedin: "LinkedIn", linkedinValue: "ahmedhassan-growth", whatsapp: "WhatsApp", whatsappAction: "Message Ahmed", phone: "Primary Mobile", secondaryPhone: "Alternate Mobile", links: "Contact options", role: "Growth & Business Development" },
   nav: { items: navigation, main: "Main navigation", mobile: "Mobile navigation", open: "Open navigation", close: "Close navigation", home: "home", skip: "Skip to content", language: "Language", theme: "Theme", light: "Light", dark: "Dark", system: "System" },
   ui: {
     resume: "Download Resume", resumeUnavailable: "Download Resume — resume not yet available", resumeSoon: "Resume will be available soon.",
@@ -52,13 +52,13 @@ export const en = {
     },
     partnership: {
       label: "INDUSTRY–ACADEMIC PARTNERSHIP DEVELOPMENT",
-      heading: "Applied Renewable-Energy Training Partnership",
-      context: "Connect renewable-energy academic learning with supervised real-project cases from industry.",
-      roleLabel: "ROLE", role: "Proposal & Partnership Development",
-      developedLabel: "WHAT AHMED DEVELOPED", developed: "Formal applied-training proposal · official approval request · program structure · cooperation framework",
+      heading: "Applied Training Partnership Development",
+      context: "Ahmed initiated contact with the Technological Institute to explore applied renewable-energy training cooperation with Innovation.",
+      roleLabel: "BUSINESS DEVELOPMENT ROLE", role: "Relationship Origination & Partnership Development",
+      developedLabel: "WHAT AHMED LED", developed: "Ahmed led direct communication and meetings, then continued follow-up until formal cooperation was established.",
       modelLabel: "PROGRAM MODEL", model: ["Real Project Case", "Site Survey", "Analysis", "Preliminary Design", "Economic Review", "Report / Presentation"],
       outcomeLabel: "OUTCOME", outcome: "Formal cooperation established between Innovation and the Technological Institute.",
-      statusLabel: "STATUS", status: "Partnership established. Applied execution and Pilot outcomes pending.",
+      statusLabel: "STATUS", status: "Partnership established. Pilot execution and applied outcomes remain pending.",
     },
     solarLabel: "SOLAR / RENEWABLE ENERGY EXPERTISE", domains: solarDomains,
   },

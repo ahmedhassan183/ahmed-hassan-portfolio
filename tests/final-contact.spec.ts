@@ -17,13 +17,21 @@ for (const locale of ["en", "ar"] as const) for (const theme of ["light", "dark"
     await page.goto(`/${locale}`);
     await expect(page.locator("html")).toHaveAttribute("data-theme", theme);
     const contact = page.locator("#contact");
-    await expect(contact.getByRole("link", { name: d.contact.email, exact: true })).toHaveAttribute("href", "mailto:a7md07san@gmail.com");
-    await expect(contact.getByRole("link", { name: d.contact.whatsapp, exact: true })).toHaveAttribute("href", "https://wa.me/201018797298");
+    const emailMethod = contact.locator('.contact-method--compact[href="mailto:a7md07san@gmail.com"]');
+    await expect(emailMethod).toContainText(d.contact.email);
+    await expect(emailMethod).toHaveAttribute("href", "mailto:a7md07san@gmail.com");
+    const primaryWhatsapp = contact.locator('a[href="https://wa.me/201018797298"]');
+    await expect(primaryWhatsapp).toContainText(d.contact.whatsapp);
+    await expect(primaryWhatsapp).toContainText(d.contact.whatsappAction);
     await expect(contact.getByRole("link", { name: `${d.contact.whatsapp} · ${d.contact.secondaryPhone}`, exact: true })).toHaveAttribute("href", "https://wa.me/201095638790");
-    await expect(contact.getByRole("link", { name: new RegExp(d.contact.phone) })).toHaveAttribute("href", "tel:+201018797298");
-    await expect(contact.getByRole("link", { name: new RegExp(`^${d.contact.secondaryPhone}`) })).toHaveAttribute("href", "tel:+201095638790");
+    await expect(contact.locator('a[href="tel:+201018797298"]')).toContainText(d.contact.phone);
+    await expect(contact.locator('a[href="tel:+201095638790"]')).toHaveAttribute("href", "tel:+201095638790");
     await expect(contact.locator(".contact-phone bdi")).toHaveText(["+20 101 879 7298", "+20 109 563 8790"]);
-    for (const area of [contact, page.locator("footer")]) await expect(area.getByRole("link", { name: d.contact.linkedin, exact: true })).toHaveAttribute("href", "https://www.linkedin.com/in/ahmedhassan-growth");
+    for (const area of [contact, page.locator("footer")]) {
+      const linkedin = area.locator('a[href="https://www.linkedin.com/in/ahmedhassan-growth"]');
+      await expect(linkedin).toContainText(d.contact.linkedin);
+      await expect(linkedin).toHaveAttribute("href", "https://www.linkedin.com/in/ahmedhassan-growth");
+    }
     for (const link of await contact.locator('a[href^="https:"]').all()) {
       await expect(link).toHaveAttribute("target", "_blank");
       await expect(link).toHaveAttribute("rel", "noopener noreferrer");

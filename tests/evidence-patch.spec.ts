@@ -17,9 +17,11 @@ for (const locale of ["en", "ar"] as const) {
     await expect(training).not.toContainText(/%|cohort|دفعة|نسبة/);
 
     await expect(partnership).toBeVisible();
-    await expect(partnership.locator(".evidence-label")).toHaveText(locale === "en" ? "INDUSTRY–ACADEMIC PARTNERSHIP DEVELOPMENT" : "تطوير الشراكات بين الصناعة والتعليم");
+    await expect(partnership.locator(".evidence-label")).toHaveText(locale === "en" ? "INDUSTRY–ACADEMIC PARTNERSHIP DEVELOPMENT" : "تطوير شراكة بين القطاع الصناعي والتعليم");
+    await expect(partnership).toContainText(locale === "en" ? "Ahmed initiated contact with the Technological Institute" : "بدأ أحمد التواصل مع المعهد التكنولوجي");
+    await expect(partnership).toContainText(locale === "en" ? "Ahmed led direct communication and meetings, then continued follow-up until formal cooperation was established." : "أدار أحمد التواصل المباشر والاجتماعات، وواصل المتابعة حتى تم إرساء تعاون رسمي.");
     await expect(partnership).toContainText(locale === "en" ? "Formal cooperation established between Innovation and the Technological Institute." : "تم إرساء تعاون رسمي بين Innovation والمعهد التكنولوجي.");
-    await expect(partnership).toContainText(locale === "en" ? "Applied execution and Pilot outcomes pending." : "التنفيذ التطبيقي ونتائج البرنامج التجريبي ما زالت قيد الانتظار.");
+    await expect(partnership).toContainText(locale === "en" ? "Pilot execution and applied outcomes remain pending." : "لا تزال نتائج التنفيذ والبرنامج التجريبي قيد الانتظار.");
     await expect(partnership.locator(".partnership-model li")).toHaveCount(6);
 
     expect(await training.evaluate((node) => node.nextElementSibling?.classList.contains("partnership-evidence"))).toBe(true);
