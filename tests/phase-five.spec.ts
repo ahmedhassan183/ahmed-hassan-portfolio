@@ -17,7 +17,8 @@ for (const locale of ["en", "ar"] as const) {
     const contact = page.locator("#contact");
     await expect(contact.getByRole("link", { name: d.contact.talk, exact: true })).toHaveAttribute("href", site.contact.email ? `mailto:${site.contact.email}` : site.contact.linkedin);
     for (const area of [contact, page.locator("footer")]) {
-      const linkedin = area.getByRole("link", { name: d.contact.linkedin, exact: true });
+      const linkedin = area.locator(`a[href="${site.contact.linkedin}"]`);
+      await expect(linkedin).toContainText(d.contact.linkedin);
       await expect(linkedin).toHaveAttribute("href", site.contact.linkedin);
       await expect(linkedin).toHaveAttribute("target", "_blank");
       await expect(linkedin).toHaveAttribute("rel", "noopener noreferrer");
@@ -25,9 +26,13 @@ for (const locale of ["en", "ar"] as const) {
       else await expect(area.locator('a[href^="mailto:"]')).toHaveCount(0);
     }
     if (site.contact.phone) {
-      await expect(contact.getByRole("link", { name: d.contact.whatsapp, exact: true })).toHaveAttribute("href", site.contact.whatsapp);
+      const primaryWhatsapp = contact.locator(`a[href="${site.contact.whatsapp}"]`);
+      await expect(primaryWhatsapp).toContainText(d.contact.whatsapp);
+      await expect(primaryWhatsapp).toContainText(d.contact.whatsappAction);
       await expect(contact.locator(`a[href="tel:${site.contact.phone}"]`)).toContainText(d.contact.phone);
-      await expect(contact.locator(`a[href="tel:${site.contact.secondaryPhone}"]`)).toContainText(d.contact.secondaryPhone);
+      const alternate = contact.locator(".contact-method--alternate");
+      await expect(alternate).toContainText(d.contact.secondaryPhone);
+      await expect(alternate.locator(`a[href="tel:${site.contact.secondaryPhone}"]`)).toContainText(site.contact.secondaryPhoneDisplay);
     } else await expect(contact.locator('a[href^="tel:"], a[href^="https://wa.me/"]')).toHaveCount(0);
     await expect(page.locator("footer")).toContainText(d.name);
     await expect(page.locator("footer")).toContainText(d.contact.role);
