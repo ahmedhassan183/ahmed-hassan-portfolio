@@ -21,7 +21,11 @@ for (const width of [320, 375, 768, 1024, 1440]) {
       await expect(block.locator(".capability-description")).toHaveText(capability.description);
     }
     // Native fragment targets stay below the sticky header once smooth scrolling settles.
-    await expect.poll(() => authority.evaluate((element) => Math.round(element.getBoundingClientRect().top))).toBe(110);
+    await expect.poll(() => authority.evaluate((element) => {
+      const targetTop = element.getBoundingClientRect().top;
+      const headerBottom = document.querySelector(".site-header")!.getBoundingClientRect().bottom;
+      return targetTop >= headerBottom && targetTop - headerBottom <= 40;
+    })).toBe(true);
     if (width < 900) {
       await page.getByRole("button", { name: "Open navigation" }).click();
       await page.getByRole("navigation", { name: "Mobile navigation" }).getByRole("link", { name: /Systems/ }).click();

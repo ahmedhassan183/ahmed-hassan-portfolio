@@ -701,3 +701,84 @@ a.contact-method:hover { background: var(--blue-soft); }
   .contact-method--alternate { grid-template-columns: 1fr; gap: 9px; }
   .footer-row { align-items: start; flex-direction: column; gap: 12px; }
 }
+
+/* V2.3 Step 2: compact mobile chrome and a tighter, still editorial rhythm. */
+@media (max-width: 480px) {
+  html { scroll-padding-top: 88px; }
+
+  .nav-bar { height: 72px; }
+  .brand { gap: 9px; font-size: 14px; }
+  .monogram { padding-inline-end: 10px; font-size: 18px; line-height: 24px; }
+  .menu-toggle { width: 48px; height: 48px; }
+  .mobile-nav:not([hidden]) { max-height: calc(100dvh - 72px); padding-bottom: 22px; }
+  .mobile-nav a:not(.button) { min-height: 58px; font-size: 18px; }
+  .mobile-nav .preferences { padding-block: 12px; }
+  .mobile-nav .resume-control, .mobile-nav .resume-link { margin-top: 18px; }
+
+  .hero { padding-block: 20px 18px; }
+  .eyebrow { margin-bottom: 14px; }
+  h1 { max-width: 100%; font-size: 2rem; line-height: 1.13; }
+  [lang="ar"] h1 { font-size: 1.9375rem; line-height: 1.3; }
+  .hero-description { margin-block: 18px 20px; line-height: 1.7; }
+  [lang="ar"] .hero-description { line-height: 1.8; }
+  .hero-actions .button { min-height: 50px; }
+  .talk-link { margin-top: 10px; }
+  .hero-grid { gap: 20px; }
+  .commercial-flow { margin-top: 18px; }
+  .flow-heading { margin-bottom: 12px; }
+  .hero-baseline { margin-top: 20px; padding-top: 16px; gap: 10px; }
+  .commercial-proof { margin-top: 14px; }
+  .commercial-proof li, .commercial-proof li:first-child { padding-block: 11px; }
+
+  .portfolio-section { padding-block: 44px; }
+  .sales-authority.portfolio-section { margin-top: 16px; padding-block: 48px; }
+  .section-intro, .selected-systems .section-intro { gap: 16px; margin-bottom: 24px; }
+  .section-label { margin-bottom: 13px; }
+  .section-heading { font-size: 1.75rem; line-height: 1.22; }
+  [lang="ar"] .section-heading { line-height: 1.34; }
+  .section-description { line-height: 1.7; }
+
+  .capability-block { padding-block: 21px; }
+  .capability-description { margin-block: 13px 16px; }
+  .capability-skills { padding-top: 16px; }
+
+  .system-summary { padding-block: 20px; }
+  .system-summary h3 { font-size: 1.125rem; line-height: 1.35; }
+  .system-heading-content { gap: 8px; }
+  .system-entry--flagship .system-title { font-size: 1.25rem; line-height: 1.35; }
+  .system-description { margin-bottom: 21px; }
+  .system-details { gap: 21px; padding-bottom: 24px; }
+  .market-evidence { gap: 16px; margin-bottom: 24px; padding-block: 20px; }
+  .flagship-proof { gap: 18px 15px; margin-bottom: 22px; padding-block: 18px; }
+  .flagship-scope-label { margin-bottom: 16px; }
+  .flagship-capabilities { gap: 16px; }
+  .flagship-workflow { padding-bottom: 28px; }
+  .engineering-workflow { margin-block: 14px 22px; }
+  .build-progress { margin-bottom: 20px; }
+  .flagship-intent { margin-top: 16px; }
+
+  .experience-intro { margin-bottom: 20px; }
+  .journey-step { padding-block: 20px; }
+  .evidence-block, .solar-domain { margin-top: 24px; padding-top: 24px; }
+  .enablement-steps { margin-top: 18px; }
+  .enablement-steps > div, [dir="rtl"] .enablement-steps > div { padding-block: 13px; }
+  .enablement-outcome { margin-top: 14px; }
+  .partnership-evidence { margin-top: 30px; padding-top: 24px; }
+  .partnership-evidence .evidence-intro h3 { font-size: 1.125rem; line-height: 1.4; }
+  .partnership-facts { margin-top: 18px; }
+  .partnership-facts > div { padding-block: 12px 14px; }
+  .partnership-model { margin-top: 6px; padding-top: 15px; }
+  .partnership-model li { padding-block: 9px; }
+
+  .supporting-work.portfolio-section { padding-block: 32px; }
+  .supporting-intro { gap: 8px; margin-bottom: 20px; }
+  .supporting-entry { padding-block: 16px; }
+  .supporting-visual { margin-top: 0; }
+
+  .contact-grid { margin-top: 14px; }
+  .contact-lead { gap: 18px; }
+  .contact-content > p { margin-bottom: 20px; }
+  .contact-methods { margin-top: 28px; }
+  .site-footer { padding-block: 24px; }
+  .footer-row { gap: 10px; }
+}
