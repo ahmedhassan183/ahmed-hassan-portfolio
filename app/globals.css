@@ -903,3 +903,30 @@ a.contact-method:hover { background: var(--blue-soft); }
 
   #supporting .supporting-number { min-inline-size: 2ch; white-space: nowrap; }
 }
+
+/* V2.3 Step 5: compress the closing contact area on phones only. */
+@media (max-width: 480px) {
+  #contact { padding-block: 32px; }
+  #contact .contact-lead { gap: 14px; }
+  #contact .contact-content > p { margin-block-end: 14px; }
+  #contact .contact-actions { gap: 8px; }
+  #contact .contact-actions .button { min-height: 48px; padding-block: 11px; }
+  #contact .contact-methods { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-block-start: 20px; }
+  #contact .contact-method--priority { grid-column: span 1; min-height: 78px; padding: 12px 10px; gap: 6px; }
+  #contact .contact-method--priority strong { font-size: .875rem; }
+  #contact .contact-method--priority.contact-phone strong { font-size: .8125rem; }
+  #contact .contact-method--priority .contact-method__arrow { inset-block-start: 10px; inset-inline-end: 10px; }
+  #contact .contact-method--priority .contact-method__label { padding-inline-end: 14px; }
+  #contact .contact-method--compact { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(64px, .32fr) minmax(0, 1fr); align-items: center; gap: 8px; min-height: 54px; padding: 10px 12px; }
+  #contact .contact-method--compact strong { font-size: .75rem; }
+  #contact .contact-method--compact .contact-method__arrow { position: static; grid-column: 3; }
+  #contact .contact-method--compact:has(.contact-method__arrow) { grid-template-columns: minmax(64px, .32fr) minmax(0, 1fr) auto; }
+  #contact .contact-method--alternate { grid-column: 1 / -1; grid-template-columns: minmax(64px, .32fr) minmax(0, 1fr); gap: 0 8px; padding: 4px 12px; }
+  #contact .contact-method--alternate .contact-method__label { grid-column: 1; }
+  #contact .contact-method--alternate .contact-phone { display: inline-flex; align-items: center; min-height: 44px; }
+  #contact .contact-alternate-whatsapp { grid-column: 1 / -1; min-height: 44px; font-size: .6875rem; border-block-start: 1px solid var(--border); }
+
+  .site-footer { padding-block: 18px; }
+  .site-footer .footer-row { gap: 6px; }
+  .site-footer .footer-links { gap: 18px; }
+}
