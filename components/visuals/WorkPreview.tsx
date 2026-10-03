@@ -3,6 +3,7 @@ import { AssetImage } from "@/components/visuals/AssetImage";
 import { Icon } from "@/components/ui/Icon";
 import { publicAssetExists } from "@/lib/public-assets";
 import { ArtifactInspector } from "@/components/visuals/ArtifactInspector";
+import { BidiText } from "@/components/ui/BidiText";
 
 export type WorkArtifact = {
   path: string;
@@ -24,9 +25,9 @@ export function WorkPreview({ artifact, ui, name }: { artifact: WorkArtifact; ui
             className="work-preview-image"
             fallback={
           <div className="work-preview-placeholder">
-            <span className="work-preview-kind">{artifact.type}</span>
+            <span className="work-preview-kind"><BidiText>{artifact.type}</BidiText></span>
             <Icon name="execution" width="38" height="38" />
-            <span className="work-preview-label">{artifact.label}</span>
+            <span className="work-preview-label"><BidiText>{artifact.label}</BidiText></span>
             <span className="work-preview-status">{ui.realPreview}</span>
             <span className="work-preview-filename">{artifact.path.split("/").pop()} {ui.required}</span>
           </div>
@@ -34,7 +35,7 @@ export function WorkPreview({ artifact, ui, name }: { artifact: WorkArtifact; ui
           />
       </div>
       <figcaption className="work-preview-caption">
-        <span>{artifact.type}</span>
+        <span><BidiText>{artifact.type}</BidiText></span>
         <span>{name} · {ui.selectedWork}</span>
         {publicAssetExists(artifact.path) && <ArtifactInspector ui={ui} path={artifact.path} label={artifact.label} alt={artifact.alt} />}
       </figcaption>

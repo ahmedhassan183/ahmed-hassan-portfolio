@@ -2,6 +2,7 @@
 
 import type { Dictionary, Locale } from "@/content/types";
 import { useRef, useState, type ReactNode, type KeyboardEvent } from "react";
+import { BidiText } from "@/components/ui/BidiText";
 
 type GalleryItem = { path: string; label: string; panel: ReactNode };
 
@@ -39,8 +40,8 @@ export function ArtifactGallery({ items, ui, locale }: { items: GalleryItem[]; u
             ref={(element) => { tabs.current[index] = element; }}
             onKeyDown={(event) => navigate(event, index)}
             onClick={(event) => { event.preventDefault(); setActive(index); }}>
-            <span className="artifact-tab-index" aria-hidden="true">0{index + 1}</span>
-            <span>{item.label}</span>
+            <span className="artifact-tab-index" aria-hidden="true"><bdi dir="ltr">0{index + 1}</bdi></span>
+            <span><BidiText>{item.label}</BidiText></span>
           </a>
         ))}
       </div>

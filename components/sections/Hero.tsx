@@ -9,6 +9,7 @@ import { CommercialFlow } from "@/components/visuals/CommercialFlow";
 import { HeroPortrait } from "@/components/visuals/HeroPortrait";
 import { publicAssetExists } from "@/lib/public-assets";
 import { site } from "@/data/site";
+import { BidiText } from "@/components/ui/BidiText";
 
 const delay = (value: number) => ({ "--delay": `${value}ms` }) as CSSProperties;
 
@@ -18,9 +19,9 @@ export function Hero({ d }: { d: Dictionary }) {
       <Container>
         <div className="hero-grid">
           <div className="hero-content">
-            <p className="eyebrow entrance" style={delay(60)}><span className="section-marker" aria-hidden="true" />{d.hero.eyebrow}<span className="eyebrow-detail">{d.hero.eyebrowDetail}</span></p>
+            <p className="eyebrow entrance" style={delay(60)}><span className="section-marker" aria-hidden="true" /><BidiText>{d.hero.eyebrow}</BidiText><span className="eyebrow-detail"><BidiText>{d.hero.eyebrowDetail}</BidiText></span></p>
             <h1 id="hero-heading" className="entrance" style={delay(120)}>{d.hero.before}<span className="headline-accent">{d.hero.accent}</span>{d.hero.after}</h1>
-            <p className="hero-description entrance" style={delay(200)}>{d.hero.description}</p>
+            <p className="hero-description entrance" style={delay(200)}><BidiText>{d.hero.description}</BidiText></p>
             <div className="hero-actions entrance" style={delay(280)}>
               <Button href="#sales">{d.hero.explore} <Icon name="arrow" /></Button>
               <ResumeLink copy={d.ui} available={publicAssetExists(site.resumeUrl)} />
@@ -38,7 +39,7 @@ export function Hero({ d }: { d: Dictionary }) {
           <span className="baseline-note">{d.hero.note}</span>
         </div>
         <ul className="commercial-proof" aria-label={d.hero.proofLabel}>
-          {d.hero.proof.map((item) => <li key={item.value}><strong><bdi>{item.value}</bdi></strong><span>{item.label}</span></li>)}
+          {d.hero.proof.map((item) => <li key={item.value}><strong><BidiText>{item.value}</BidiText></strong><span><BidiText>{item.label}</BidiText></span></li>)}
         </ul>
       </Container>
     </section>

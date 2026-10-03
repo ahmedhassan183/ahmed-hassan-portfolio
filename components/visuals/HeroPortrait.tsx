@@ -2,6 +2,7 @@ import { AssetImage } from "@/components/visuals/AssetImage";
 import { publicAssetExists } from "@/lib/public-assets";
 import type { Dictionary } from "@/content/types";
 import { site } from "@/data/site";
+import { BidiText } from "@/components/ui/BidiText";
 
 export function HeroPortrait({ d }: { d: Dictionary }) {
   return (
@@ -25,12 +26,12 @@ export function HeroPortrait({ d }: { d: Dictionary }) {
           </div>
             }
           />
-        <span className="portrait-sector">{d.hero.sector}</span>
+        <span className="portrait-sector"><BidiText>{d.hero.sector}</BidiText></span>
       </div>
       <figcaption className="portrait-caption" id="portrait-caption">
         <span className="portrait-name">{d.name}</span>
         {/* Growth Manager is the official title; the second phrase describes responsibility. */}
-        <span className="portrait-role">{d.hero.officialTitle} · <span title={d.hero.responsibilityHint}>{d.hero.responsibility}</span></span>
+        <span className="portrait-role"><BidiText>{d.hero.officialTitle}</BidiText> · <span title={d.hero.responsibilityHint}>{d.hero.responsibility}</span></span>
         <span className="portrait-badge">{d.hero.instructor}</span>
       </figcaption>
     </figure>

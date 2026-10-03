@@ -1,6 +1,7 @@
 import { Container } from "@/components/layout/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import type { Dictionary } from "@/content/types";
+import { BidiIsolate, BidiText } from "@/components/ui/BidiText";
 
 export function Experience({ d }: { d: Dictionary }) {
   const salesJourney = d.experience.journey;
@@ -13,19 +14,19 @@ export function Experience({ d }: { d: Dictionary }) {
         <div className="experience-intro">
           <SectionLabel>{d.experience.label}</SectionLabel>
           <h2 id="experience-heading" className="section-heading">{d.experience.heading}</h2>
-          <p className="experience-periods"><span><bdi>{d.experience.periods[0].organization}</bdi> · <bdi>{d.experience.periods[0].dates}</bdi></span><span aria-hidden="true">→</span><span><bdi>{d.experience.periods[1].organization}</bdi> · <bdi>{d.experience.periods[1].dates}</bdi></span></p>
+          <p className="experience-periods"><span><BidiIsolate>{d.experience.periods[0].organization}</BidiIsolate> · <BidiIsolate>{d.experience.periods[0].dates}</BidiIsolate></span><span aria-hidden="true">→</span><span><BidiIsolate>{d.experience.periods[1].organization}</BidiIsolate> · <BidiIsolate>{d.experience.periods[1].dates}</BidiIsolate></span></p>
         </div>
         <ol className="sales-journey">
           {salesJourney.map((step, index) => (
             <li key={step.title} className={index > 2 ? "journey-step journey-step--solar" : "journey-step"}>
-              <span className="journey-number" aria-hidden="true">0{index + 1}</span>
+              <span className="journey-number" aria-hidden="true"><bdi dir="ltr">0{index + 1}</bdi></span>
               <div className="journey-role">
-                <h3>{step.title}</h3>
-                <p>{step.organization}</p>
+                <h3><BidiText>{step.title}</BidiText></h3>
+                <p><BidiText>{step.organization}</BidiText></p>
               </div>
               <div className="journey-focus">
-                {"responsibility" in step && <p className="journey-responsibility">{step.responsibility}</p>}
-                <p>{step.focus}</p>
+                {"responsibility" in step && <p className="journey-responsibility"><BidiText>{step.responsibility}</BidiText></p>}
+                <p><BidiText>{step.focus}</BidiText></p>
               </div>
             </li>
           ))}
@@ -37,10 +38,10 @@ export function Experience({ d }: { d: Dictionary }) {
         <aside className="training-note evidence-block" aria-labelledby="training-heading">
           <div className="evidence-intro">
             <h3 id="training-heading">{training.label}</h3>
-            <p>{training.description}</p>
+            <p><BidiText>{training.description}</BidiText></p>
           </div>
           <div className="enablement-steps">
-            {training.steps.map((step) => <div key={step.label}><strong>{step.label}</strong><p>{step.description}</p></div>)}
+            {training.steps.map((step) => <div key={step.label}><strong>{step.label}</strong><p><BidiText>{step.description}</BidiText></p></div>)}
           </div>
           <p className="enablement-outcome"><strong>{training.outcome}</strong></p>
         </aside>
@@ -48,13 +49,13 @@ export function Experience({ d }: { d: Dictionary }) {
           <div className="evidence-intro">
             <p className="evidence-label">{partnership.label}</p>
             <h3 id="partnership-heading">{partnership.heading}</h3>
-            <p>{partnership.context}</p>
+            <p><BidiText>{partnership.context}</BidiText></p>
           </div>
           <dl className="partnership-facts">
             <div><dt>{partnership.roleLabel}</dt><dd>{partnership.role}</dd></div>
-            <div><dt>{partnership.developedLabel}</dt><dd>{partnership.developed}</dd></div>
-            <div><dt>{partnership.outcomeLabel}</dt><dd>{partnership.outcome}</dd></div>
-            <div><dt>{partnership.statusLabel}</dt><dd>{partnership.status}</dd></div>
+            <div><dt>{partnership.developedLabel}</dt><dd><BidiText>{partnership.developed}</BidiText></dd></div>
+            <div><dt>{partnership.outcomeLabel}</dt><dd><BidiText>{partnership.outcome}</BidiText></dd></div>
+            <div><dt>{partnership.statusLabel}</dt><dd><BidiText>{partnership.status}</BidiText></dd></div>
           </dl>
           <div className="partnership-model">
             <p>{partnership.modelLabel}</p>
