@@ -42,7 +42,7 @@ export function SelectedSalesSystems({ d, locale }: { d: Dictionary; locale: Loc
             <details className={`system-entry system-entry--flagship${solar ? " system-entry--solar" : ""}`} key={system.id} data-reveal open>
               <summary className="system-summary" aria-controls={`${system.id}-details`}>
                 <h3>
-                  <span className="system-number" aria-hidden="true">0{index + 1}</span>
+                  <span className="system-number" aria-hidden="true"><bdi dir="ltr">0{index + 1}</bdi></span>
                   <span className="system-heading-content">
                     <span className="system-category"><BidiText>{system.category}</BidiText><span className="flagship-badge">{d.work.flagship}</span></span>
                     <span className="system-title"><BidiText>{system.title}</BidiText></span>
