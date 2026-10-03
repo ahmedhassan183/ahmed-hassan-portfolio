@@ -26,7 +26,20 @@ export function Experience({ d }: { d: Dictionary }) {
               </div>
               <div className="journey-focus">
                 {"responsibility" in step && <p className="journey-responsibility"><BidiText>{step.responsibility}</BidiText></p>}
-                <p><BidiText>{step.focus}</BidiText></p>
+                <p className="journey-focus-desktop"><BidiText>{step.focus}</BidiText></p>
+                {"mobileEvidence" in step && (
+                  <div className="journey-focus-mobile">
+                    <p className="journey-mobile-summary"><BidiText>{step.mobileSummary}</BidiText></p>
+                    <ul className="journey-evidence-list">
+                      {step.mobileEvidence.map((evidence) => (
+                        <li key={evidence.label}>
+                          <strong>{evidence.label}</strong>
+                          <span><BidiText>{evidence.detail}</BidiText></span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
             </li>
           ))}
@@ -41,7 +54,7 @@ export function Experience({ d }: { d: Dictionary }) {
             <p><BidiText>{training.description}</BidiText></p>
           </div>
           <div className="enablement-steps">
-            {training.steps.map((step) => <div key={step.label}><strong>{step.label}</strong><p><BidiText>{step.description}</BidiText></p></div>)}
+            {training.steps.map((step) => <div key={step.label}><strong>{step.label}</strong><p><span className="enablement-copy-desktop"><BidiText>{step.description}</BidiText></span><span className="enablement-copy-mobile"><BidiText>{step.mobileDescription}</BidiText></span></p></div>)}
           </div>
           <p className="enablement-outcome"><strong>{training.outcome}</strong></p>
         </aside>
@@ -60,6 +73,16 @@ export function Experience({ d }: { d: Dictionary }) {
           <div className="partnership-model">
             <p>{partnership.modelLabel}</p>
             <ol aria-label={partnership.modelLabel}>{partnership.model.map((stage) => <li key={stage}>{stage}</li>)}</ol>
+          </div>
+          <div className="partnership-mobile">
+            <ol className="partnership-sequence">
+              {partnership.mobileSequence.map((stage) => <li key={stage.label}><strong>{stage.label}</strong><span><BidiText>{stage.detail}</BidiText></span></li>)}
+            </ol>
+            <dl className="partnership-mobile-secondary">
+              <div><dt>{partnership.modelLabel}</dt><dd><BidiText>{partnership.mobileModel}</BidiText></dd></div>
+              <div><dt>{partnership.statusLabel}</dt><dd><BidiText>{partnership.status}</BidiText></dd></div>
+            </dl>
+            <ol className="partnership-model-compact" aria-label={partnership.modelLabel}>{partnership.model.map((stage) => <li key={stage}>{stage}</li>)}</ol>
           </div>
         </aside>
       </Container>

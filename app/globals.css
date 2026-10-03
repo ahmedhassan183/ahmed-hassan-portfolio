@@ -412,6 +412,7 @@ h1 { font-size: clamp(2.75rem, 4.05vw, 3.625rem); line-height: 1.09; letter-spac
 .journey-role p { margin: 0; font-size: .8125rem; color: var(--text-muted); line-height: 1.6; }
 .journey-focus p { margin: 0; color: var(--text-muted); font-size: .875rem; line-height: 1.8; }
 .journey-focus .journey-responsibility { color: var(--text-body); margin-bottom: 8px; }
+.journey-focus-mobile, .enablement-copy-mobile, .partnership-mobile { display: none; }
 .journey-step--solar .journey-number { background: var(--blue-soft); color: var(--link); }
 .evidence-block { border-top: 1px solid var(--line-strong); margin-top: 30px; padding-top: 30px; }
 .evidence-intro { display: grid; grid-template-columns: 180px 1fr; gap: 25px; align-items: start; }
@@ -702,6 +703,74 @@ a.contact-method:hover { background: var(--blue-soft); }
   .footer-row { align-items: start; flex-direction: column; gap: 12px; }
 }
 
+/* V2.3 Step 3: preserve the evidence while making the mobile commercial story faster to scan. */
+@media (max-width: 480px) {
+  .capability-block { padding: 15px 16px; }
+  .capability-heading h3 { font-size: 1.1875rem; }
+  .capability-heading > svg { width: 21px; height: 21px; }
+  .capability-description { margin-block: 8px 10px; font-size: .8125rem; line-height: 1.55; }
+  .capability-skills { gap: 5px 13px; padding-top: 10px; }
+  .capability-skills li { font-size: .75rem; line-height: 1.4; }
+  .capability-connector { bottom: -12px; width: 23px; height: 23px; }
+
+  .journey-step { gap: 9px 11px; padding-block: 13px; }
+  .journey-number { width: 27px; height: 27px; font-size: .625rem; }
+  .journey-step:not(:last-child)::after { inset-inline-start: 13px; top: 43px; bottom: -13px; }
+  .journey-role h3 { margin-block: 1px 3px; font-size: .9375rem; line-height: 1.35; }
+  .journey-role p { font-size: .6875rem; line-height: 1.45; }
+  .journey-focus { grid-column: 2; }
+  .journey-focus p { font-size: .75rem; line-height: 1.55; }
+
+  .journey-step--solar { padding-top: 17px; }
+  .journey-step--solar .journey-focus { grid-column: 1 / -1; }
+  .journey-step--solar .journey-responsibility,
+  .journey-step--solar .journey-focus-desktop { display: none; }
+  .journey-focus-mobile { display: block; }
+  .journey-mobile-summary { margin: 0 0 11px !important; color: var(--text-body) !important; font-size: .8125rem !important; line-height: 1.55 !important; }
+  .journey-evidence-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); list-style: none; margin: 0; padding: 0; border-block: 1px solid var(--border); }
+  .journey-evidence-list li { min-width: 0; padding-block: 8px; padding-inline: 8px; }
+  .journey-evidence-list li:nth-child(3n + 1) { padding-inline-start: 0; }
+  .journey-evidence-list li:not(:nth-child(3n + 1)) { border-inline-start: 1px solid var(--border); }
+  .journey-evidence-list li:nth-child(n + 4) { border-top: 1px solid var(--border); }
+  .journey-evidence-list strong, .journey-evidence-list span { display: block; }
+  .journey-evidence-list strong { margin-bottom: 3px; color: var(--color-navy); font-size: .625rem; letter-spacing: .045em; line-height: 1.35; }
+  .journey-evidence-list span { color: var(--text-muted); font-size: .6875rem; line-height: 1.45; }
+
+  .training-note .evidence-intro > p { display: none; }
+  .enablement-steps { margin-top: 11px; }
+  .enablement-steps > div,
+  [dir="rtl"] .enablement-steps > div { display: grid; grid-template-columns: minmax(82px, .42fr) 1fr; align-items: start; gap: 11px; padding-block: 9px; }
+  .enablement-steps > div + div { padding-inline-start: 0; }
+  .enablement-steps strong { padding-top: 2px; font-size: .625rem; line-height: 1.35; }
+  .enablement-steps p { margin: 0; font-size: .75rem; line-height: 1.5; }
+  .enablement-copy-desktop { display: none; }
+  .enablement-copy-mobile { display: inline; }
+  .enablement-outcome { width: 100%; margin-top: 10px; padding: 9px 11px; font-size: .8125rem; }
+
+  .partnership-evidence { margin-top: 25px; padding-top: 20px; }
+  .partnership-evidence .evidence-intro { gap: 7px; }
+  .partnership-evidence .evidence-intro h3 { font-size: 1rem; line-height: 1.35; }
+  .partnership-evidence .evidence-intro > p:last-child,
+  .partnership-facts,
+  .partnership-model { display: none; }
+  .partnership-mobile { display: block; margin-top: 13px; }
+  .partnership-sequence { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); counter-reset: partnership-step; list-style: none; margin: 0; padding: 0; border-block: 1px solid var(--border); }
+  .partnership-sequence li { counter-increment: partnership-step; min-width: 0; padding-block: 9px 10px; padding-inline: 0 10px; }
+  .partnership-sequence li:nth-child(even) { border-inline-start: 1px solid var(--border); padding-inline: 10px 0; }
+  .partnership-sequence li:nth-child(n + 3) { border-top: 1px solid var(--border); }
+  .partnership-sequence strong, .partnership-sequence span { display: block; }
+  .partnership-sequence strong { color: var(--color-navy); font-size: .625rem; letter-spacing: .055em; line-height: 1.35; }
+  .partnership-sequence strong::before { content: "0" counter(partnership-step) " · "; color: var(--color-accent); }
+  .partnership-sequence span { margin-top: 3px; color: var(--text-muted); font-size: .6875rem; line-height: 1.45; }
+  .partnership-mobile-secondary { margin: 8px 0 0; }
+  .partnership-mobile-secondary > div { display: grid; grid-template-columns: minmax(62px, .25fr) 1fr; gap: 10px; border-top: 1px solid var(--border); padding-block: 8px; }
+  .partnership-mobile-secondary dt { color: var(--text-secondary); font-size: .625rem; font-weight: 600; letter-spacing: .07em; line-height: 1.4; text-transform: uppercase; }
+  .partnership-mobile-secondary dd { margin: 0; color: var(--text-body); font-size: .6875rem; line-height: 1.5; }
+  .partnership-model-compact { display: flex; flex-wrap: wrap; gap: 4px 10px; list-style: none; margin: 3px 0 0; padding: 0; color: var(--text-secondary); }
+  .partnership-model-compact li { font-size: .625rem; line-height: 1.45; }
+  .partnership-model-compact li:not(:last-child)::after { content: " ·"; color: var(--color-accent); }
+}
+
 /* V2.3 Step 2: compact mobile chrome and a tighter, still editorial rhythm. */
 @media (max-width: 480px) {
   html { scroll-padding-top: 88px; }
@@ -781,4 +850,19 @@ a.contact-method:hover { background: var(--blue-soft); }
   .contact-methods { margin-top: 28px; }
   .site-footer { padding-block: 24px; }
   .footer-row { gap: 10px; }
+}
+
+/* Step 3 rules follow Step 2 so their section-specific density wins the cascade. */
+@media (max-width: 480px) {
+  .capability-block { padding: 15px 16px; }
+  .capability-description { margin-block: 8px 10px; }
+  .capability-skills { padding-top: 10px; }
+  .journey-step { padding-block: 13px; }
+  .journey-step--solar { padding-top: 17px; }
+  .evidence-block, .solar-domain { margin-top: 21px; padding-top: 20px; }
+  .enablement-steps { margin-top: 11px; }
+  .enablement-steps > div, [dir="rtl"] .enablement-steps > div { padding-block: 9px; }
+  .enablement-outcome { margin-top: 10px; }
+  .partnership-evidence { margin-top: 25px; padding-top: 20px; }
+  .partnership-evidence .evidence-intro h3 { font-size: 1rem; line-height: 1.35; }
 }
