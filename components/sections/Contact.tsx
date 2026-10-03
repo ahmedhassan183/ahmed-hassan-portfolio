@@ -6,6 +6,7 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 import { ResumeLink } from "@/components/ui/ResumeLink";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
+import { BidiText } from "@/components/ui/BidiText";
 
 export function Contact({ d }: { d: Dictionary }) {
   const c = site.contact;
@@ -16,7 +17,7 @@ export function Contact({ d }: { d: Dictionary }) {
         <div className="contact-lead">
           <h2 id="contact-heading" className="section-heading">{d.contact.heading}</h2>
           <div className="contact-content">
-            <p>{d.contact.description}</p>
+            <p><BidiText>{d.contact.description}</BidiText></p>
             <div className="contact-actions">
               <Button href={`mailto:${c.email}`}>{d.contact.talk}<Icon name="arrow" /></Button>
               <ResumeLink copy={d.ui} available={publicAssetExists(site.resumeUrl)} />
@@ -31,20 +32,20 @@ export function Contact({ d }: { d: Dictionary }) {
           </a>
           <a className="contact-method contact-method--priority contact-phone" href={`tel:${c.phone}`}>
             <span className="contact-method__label">{d.contact.phone}</span>
-            <strong><bdi>{c.phoneDisplay}</bdi></strong>
+            <strong><bdi dir="ltr">{c.phoneDisplay}</bdi></strong>
           </a>
           <a className="contact-method contact-method--compact" href={c.linkedin} target="_blank" rel="noopener noreferrer">
             <span className="contact-method__label">{d.contact.linkedin}</span>
-            <strong>{d.contact.linkedinValue}</strong>
+            <strong><bdi dir="ltr">{d.contact.linkedinValue}</bdi></strong>
             <span className="contact-method__arrow" aria-hidden="true">↗</span>
           </a>
           <a className="contact-method contact-method--compact" href={`mailto:${c.email}`}>
             <span className="contact-method__label">{d.contact.email}</span>
-            <strong>{c.email}</strong>
+            <strong><bdi dir="ltr">{c.email}</bdi></strong>
           </a>
           <div className="contact-method contact-method--alternate">
             <span className="contact-method__label">{d.contact.secondaryPhone}</span>
-            <a className="contact-phone" href={`tel:${c.secondaryPhone}`}><bdi>{c.secondaryPhoneDisplay}</bdi></a>
+            <a className="contact-phone" href={`tel:${c.secondaryPhone}`}><bdi dir="ltr">{c.secondaryPhoneDisplay}</bdi></a>
             <a className="contact-alternate-whatsapp" href={c.secondaryWhatsapp} target="_blank" rel="noopener noreferrer">{d.contact.whatsapp} · {d.contact.secondaryPhone}<span aria-hidden="true">↗</span></a>
           </div>
         </nav>

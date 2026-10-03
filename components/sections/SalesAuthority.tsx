@@ -2,6 +2,7 @@ import { Container } from "@/components/layout/Container";
 import { Icon } from "@/components/ui/Icon";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import type { Dictionary } from "@/content/types";
+import { BidiText } from "@/components/ui/BidiText";
 
 export function SalesAuthority({ d }: { d: Dictionary }) {
   const salesCapabilities = d.authority.capabilities;
@@ -22,9 +23,9 @@ export function SalesAuthority({ d }: { d: Dictionary }) {
                 <h3 id={`capability-${capability.id}`}>{capability.title}</h3>
                 <Icon name={capability.icon} width="25" height="25" />
               </div>
-              <p className="capability-description">{capability.description}</p>
+              <p className="capability-description"><BidiText>{capability.description}</BidiText></p>
               <ul className="capability-skills">
-                {capability.skills.map((skill) => <li key={skill}>{skill}</li>)}
+                {capability.skills.map((skill) => <li key={skill}><BidiText>{skill}</BidiText></li>)}
               </ul>
               {index < salesCapabilities.length - 1 && <span className="capability-connector" aria-hidden="true"><Icon name="arrow" width="17" height="17" /></span>}
             </article>

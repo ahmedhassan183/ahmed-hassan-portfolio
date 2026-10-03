@@ -49,7 +49,7 @@ for (const locale of ["en", "ar"] as const) {
     await expect(page.locator("#contact .contact-method--alternate")).toBeVisible();
     await expect(page.locator("#experience .partnership-evidence")).toBeVisible();
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(375);
-    for (const evidence of [page.locator("#experience .enablement-steps"), page.locator("#experience .partnership-facts")]) {
+    for (const evidence of [page.locator("#experience .enablement-steps"), page.locator("#experience .partnership-mobile")]) {
       const box = await evidence.boundingBox();
       expect(box).not.toBeNull();
       expect(box!.width).toBeGreaterThan(300);

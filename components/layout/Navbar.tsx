@@ -62,7 +62,7 @@ export function Navbar({ d, locale, resumeAvailable }: { d: Pick<Dictionary, "na
       </Container>
       <nav id="mobile-navigation" aria-label={d.nav.mobile} className="mobile-nav" hidden={!open}>
         <Container>
-          {navigation.map((item, index) => <a key={item.href} href={`${homePrefix}${item.href}`} onClick={() => setOpen(false)}><span className="nav-index" aria-hidden="true">0{index + 1}</span>{item.label}<span className="nav-arrow" aria-hidden="true">↗</span></a>)}
+          {navigation.map((item, index) => <a key={item.href} href={`${homePrefix}${item.href}`} onClick={() => setOpen(false)}><span className="nav-index" aria-hidden="true"><bdi dir="ltr">0{index + 1}</bdi></span>{item.label}<span className="nav-arrow" aria-hidden="true">↗</span></a>)}
           <Preferences copy={d.nav} locale={locale} />
           <ResumeLink copy={d.ui} available={resumeAvailable} />
         </Container>
