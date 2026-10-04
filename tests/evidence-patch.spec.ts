@@ -1,5 +1,6 @@
 import { expect, test } from "@playwright/test";
 import { readFile } from "node:fs/promises";
+import { getPartnershipCase, partnershipPath } from "../content/partnership";
 
 const canonicalResume = "/Ahmed-Hassan-Sales-Business-Development-Resume.pdf";
 
@@ -18,15 +19,19 @@ for (const locale of ["en", "ar"] as const) {
 
     await expect(partnership).toBeVisible();
     await expect(partnership.locator(".evidence-label")).toHaveText(locale === "en" ? "Higher Technological Institute of Beni Suef" : "المعهد التكنولوجي العالي ببني سويف");
-    await expect(partnership).toContainText(locale === "en" ? "Ahmed initiated the relationship with the Higher Technological Institute of Beni Suef" : "بادرت بالتواصل مع المعهد التكنولوجي العالي ببني سويف");
-    await expect(partnership).toContainText(locale === "en" ? "Led direct communication, meetings and follow-up, and helped structure the cooperation framework." : "قاد التواصل المباشر والاجتماعات والمتابعة، وساهم في تطوير إطار التعاون.");
-    await expect(partnership).toContainText(locale === "en" ? "Formal cooperation protocol signed between Innovation for Solar Systems and the Higher Technological Institute of Beni Suef." : "تم توقيع بروتوكول تعاون رسمي بين Innovation for Solar Systems والمعهد التكنولوجي العالي ببني سويف.");
-    await expect(partnership).toContainText(locale === "en" ? "Signed Protocol — Execution Phase Starting" : "بروتوكول موقّع — بدء مرحلة التنفيذ");
-    await expect(partnership.locator(".partnership-model:not(.partnership-journey) li")).toHaveCount(6);
-
     expect(await training.evaluate((node) => node.nextElementSibling?.classList.contains("partnership-evidence"))).toBe(true);
     await expect(training).not.toContainText(locale === "en" ? "Technological Institute" : "المعهد التكنولوجي");
     await expect(partnership).not.toContainText(locale === "en" ? /trainees|hired|recruit/i : /متدرب|تعيين|توظيف/);
+    await expect(partnership.locator(".partnership-cta")).toHaveAttribute("href", `/${locale}${partnershipPath}`);
+    await expect(partnership).toContainText(getPartnershipCase(locale).snapshot.signed);
+    await page.goto(`/${locale}${partnershipPath}`);
+    const details = page.locator(".partnership-case");
+    await expect(details.locator(".case-summary")).toHaveText(getPartnershipCase(locale).summary);
+    await expect(details).toContainText(locale === "en" ? "Ahmed initiated the relationship with the Higher Technological Institute of Beni Suef" : "بادرت بالتواصل مع المعهد التكنولوجي العالي ببني سويف");
+    await expect(details).toContainText(locale === "en" ? "Led direct communication, meetings and follow-up, and helped structure the cooperation framework." : "قاد التواصل المباشر والاجتماعات والمتابعة، وساهم في تطوير إطار التعاون.");
+    await expect(details).toContainText(locale === "en" ? "Formal cooperation protocol signed between Innovation for Solar Systems and the Higher Technological Institute of Beni Suef." : "تم توقيع بروتوكول تعاون رسمي بين Innovation for Solar Systems والمعهد التكنولوجي العالي ببني سويف.");
+    await expect(details).toContainText(getPartnershipCase(locale).executionSummary);
+    await expect(details.locator("[data-case-scope] li")).toHaveCount(6);
   });
 }
 

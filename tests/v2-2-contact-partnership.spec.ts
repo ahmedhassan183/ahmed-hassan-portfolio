@@ -1,6 +1,7 @@
 import { expect, test } from "@playwright/test";
 import { getDictionary } from "../content";
 import { site } from "../data/site";
+import { getPartnershipCase, partnershipPath } from "../content/partnership";
 
 for (const locale of ["en", "ar"] as const) {
   test(`${locale} V2.2 contact hierarchy and partnership ownership`, async ({ page }) => {
@@ -31,12 +32,16 @@ for (const locale of ["en", "ar"] as const) {
 
     const partnership = page.locator("#experience .partnership-evidence");
     await expect(partnership.locator("h3")).toHaveText(d.experience.partnership.heading);
-    await expect(partnership).toContainText(d.experience.partnership.context);
-    await expect(partnership).toContainText(d.experience.partnership.developed);
-    await expect(partnership).toContainText(d.experience.partnership.outcome);
-    await expect(partnership).toContainText(d.experience.partnership.status);
     expect(await page.locator("#experience .training-note").evaluate(node => node.nextElementSibling?.classList.contains("partnership-evidence"))).toBe(true);
-    await expect(partnership).not.toContainText(locale === "en" ? /completed pilot|revenue|student outcomes|engineering results/i : /برنامج تجريبي مكتمل|إيرادات|نتائج الطلاب|نتائج هندسية/);
+    await expect(partnership).toContainText(getPartnershipCase(locale).snapshot.execution);
+    await partnership.locator(".partnership-cta").click();
+    await expect(page).toHaveURL(new RegExp(`${partnershipPath}$`));
+    const details = page.locator(".partnership-case");
+    await expect(details.locator(".case-summary")).toHaveText(getPartnershipCase(locale).summary);
+    await expect(details).toContainText(d.experience.partnership.developed);
+    await expect(details).toContainText(d.experience.partnership.outcome);
+    await expect(details).toContainText(getPartnershipCase(locale).executionSummary);
+    await expect(details).not.toContainText(locale === "en" ? /completed pilot|revenue|student outcomes|engineering results/i : /برنامج تجريبي مكتمل|إيرادات|نتائج الطلاب|نتائج هندسية/);
   });
 
   test(`${locale} V2.2 contact and partnership remain readable at 375px`, async ({ page }) => {
@@ -49,7 +54,7 @@ for (const locale of ["en", "ar"] as const) {
     await expect(page.locator("#contact .contact-method--alternate")).toBeVisible();
     await expect(page.locator("#experience .partnership-evidence")).toBeVisible();
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(375);
-    for (const evidence of [page.locator("#experience .enablement-steps"), page.locator("#experience .partnership-mobile")]) {
+    for (const evidence of [page.locator("#experience .enablement-steps"), page.locator("#experience .partnership-evidence")]) {
       const box = await evidence.boundingBox();
       expect(box).not.toBeNull();
       expect(box!.width).toBeGreaterThan(300);

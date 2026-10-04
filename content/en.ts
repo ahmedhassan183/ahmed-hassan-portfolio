@@ -58,7 +58,7 @@ export const en = {
       developedLabel: "WHAT AHMED LED", developed: "Led direct communication, meetings and follow-up, and helped structure the cooperation framework.",
       modelLabel: "COOPERATION SCOPE", model: ["Applied Training", "Field Visits", "Technical Sessions", "Industry Exposure", "Talent Development", "Institutional Collaboration"],
       outcomeLabel: "SIGNED OUTCOME", outcome: "Formal cooperation protocol signed between Innovation for Solar Systems and the Higher Technological Institute of Beni Suef.",
-      statusLabel: "STATUS", statusTitle: "Signed Protocol — Execution Phase Starting", status: "Protocol signed; execution activities are now scheduled and being prepared.",
+      statusLabel: "STATUS", statusTitle: "Signed Protocol — Field Execution Started", status: "Field execution commenced on 5 October 2026 with a completed first field activity involving 10 institute students.",
       journeyLabel: "BUSINESS DEVELOPMENT JOURNEY",
       mobileSequence: [
         { label: "INITIATED", detail: "Ahmed initiated the relationship with the institute." },
@@ -66,12 +66,12 @@ export const en = {
         { label: "FOLLOW-UP", detail: "Continued follow-up and advanced the opportunity." },
         { label: "STRUCTURED", detail: "Helped develop the cooperation framework." },
         { label: "SIGNED PROTOCOL", detail: "Formal cooperation protocol signed between the two organizations." },
-        { label: "EXECUTION PHASE", detail: "Execution activities scheduled and being prepared." },
+        { label: "FIELD EXECUTION", detail: "First field activity completed on 5 October 2026 with 10 institute students." },
       ],
       mobileModel: "Applied training, field visits and technical sessions for industry exposure, talent development and institutional collaboration.",
       nextLabel: "EXECUTION NOW",
       next: [
-        { label: "Field Visits", status: "SCHEDULED TO BEGIN", detail: "Field visits are scheduled to begin on 5 October 2026.", mobileDetail: "Field visits are scheduled to begin on 5 October 2026." },
+        { label: "Field Visits", status: "FIRST ACTIVITY COMPLETED", detail: "The first field activity was completed on 5 October 2026 with 10 institute students at an Innovation-affiliated fabrication workshop.", mobileDetail: "First field activity completed with 10 institute students on 5 October 2026." },
         { label: "Educational Seminar", status: "DATE AGREED", detail: "An educational and introductory seminar has been agreed with the institute.", mobileDetail: "Seminar date agreed with the institute." },
         { label: "Monthly Technical Sessions", status: "AGREED RECURRING ACTIVITY", detail: "Monthly technical sessions have been agreed, with two Innovation engineers scheduled to deliver sessions at the institute.", mobileDetail: "Two Innovation engineers scheduled each month." },
         { label: "Solar Energy Laboratory", status: "SUPPLY AGREED", detail: "Supply of a complete solar-energy training laboratory has been agreed. The next step is submission of the formal technical and financial proposal covering the laboratory requirements.", mobileDetail: "Formal technical and financial proposal next." },

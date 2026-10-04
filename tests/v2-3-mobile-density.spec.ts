@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import { partnershipPath } from "../content/partnership";
 
 test("mobile Growth Manager evidence remains complete and scan-friendly", async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 812 });
@@ -37,7 +38,12 @@ test("mobile Institute Partnership preserves ownership, sequence, model and agre
   await page.setViewportSize({ width: 375, height: 812 });
   await page.goto("/en#partnership-heading");
   const partnership = page.locator(".partnership-evidence");
-  const sequence = partnership.locator(".partnership-sequence");
+  await expect(partnership).toContainText("Signed Cooperation Protocol");
+  await expect(partnership).toContainText("Field execution commenced on 5 October 2026 with a completed first field activity involving 10 institute students.");
+  expect((await partnership.boundingBox())!.height).toBeLessThan(400);
+  await partnership.locator(".partnership-cta").click();
+  await expect(page).toHaveURL(new RegExp(`${partnershipPath}$`));
+  const sequence = page.locator("[data-case-timeline]");
 
   await expect(sequence).toBeVisible();
   await expect(sequence.locator("li")).toHaveCount(6);
@@ -45,11 +51,11 @@ test("mobile Institute Partnership preserves ownership, sequence, model and agre
   await expect(sequence).toContainText(/meetings/i);
   await expect(sequence).toContainText(/follow-up/i);
   await expect(sequence).toContainText(/cooperation framework/i);
-  await expect(sequence).toContainText(/formal cooperation/i);
-  await expect(sequence).toContainText(/execution activities scheduled/i);
-  await expect(partnership.locator(".partnership-mobile-secondary")).toContainText("Signed Protocol — Execution Phase Starting");
-  await expect(partnership.locator(".partnership-next li")).toHaveCount(4);
-  await expect(partnership.locator(".partnership-model-compact li")).toHaveCount(6);
+  await expect(sequence).toContainText(/cooperation protocol signed/i);
+  await expect(sequence).toContainText(/field execution.*completed activity #01/i);
+  await expect(page.locator(".case-execution-summary")).toContainText("Field execution commenced on 5 October 2026 with a completed first field activity involving 10 institute students.");
+  await expect(page.locator(".case-execution-stream")).toHaveCount(3);
+  await expect(page.locator("[data-case-scope] li")).toHaveCount(6);
 });
 
 test("SELL BUILD and GROW remain visible without interaction across target mobile widths", async ({ page }) => {

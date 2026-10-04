@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useSyncExternalStore } from "react";
+import { usePathname } from "next/navigation";
 import type { Dictionary, Locale } from "@/content/types";
 
 type Theme = "light" | "dark" | "system";
@@ -19,6 +20,8 @@ function applyTheme(value: Theme) {
 }
 
 export function Preferences({ copy, locale }: { copy: Dictionary["nav"]; locale: Locale }) {
+  const pathname = usePathname();
+  const localePath = pathname.startsWith(`/${locale}/`) ? pathname.slice(locale.length + 1) : "";
   const theme = useSyncExternalStore(subscribe, readTheme, () => "system" as Theme);
   useEffect(() => {
     // A recovered error boundary can mount the root without executing its
@@ -51,7 +54,7 @@ export function Preferences({ copy, locale }: { copy: Dictionary["nav"]; locale:
       </select>
     </label>
     <div className="language-control" role="group" aria-label={copy.language} dir="ltr">
-      {(["en", "ar"] as const).map((language) => <a key={language} href={`/${language}`} hrefLang={language} lang={language} aria-current={locale === language ? "page" : undefined} onClick={(event) => {
+      {(["en", "ar"] as const).map((language) => <a key={language} href={`/${language}${localePath}`} hrefLang={language} lang={language} aria-current={locale === language ? "page" : undefined} onClick={(event) => {
         if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
         document.cookie = `portfolio-locale=${language}; Path=/; Max-Age=31536000; SameSite=Lax`;
         if (locale === language) { event.preventDefault(); return; }
@@ -60,7 +63,7 @@ export function Preferences({ copy, locale }: { copy: Dictionary["nav"]; locale:
         } catch { /* Navigation does not depend on storage. */ }
         // A native document navigation runs the pre-paint theme script for the
         // new document language and direction, while retaining its section.
-        event.currentTarget.href = `/${language}${window.location.hash}`;
+        event.currentTarget.href = `/${language}${localePath}${window.location.hash}`;
       }}>{language.toUpperCase()}</a>)}
     </div>
   </div>;
