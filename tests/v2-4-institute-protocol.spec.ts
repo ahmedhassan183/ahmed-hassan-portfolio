@@ -5,7 +5,7 @@ import { ar } from "../content/ar";
 import { en } from "../content/en";
 
 for (const locale of ["en", "ar"] as const) for (const width of [375, 1440]) for (const theme of ["light", "dark"] as const) {
-  test(`${locale} signed institute protocol preserves outcome and planned execution at ${width}px ${theme}`, async ({ page }) => {
+  test(`${locale} signed institute protocol preserves outcome and agreed execution at ${width}px ${theme}`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
     await page.emulateMedia({ reducedMotion: "reduce", colorScheme: theme });
     await page.goto(`/${locale}#partnership-heading`);
@@ -21,28 +21,55 @@ for (const locale of ["en", "ar"] as const) for (const width of [375, 1440]) for
     const journey = block.locator(width === 375 ? ".partnership-sequence" : ".partnership-journey ol");
     await expect(journey).toBeVisible();
     await expect(journey.locator(width === 375 ? "li strong" : "li")).toHaveText(locale === "en"
-      ? ["INITIATED", "MEETINGS", "FOLLOW-UP", "STRUCTURED", "SIGNED PROTOCOL"]
-      : ["بدأ التواصل", "الاجتماعات", "المتابعة", "تطوير الإطار", "البروتوكول الموقّع"]);
+      ? ["INITIATED", "MEETINGS", "FOLLOW-UP", "STRUCTURED", "SIGNED PROTOCOL", "EXECUTION PHASE"]
+      : ["بدأ التواصل", "الاجتماعات", "المتابعة", "تطوير الإطار", "البروتوكول الموقّع", "مرحلة التنفيذ"]);
     const status = block.locator(width === 375 ? ".partnership-mobile-secondary" : ".partnership-facts");
     await expect(status).toBeVisible();
-    await expect(status).toContainText(locale === "en" ? "Field visits are scheduled to begin on 5 October 2026." : "من المقرر بدء الزيارات الميدانية في 5 أكتوبر 2026.");
-    await expect(status).toContainText(locale === "en" ? "Pilot execution and applied outcomes remain pending." : "لا تزال نتائج التنفيذ والبرنامج التجريبي قيد الانتظار.");
+    await expect(status.locator("dt").last()).toHaveText(locale === "en" ? "STATUS" : "الحالة");
+    await expect(status.locator(".partnership-status-title")).toHaveText(locale === "en" ? "Signed Protocol — Execution Phase Starting" : "بروتوكول موقّع — بدء مرحلة التنفيذ");
+    if (width === 1440) await expect(status).toContainText(locale === "en" ? "Protocol signed; execution activities are now scheduled and being prepared." : "تم توقيع البروتوكول، وتبدأ أنشطة التنفيذ وفق الجدول المتفق عليه.");
     if (width === 375) for (const label of await status.locator("dt").all()) {
       expect(await label.evaluate(n => {
         const bounds = n.getBoundingClientRect(), range = document.createRange(); range.selectNodeContents(n);
         return [...range.getClientRects()].every(r => r.left >= bounds.left - 0.5 && r.right <= bounds.right + 0.5);
       })).toBe(true);
     }
-    await expect(block.locator(".partnership-next h4")).toHaveText(locale === "en" ? "NEXT COOPERATION · PLANNED" : "المرحلة التالية من التعاون · مخططة");
-    await expect(block.locator(".partnership-next li p")).toHaveText(locale === "en" ? [
-      "Planned supply of a complete solar-energy training laboratory for the institute.",
-      "Planned educational and introductory solar-energy seminar at the institute.",
-      "Planned monthly technical sessions at the institute delivered by two Innovation engineers.",
+    const execution = block.locator(".partnership-next");
+    await expect(execution.locator("h4")).toHaveText(locale === "en" ? "EXECUTION NOW" : "أنشطة التنفيذ");
+    await expect(execution.locator("li > strong")).toHaveText(locale === "en" ? ["Field Visits", "Educational Seminar", "Monthly Technical Sessions", "Solar Energy Laboratory"] : ["زيارات ميدانية", "ندوة تعليمية", "جلسات فنية شهرية", "معمل الطاقة الشمسية"]);
+    await expect(execution.locator(".partnership-execution-status")).toHaveText(locale === "en" ? ["SCHEDULED TO BEGIN", "DATE AGREED", "AGREED RECURRING ACTIVITY", "SUPPLY AGREED"] : ["مقررة للبدء", "الموعد متفق عليه", "نشاط دوري متفق عليه", "التوريد متفق عليه"]);
+    const desktopDetails = execution.locator(".partnership-execution-desktop");
+    await expect(desktopDetails).toHaveText(locale === "en" ? [
+      "Field visits are scheduled to begin on 5 October 2026.",
+      "An educational and introductory seminar has been agreed with the institute.",
+      "Monthly technical sessions have been agreed, with two Innovation engineers scheduled to deliver sessions at the institute.",
+      "Supply of a complete solar-energy training laboratory has been agreed. The next step is submission of the formal technical and financial proposal covering the laboratory requirements.",
     ] : [
-      "مخطط لتوريد معمل متكامل للطاقة الشمسية للمعهد.",
-      "مخطط لتنظيم ندوة تعليمية وتعريفية في مجال الطاقة الشمسية داخل المعهد.",
-      "مخطط لتنظيم جلسات فنية شهرية داخل المعهد يقدمها مهندسان من Innovation.",
+      "من المقرر بدء الزيارات الميدانية في 5 أكتوبر 2026.",
+      "تم الاتفاق على تنظيم ندوة تعليمية وتعريفية داخل المعهد.",
+      "تم الاتفاق على تنظيم جلسات فنية شهرية داخل المعهد يقدمها مهندسان من Innovation.",
+      "تم الاتفاق على توريد معمل متكامل للطاقة الشمسية للمعهد، والخطوة التالية هي تقديم عرض رسمي بالمواصفات والمتطلبات الفنية والمالية للمعمل.",
     ]);
+    const mobileDetails = execution.locator(".partnership-execution-mobile");
+    await expect(mobileDetails).toHaveText(locale === "en" ? [
+      "Field visits are scheduled to begin on 5 October 2026.",
+      "Seminar date agreed with the institute.",
+      "Two Innovation engineers scheduled each month.",
+      "Formal technical and financial proposal next.",
+    ] : [
+      "من المقرر بدء الزيارات الميدانية في 5 أكتوبر 2026.",
+      "تم الاتفاق على موعد الندوة داخل المعهد.",
+      "جلسات شهرية يقدمها مهندسان من Innovation.",
+      "الخطوة التالية: عرض رسمي بالمواصفات والمتطلبات الفنية والمالية.",
+    ]);
+    for (const detail of await (width === 375 ? mobileDetails : desktopDetails).all()) await expect(detail).toBeVisible();
+    for (const detail of await (width === 375 ? desktopDetails : mobileDetails).all()) await expect(detail).toBeHidden();
+    await expect(block).not.toContainText(/Pilot execution.*pending|planned|مخطط|قيد الانتظار/i);
+    // Only the verified field-visit row carries a date; no seminar/lab/session dates or counts are invented.
+    for (const row of (await execution.locator("li").all()).slice(1)) await expect(row).not.toContainText(/\d/);
+    if (width === 375) for (const detail of await mobileDetails.all()) {
+      expect(await detail.evaluate(n => n.getBoundingClientRect().height / parseFloat(getComputedStyle(n).lineHeight))).toBeLessThanOrEqual(3.1);
+    }
     await expect(block).not.toContainText(/Ahmed (?:personally )?signed|legal signatory|visits commenced|visits completed|laboratory (?:supplied|installed|commissioned)|seminar delivered|sessions delivered|students will be hired|guarantees employment|completed Pilot|revenue|training hours|وقّعت البروتوكول|تم توريد|تم تركيب|ضمان التوظيف|سيتم توظيف|إيرادات/i);
     // No documentary asset is published when no sanitized cover has been supplied.
     await expect(block.locator("img, a[download], a[href$='.pdf']")).toHaveCount(0);

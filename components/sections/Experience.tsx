@@ -72,7 +72,7 @@ export function Experience({ d }: { d: Dictionary }) {
             <div><dt>{partnership.roleLabel}</dt><dd>{partnership.role}</dd></div>
             <div><dt>{partnership.developedLabel}</dt><dd><BidiText>{partnership.developed}</BidiText></dd></div>
             <div><dt>{partnership.outcomeLabel}</dt><dd><BidiText>{partnership.outcome}</BidiText></dd></div>
-            <div><dt>{partnership.statusLabel}</dt><dd><BidiText>{partnership.status}</BidiText></dd></div>
+            <div><dt>{partnership.statusLabel}</dt><dd><strong className="partnership-status-title">{partnership.statusTitle}</strong><BidiText>{partnership.status}</BidiText></dd></div>
           </dl>
           <div className="partnership-model">
             <p>{partnership.modelLabel}</p>
@@ -84,13 +84,13 @@ export function Experience({ d }: { d: Dictionary }) {
             </ol>
             <dl className="partnership-mobile-secondary">
               <div><dt>{partnership.modelLabel}</dt><dd><BidiText>{partnership.mobileModel}</BidiText></dd></div>
-              <div><dt>{partnership.statusLabel}</dt><dd><BidiText>{partnership.status}</BidiText></dd></div>
+              <div><dt>{partnership.statusLabel}</dt><dd><strong className="partnership-status-title">{partnership.statusTitle}</strong></dd></div>
             </dl>
             <ol className="partnership-model-compact" aria-label={partnership.modelLabel}>{partnership.model.map((stage) => <li key={stage}>{stage}</li>)}</ol>
           </div>
           <div className="partnership-next">
             <h4>{partnership.nextLabel}</h4>
-            <ul>{partnership.next.map((item) => <li key={item.label}><strong>{item.label}</strong><p><BidiText>{item.detail}</BidiText></p></li>)}</ul>
+            <ul>{partnership.next.map((item) => <li key={item.label}><strong>{item.label}</strong><p><span className="partnership-execution-status">{item.status}</span><span className="partnership-execution-desktop"><BidiText>{item.detail}</BidiText></span><span className="partnership-execution-mobile"><BidiText>{item.mobileDetail}</BidiText></span></p></li>)}</ul>
           </div>
         </aside>
       </Container>
