@@ -17,12 +17,12 @@ for (const locale of ["en", "ar"] as const) {
     await expect(training).not.toContainText(/%|cohort|دفعة|نسبة/);
 
     await expect(partnership).toBeVisible();
-    await expect(partnership.locator(".evidence-label")).toHaveText(locale === "en" ? "INDUSTRY–ACADEMIC PARTNERSHIP DEVELOPMENT" : "تطوير شراكة بين القطاع الصناعي والتعليم");
-    await expect(partnership).toContainText(locale === "en" ? "Ahmed initiated contact with the Technological Institute" : "بدأ أحمد التواصل مع المعهد التكنولوجي");
-    await expect(partnership).toContainText(locale === "en" ? "Ahmed led direct communication and meetings, then continued follow-up until formal cooperation was established." : "أدار أحمد التواصل المباشر والاجتماعات، وواصل المتابعة حتى تم إرساء تعاون رسمي.");
-    await expect(partnership).toContainText(locale === "en" ? "Formal cooperation established between Innovation and the Technological Institute." : "تم إرساء تعاون رسمي بين Innovation والمعهد التكنولوجي.");
+    await expect(partnership.locator(".evidence-label")).toHaveText(locale === "en" ? "Higher Technological Institute of Beni Suef" : "المعهد التكنولوجي العالي ببني سويف");
+    await expect(partnership).toContainText(locale === "en" ? "Ahmed initiated the relationship with the Higher Technological Institute of Beni Suef" : "بادرت بالتواصل مع المعهد التكنولوجي العالي ببني سويف");
+    await expect(partnership).toContainText(locale === "en" ? "Led direct communication, meetings and follow-up, and helped structure the cooperation framework." : "قاد التواصل المباشر والاجتماعات والمتابعة، وساهم في تطوير إطار التعاون.");
+    await expect(partnership).toContainText(locale === "en" ? "Formal cooperation protocol signed between Innovation for Solar Systems and the Higher Technological Institute of Beni Suef." : "تم توقيع بروتوكول تعاون رسمي بين Innovation for Solar Systems والمعهد التكنولوجي العالي ببني سويف.");
     await expect(partnership).toContainText(locale === "en" ? "Pilot execution and applied outcomes remain pending." : "لا تزال نتائج التنفيذ والبرنامج التجريبي قيد الانتظار.");
-    await expect(partnership.locator(".partnership-model li")).toHaveCount(6);
+    await expect(partnership.locator(".partnership-model:not(.partnership-journey) li")).toHaveCount(5);
 
     expect(await training.evaluate((node) => node.nextElementSibling?.classList.contains("partnership-evidence"))).toBe(true);
     await expect(training).not.toContainText(locale === "en" ? "Technological Institute" : "المعهد التكنولوجي");
@@ -58,7 +58,7 @@ test("evidence patch preserves hierarchy, flagship count and Sahara status", asy
   }
 });
 
-test("approved V3 resume is the canonical website resume", async ({ page, request }) => {
+test("approved resume is the canonical website resume", async ({ page, request }) => {
   await page.goto("/en");
   await expect(page.locator(".resume-link")).toHaveCount(4);
   for (const link of await page.locator(".resume-link").all()) await expect(link).toHaveAttribute("href", canonicalResume);

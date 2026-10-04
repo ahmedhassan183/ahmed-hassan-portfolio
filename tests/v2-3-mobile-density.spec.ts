@@ -40,13 +40,14 @@ test("mobile Institute Partnership preserves ownership, sequence, model and pend
   const sequence = partnership.locator(".partnership-sequence");
 
   await expect(sequence).toBeVisible();
-  await expect(sequence.locator("li")).toHaveCount(4);
+  await expect(sequence.locator("li")).toHaveCount(5);
   await expect(sequence).toContainText(/initiated/i);
   await expect(sequence).toContainText(/meetings/i);
   await expect(sequence).toContainText(/follow-up/i);
+  await expect(sequence).toContainText(/cooperation framework/i);
   await expect(sequence).toContainText(/formal cooperation/i);
   await expect(partnership.locator(".partnership-mobile-secondary")).toContainText(/Pilot execution.*pending/i);
-  await expect(partnership.locator(".partnership-model-compact li")).toHaveCount(6);
+  await expect(partnership.locator(".partnership-model-compact li")).toHaveCount(5);
 });
 
 test("SELL BUILD and GROW remain visible without interaction across target mobile widths", async ({ page }) => {
