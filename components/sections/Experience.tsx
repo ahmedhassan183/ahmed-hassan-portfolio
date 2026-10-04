@@ -1,13 +1,17 @@
 import { Container } from "@/components/layout/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import type { Dictionary } from "@/content/types";
+import type { Dictionary, Locale } from "@/content/types";
 import { BidiIsolate, BidiText } from "@/components/ui/BidiText";
+import { Button } from "@/components/ui/Button";
+import { getPartnershipCase, partnershipPath } from "@/content/partnership";
+import styles from "@/components/partnership/Partnership.module.css";
 
-export function Experience({ d }: { d: Dictionary }) {
+export function Experience({ d, locale }: { d: Dictionary; locale: Locale }) {
   const salesJourney = d.experience.journey;
   const solarDomains = d.experience.domains;
   const training = d.experience.training;
   const partnership = d.experience.partnership;
+  const c = getPartnershipCase(locale);
   return (
     <section id="experience" className="experience portfolio-section" aria-labelledby="experience-heading" tabIndex={-1}>
       <Container>
@@ -62,28 +66,13 @@ export function Experience({ d }: { d: Dictionary }) {
           <div className="evidence-intro">
             <p className="evidence-label">{partnership.label}</p>
             <h3 id="partnership-heading">{partnership.heading}</h3>
-            <p><BidiText>{partnership.context}</BidiText></p>
+            <p className={styles.snapshotSummary}><BidiText>{c.snapshot.summary}</BidiText></p>
           </div>
-          <dl className="partnership-facts">
-            <div><dt>{partnership.roleLabel}</dt><dd>{partnership.role}</dd></div>
-            <div><dt>{partnership.developedLabel}</dt><dd><BidiText>{partnership.developed}</BidiText></dd></div>
-            <div><dt>{partnership.outcomeLabel}</dt><dd><BidiText>{partnership.outcome}</BidiText></dd></div>
-            <div><dt>{partnership.statusLabel}</dt><dd><BidiText>{partnership.status}</BidiText></dd></div>
-          </dl>
-          <div className="partnership-model">
-            <p>{partnership.modelLabel}</p>
-            <ol aria-label={partnership.modelLabel}>{partnership.model.map((stage) => <li key={stage}>{stage}</li>)}</ol>
+          <div className={styles.snapshotFacts}>
+            <p><strong>{c.snapshot.signed}</strong></p>
+            <p><BidiText>{c.snapshot.execution}</BidiText></p>
           </div>
-          <div className="partnership-mobile">
-            <ol className="partnership-sequence">
-              {partnership.mobileSequence.map((stage) => <li key={stage.label}><strong>{stage.label}</strong><span><BidiText>{stage.detail}</BidiText></span></li>)}
-            </ol>
-            <dl className="partnership-mobile-secondary">
-              <div><dt>{partnership.modelLabel}</dt><dd><BidiText>{partnership.mobileModel}</BidiText></dd></div>
-              <div><dt>{partnership.statusLabel}</dt><dd><BidiText>{partnership.status}</BidiText></dd></div>
-            </dl>
-            <ol className="partnership-model-compact" aria-label={partnership.modelLabel}>{partnership.model.map((stage) => <li key={stage}>{stage}</li>)}</ol>
-          </div>
+          <Button className={`partnership-cta ${styles.snapshotCta}`} variant="secondary" href={`/${locale}${partnershipPath}`}>{c.snapshot.cta}</Button>
         </aside>
       </Container>
     </section>
