@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 
-const publicRoutes = new Set(["/", "/en", "/ar", "/en/partnerships/higher-technological-institute-beni-suef", "/ar/partnerships/higher-technological-institute-beni-suef", "/opengraph-image", "/sitemap.xml", "/robots.txt", "/icon.svg", "/Ahmed-Hassan-Sales-Business-Development-Resume.pdf"]);
+const publicRoutes = new Set(["/", "/en", "/ar", "/en/partnerships/higher-technological-institute-beni-suef", "/ar/partnerships/higher-technological-institute-beni-suef", "/en/growth/90-day-social-media-growth-system", "/ar/growth/90-day-social-media-growth-system", "/opengraph-image", "/sitemap.xml", "/robots.txt", "/icon.svg", "/Ahmed-Hassan-Sales-Business-Development-Resume.pdf"]);
 
 export function proxy(request: NextRequest) {
   const path = request.nextUrl.pathname;

@@ -17,7 +17,7 @@ for (const locale of ["en", "ar"] as const) {
       ? ["Kahla Optical", "2021–2025", "Innovation for Solar System", "2025–Present"]
       : ["Kahla Optical", "2021–2025", "Innovation for Solar System", "منذ 2025"]);
     await expect(page.locator("#experience .training-note")).toBeVisible();
-    await expect(page.locator("#supporting .supporting-entry")).toHaveCount(3);
+    await expect(page.locator("#supporting .supporting-entry")).toHaveCount(4);
     await expect(page.locator("#supporting")).toContainText(locale === "en" ? "Sahara 2026 Field Execution System" : "نظام التنفيذ الميداني لمعرض Sahara 2026");
 
     const primaryContact = page.locator("#contact .contact-actions .button--primary");

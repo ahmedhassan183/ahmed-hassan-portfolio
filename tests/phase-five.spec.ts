@@ -105,7 +105,7 @@ test("sitemap and robots expose only intended routes and canonical origin", asyn
   const sitemap = await request.get("/sitemap.xml");
   expect(sitemap.status()).toBe(200);
   const xml = await sitemap.text();
-  expect(xml.match(/<loc>/g)).toHaveLength(4);
+  expect(xml.match(/<loc>/g)).toHaveLength(6);
   for (const locale of ["en", "ar"]) expect(xml).toContain(`<loc>${absoluteUrl(`/${locale}`)}</loc>`);
   expect(xml).not.toMatch(/test-results|artifacts|localhost/);
   const robots = await request.get("/robots.txt");
