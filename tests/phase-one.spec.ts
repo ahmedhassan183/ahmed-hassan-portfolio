@@ -13,7 +13,7 @@ for (const width of [320, 375, 768, 1024, 1440]) {
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("I Develop B2B Opportunities — And Build the Sales Systems That Move Them Forward.");
     await expect(page.locator(".flow-stages > li")).toHaveCount(7);
     await expect(page.locator(".node-title")).toHaveText(["Prospecting", "Qualification", "Opportunity", "Proposal", "Follow-Up", "Closing", "Account Growth"]);
-    await expect(page.getByRole("link", { name: "Explore My Commercial Work" })).toHaveAttribute("href", "#sales");
+    await expect(page.getByRole("link", { name: "View Commercial Work" })).toHaveAttribute("href", "#systems");
     await expect(page.locator(".hero").getByRole("link", { name: "Contact Ahmed" })).toHaveAttribute("href", "#contact");
     await expect(page.locator("#flow-title")).toContainText("THE SALES SYSTEM");
     await expect(page.locator("#flow-title")).toBeVisible();

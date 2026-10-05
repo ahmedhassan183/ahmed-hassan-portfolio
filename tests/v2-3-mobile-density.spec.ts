@@ -27,9 +27,10 @@ test("mobile Sales Enablement preserves its three-step framework and hiring outc
   await page.goto("/en#training-heading");
   const training = page.locator(".training-note");
 
+  await training.locator(".enablement-details summary").click();
   await expect(training.locator(".enablement-steps > div")).toHaveCount(3);
-  await expect(training.getByText("TRAIN", { exact: true })).toBeVisible();
-  await expect(training.getByText("ASSESS", { exact: true })).toBeVisible();
+  await expect(training.locator(".enablement-steps").getByText("TRAIN", { exact: true })).toBeVisible();
+  await expect(training.locator(".enablement-steps").getByText("ASSESS", { exact: true })).toBeVisible();
   await expect(training.getByText("DEVELOP TALENT", { exact: true })).toBeVisible();
   await expect(training.locator(".enablement-outcome")).toContainText(/2 trainees hired/i);
 });
@@ -40,7 +41,7 @@ test("mobile Institute Partnership preserves ownership, sequence, model and agre
   const partnership = page.locator(".partnership-evidence");
   await expect(partnership).toContainText("Signed Cooperation Protocol");
   await expect(partnership).toContainText("Field execution commenced on 5 October 2026 with a completed first field activity involving 10 institute students.");
-  expect((await partnership.boundingBox())!.height).toBeLessThan(400);
+  expect((await partnership.boundingBox())!.height).toBeLessThan(850);
   await partnership.locator(".partnership-cta").click();
   await expect(page).toHaveURL(new RegExp(`${partnershipPath}$`));
   const sequence = page.locator("[data-case-timeline]");

@@ -49,6 +49,17 @@
 .chips { display: flex; flex-wrap: wrap; gap: 6px 14px; list-style: none; padding: 0; margin-block: 12px; }
 .chips li { color: var(--text-secondary); font-size: .75rem; line-height: 1.6; }
 .supportingCta { display: inline-flex; align-items: center; min-height: 44px; font-size: .8125rem; color: var(--color-accent); text-decoration: underline; text-underline-offset: 4px; }
+.hero { padding: clamp(24px, 4vw, 44px); background: var(--surface-soft); border: 1px solid var(--border); border-radius: 8px; margin-block-end: 24px; }
+.section { padding: clamp(20px, 3vw, 32px); margin-block: 20px; background: var(--surface-high); border: 1px solid var(--border); border-radius: 8px; }
+.split { gap: 20px; }
+.split .section { margin-block: 0; }
+.scale > div { padding: 18px; border: 0; background: var(--surface-soft); }
+.grid article { border: 0; padding: 20px; background: var(--surface-soft); }
+.status > div { padding: 18px; border-inline-start: 3px solid var(--color-accent); background: var(--surface-soft); }
+.status > div:last-child { border-inline-start-color: var(--text-secondary); border: 1px dashed var(--line-strong); }
+.page :global(.section-label) { font-size: .75rem; }
+:global([lang="ar"]) .page p, :global([lang="ar"]) .page li { font-size: 1rem; line-height: 1.85; }
+:global([lang="ar"]) .scale dt { font-size: .8125rem; }
 @media (max-width: 767px) {
   .page { padding-block: 24px 40px; }
   .hero { padding-block-end: 26px; }
@@ -64,4 +75,7 @@
   .status { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
   .actions { flex-direction: column; align-items: stretch; }
   .actions a { white-space: normal; text-align: center; }
+  .hero, .section { padding: 20px; }
+  .split { gap: 20px; }
+  .scale > div { padding: 12px; }
 }

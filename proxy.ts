@@ -1,9 +1,11 @@
 import { NextResponse, type NextRequest } from "next/server";
+import { caseSlugs, casePath } from "@/content/cases";
 
 const publicRoutes = new Set(["/", "/en", "/ar", "/en/partnerships/higher-technological-institute-beni-suef", "/ar/partnerships/higher-technological-institute-beni-suef", "/en/growth/90-day-social-media-growth-system", "/ar/growth/90-day-social-media-growth-system", "/opengraph-image", "/sitemap.xml", "/robots.txt", "/icon.svg", "/Ahmed-Hassan-Sales-Business-Development-Resume.pdf"]);
 
 export function proxy(request: NextRequest) {
   const path = request.nextUrl.pathname;
+  if (["en", "ar"].some(locale => caseSlugs.some(slug => path === `/${locale}${casePath(slug)}`))) return NextResponse.next();
   if (path === "/en/unavailable" || path === "/ar/unavailable") return NextResponse.next({ status: 404, headers: { "X-Robots-Tag": "noindex" } });
   if (publicRoutes.has(path) || path.startsWith("/work/") || path.startsWith("/images/")) return NextResponse.next();
   const locale = path.split("/")[1] === "ar" ? "ar" : "en";

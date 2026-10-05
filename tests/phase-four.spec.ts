@@ -19,15 +19,20 @@ for (const locale of ["en", "ar"] as const) {
         await expect(page.getByRole("heading", { level: 1 })).toHaveText(d.hero.before + d.hero.accent + d.hero.after);
         await expect(page.locator(".commercial-proof li strong")).toHaveText(d.hero.proof.map((item) => item.value));
         await expect(page.locator(".commercial-proof li span")).toHaveText(d.hero.proof.map((item) => item.label));
-        await expect(page.locator(".market-evidence")).toContainText(d.work.marketProof.senour);
+        const detail = await page.context().newPage();
+        await detail.setViewportSize({ width, height: 900 });
+        await detail.emulateMedia({ colorScheme: theme, reducedMotion: "reduce" });
+        await detail.goto(`/${locale}/cases/b2b-market-account-development`);
+        await expect(detail.locator(".market-evidence")).toContainText(d.work.marketProof.senour);
         await expect(page.locator(".supporting-entry")).toHaveCount(d.work.supporting.items.length);
         await expect(page.locator(".supporting-entry").nth(1)).toContainText(d.work.supporting.items[1].title);
         await expect(page.locator(".node-title")).toHaveText([...d.hero.stages]);
         await expect(page.locator(".capability-heading h3")).toHaveText(d.authority.capabilities.map((item) => item.title));
-        await expect(page.locator(".system-title")).toHaveText(d.work.projects.map((item) => item.title));
+        await expect(page.locator(".case-summary-copy h3")).toHaveText(d.work.projects.map((item) => item.title));
         await expect(page.locator(".journey-role h3")).toHaveText(d.experience.journey.map((item) => item.title));
         await expect(page.locator(".solar-domain li")).toHaveText([...d.experience.domains]);
-        await expect(page.locator(".flagship-proof strong")).toHaveText(d.work.proof.map((item) => item.value));
+        await detail.goto(`/${locale}/cases/solar-pv-engineering`);
+        await expect(detail.locator(".flagship-proof strong")).toHaveText(d.work.proof.map((item) => item.value));
         for (const image of await page.locator(".portrait-image, .work-preview-image").all()) {
           const hiddenPanel = await image.evaluate((element) => !!element.closest("[hidden]"));
           if (hiddenPanel) continue;
@@ -39,12 +44,13 @@ for (const locale of ["en", "ar"] as const) {
           });
           expect(determinant).toBeGreaterThan(0); // Scaling is allowed, mirroring is not.
         }
-        const tabs = page.getByRole("tab");
+        const tabs = detail.getByRole("tab");
         await tabs.first().press(locale === "ar" ? "ArrowLeft" : "ArrowRight");
         await expect(tabs.nth(1)).toBeFocused();
         await expect(tabs.nth(1)).toHaveAttribute("aria-selected", "true");
-        await expect(page.getByRole("tabpanel").locator("img")).toHaveAttribute("alt", d.work.secondary[0].alt);
+        await expect(detail.getByRole("tabpanel").locator("img")).toHaveAttribute("alt", d.work.secondary[0].alt);
         await tabs.first().click();
+        await detail.close();
         if (width < 900) {
           await page.getByRole("button", { name: d.nav.open }).click();
           const menu = page.getByRole("navigation", { name: d.nav.mobile });
@@ -105,17 +111,18 @@ for (const width of [375, 1440]) {
     page.on("console", (message) => { if (message.type() === "error") errors.push(message.text()); });
     await page.setViewportSize({ width, height: 900 });
     await page.emulateMedia({ reducedMotion: "reduce" });
-    await page.goto("/en#systems");
-    await page.locator(".system-summary").first().press("Enter");
+    await page.goto("/en/cases/solar-pv-engineering#systems");
     await page.getByRole("tab").nth(2).click();
+    await page.locator(".system-summary").first().press("Enter");
     if (width < 900) await page.getByRole("button", { name: "Open navigation" }).click();
     const controls = page.locator(width < 900 ? ".mobile-nav .preferences" : ".desktop-preferences");
     await controls.getByRole("combobox").selectOption("dark");
     await controls.getByRole("link", { name: "AR", exact: true }).click();
-    await expect(page).toHaveURL(/\/ar#systems$/);
+    await expect(page).toHaveURL(/\/ar\/cases\/solar-pv-engineering#systems$/);
     await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
     await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
     await expect(page.locator(".system-entry").first()).not.toHaveAttribute("open");
+    await page.locator(".system-summary").first().press("Enter");
     await expect(page.getByRole("tab").last()).toHaveAttribute("aria-selected", "true");
     await page.goto("/");
     await expect(page).toHaveURL(/\/ar$/);

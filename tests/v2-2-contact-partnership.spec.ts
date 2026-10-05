@@ -53,11 +53,15 @@ for (const locale of ["en", "ar"] as const) {
     await expect(page.locator("#contact .contact-method--priority")).toHaveCount(2);
     await expect(page.locator("#contact .contact-method--alternate")).toBeVisible();
     await expect(page.locator("#experience .partnership-evidence")).toBeVisible();
+    await page.locator(".enablement-details summary").click();
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(375);
     for (const evidence of [page.locator("#experience .enablement-steps"), page.locator("#experience .partnership-evidence")]) {
       const box = await evidence.boundingBox();
       expect(box).not.toBeNull();
-      expect(box!.width).toBeGreaterThan(300);
+      // Evidence now has intentional card padding; verify usable width and containment.
+      expect(box!.width).toBeGreaterThan(260);
+      expect(box!.x).toBeGreaterThanOrEqual(0);
+      expect(box!.x + box!.width).toBeLessThanOrEqual(375);
     }
     for (const phone of await page.locator("#contact .contact-phone").all()) {
       const box = await phone.boundingBox();

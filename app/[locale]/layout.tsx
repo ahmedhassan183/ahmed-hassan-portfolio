@@ -8,6 +8,7 @@ import { site } from "@/data/site";
 import { publicAssetExists } from "@/lib/public-assets";
 import { siteOrigin, languageAlternates, absoluteUrl, isPreview } from "@/lib/seo";
 import "../globals.css";
+import "../executive.css";
 
 export function generateStaticParams() { return locales.map((locale) => ({ locale })); }
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {

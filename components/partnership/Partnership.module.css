@@ -1,4 +1,17 @@
 .page { color: var(--text-body); padding-block: 48px 72px; }
+.page .hero { padding: clamp(24px, 4vw, 44px); background: var(--surface-soft); border: 1px solid var(--border); border-radius: 8px; }
+.page .status { background: var(--surface-high); padding: 18px; border-inline-start: 3px solid var(--color-accent); }
+.page .overview { gap: 28px; }
+.page .role, .page .overview > section:last-child { padding: 24px; background: var(--surface-high); border: 1px solid var(--border); border-radius: 8px; }
+.page .timeline li { border: 0; border-inline-start: 2px solid var(--line-strong); padding-inline-start: 16px; }
+.page .record { border: 0; }
+.page [data-record="completed"] { background: var(--surface-soft); padding: 24px; border-radius: 8px; border-inline-start: 4px solid var(--color-accent); }
+.page [data-record="upcoming"] { border: 1px dashed var(--line-strong); padding: 24px; border-radius: 8px; }
+.page .activity { border: 1px solid var(--line-strong); border-radius: 5px; }
+.page .activityFacts > div { padding: 14px; background: var(--surface-soft); }
+.page .streams article { padding: 18px; border: 1px solid var(--border); background: var(--color-canvas); }
+:global([lang="ar"]) .page p, :global([lang="ar"]) .page li { font-size: 1rem; line-height: 1.85; }
+:global([lang="ar"]) .page .activityFacts dt { font-size: .8125rem; }
 .page h1, .page h2, .page h3, .page h4 { color: var(--color-navy); }
 .page h2 { margin: 0 0 20px; font-size: clamp(1.25rem, 2vw, 1.75rem); letter-spacing: -.025em; line-height: 1.4; }
 .page p { line-height: 1.7; }

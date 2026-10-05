@@ -25,7 +25,7 @@ for (const locale of ["en", "ar"] as const) for (const width of [375, 1440]) for
     const sahara = page.locator('[data-supporting-id="sahara-2026"]');
     await expect(sahara.locator("h3")).toHaveText(d.work.supporting.items[2].title);
     await expect(sahara.locator("p").first()).toHaveText(d.work.supporting.items[2].description);
-    await expect(sahara.locator(".supporting-status")).toHaveText(locale === "en" ? "Current preparation; event targets are not achieved results." : "تحضير حالي؛ أهداف المعرض ليست نتائج محققة.");
+    await expect(sahara.locator(".supporting-status")).toHaveText(locale === "en" ? "ON-SITE EXECUTION COMPLETED · COMMERCIAL FOLLOW-UP ACTIVE" : "تم تنفيذ المشاركة الميدانية · المتابعة التجارية مستمرة");
     expect((await new AxeBuilder({ page }).include(".partnership-evidence").include(".training-note").withTags(["wcag2a", "wcag2aa", "wcag21aa"]).analyze()).violations).toEqual([]);
     await snapshot.locator(".partnership-cta").click();
     await expect(page).toHaveURL(new RegExp(`${partnershipPath}$`));

@@ -99,14 +99,17 @@ test("resume micro-update and all protected source areas remain intact", async (
   expect(source).not.toContain(old);
   expect(source.replace(current, old).replaceAll("\r\n", "\n")).toBe(previous.replaceAll("\r\n", "\n"));
   expect(source.match(/class="page page-/g)).toHaveLength(2);
-  for (const path of ["content/partnership.ts", "components/partnership/PartnershipCase.tsx", "components/sections/Hero.tsx", "components/sections/Experience.tsx", "components/sections/SelectedSalesSystems.tsx", "components/sections/SalesAuthority.tsx", "components/sections/Contact.tsx", "components/layout/Footer.tsx", "app/globals.css", "resume/resume.css", "resume/generate.mjs"]) {
-    const oldSource = execFileSync("git", ["show", `138466602e1d448f9aff3b3b9b8dece873fb8c16:${path}`], { encoding: "utf8" });
-    expect((await readFile(path, "utf8")).replaceAll("\r\n", "\n"), path).toBe(oldSource.replaceAll("\r\n", "\n"));
+  // V2.8 permits presentation changes; the factual dictionaries and resume remain locked.
+  for (const path of ["content/partnership.ts", "content/growth.ts", "resume/resume.css", "resume/generate.mjs"]) {
+    const approved = execFileSync("git", ["show", `fd958e9528237c531313aafb80b4be01518eeffe:${path}`], { encoding: "utf8" });
+    expect((await readFile(path, "utf8")).replaceAll("\r\n", "\n"), path).toBe(approved.replaceAll("\r\n", "\n"));
   }
   expect(growthReviews.en).toEqual([]); expect(growthReviews.ar).toEqual([]);
   const sales = await readFile("data/sales.ts", "utf8");
-  const previousSales = execFileSync("git", ["show", "138466602e1d448f9aff3b3b9b8dece873fb8c16:data/sales.ts"], { encoding: "utf8" });
-  expect(sales.replace(/  \{\r?\n    id: "social-growth",[\s\S]*?    artifact: null,\r?\n  \},\r?\n/, "").replaceAll("\r\n", "\n")).toBe(previousSales.replaceAll("\r\n", "\n"));
+  const approvedSales = execFileSync("git", ["show", "fd958e9528237c531313aafb80b4be01518eeffe:data/sales.ts"], { encoding: "utf8" });
+  const withoutSahara = (value: string) => value.replace(/  \{\r?\n    id: "sahara-2026",[\s\S]*?    artifact: null,\r?\n  \},\r?\n/, "").replaceAll("\r\n", "\n");
+  expect(withoutSahara(sales)).toBe(withoutSahara(approvedSales));
+  expect(await readFile("public/Ahmed-Hassan-Sales-Business-Development-Resume.pdf")).toEqual(execFileSync("git", ["show", "fd958e9528237c531313aafb80b4be01518eeffe:public/Ahmed-Hassan-Sales-Business-Development-Resume.pdf"]));
 });
 
 test("no raw strategy workbook or document is publicly exposed", async () => {

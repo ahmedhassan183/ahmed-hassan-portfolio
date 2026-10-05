@@ -28,6 +28,7 @@ test("Arabic document and representative content inherit true RTL direction", as
   await expect(page.locator(".contact-content > p")).toHaveCSS("text-align", "start");
 
   await expect(page.locator(".hero-description bdi[dir='ltr']")).toContainText(["Growth Manager", "Innovation for Solar System", "B2B", "CRM"]);
+  await page.locator(".journey-step--solar .journey-full-detail summary").click();
   const experiencePeriods = page.locator(".experience-periods bdi");
   await expect(experiencePeriods).toHaveText(["Kahla Optical", "2021–2025", "Innovation for Solar System", "منذ 2025"]);
   await expect(experiencePeriods.nth(0)).toHaveAttribute("dir", "ltr");
@@ -46,7 +47,7 @@ test("Arabic mobile keeps RTL flow, isolated mixed content and zero overflow at 
   for (const selector of [
     ".hero-content",
     ".capability-grid",
-    ".systems-list",
+    ".case-summary-grid",
     ".sales-journey",
     ".training-note",
     ".partnership-evidence",
@@ -57,6 +58,15 @@ test("Arabic mobile keeps RTL flow, isolated mixed content and zero overflow at 
     await expect(page.locator(selector)).toHaveCSS("direction", "rtl");
   }
 
+  const casePage = await page.context().newPage();
+  await casePage.setViewportSize({ width: 375, height: 812 });
+  await casePage.emulateMedia({ reducedMotion: "reduce" });
+  await casePage.goto("/ar/cases/solar-pv-engineering");
+  for (const selector of [".flagship-scope", ".system-fields"]) await expect(casePage.locator(selector)).toHaveCSS("direction", "rtl");
+  expect(await casePage.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(375);
+  await casePage.goto("/ar/cases/b2b-market-account-development");
+  await expect(casePage.locator(".market-evidence")).toHaveCSS("direction", "rtl");
+  await casePage.close();
   const mixedBlocks = page.locator([
     ".hero-description",
     ".market-evidence",

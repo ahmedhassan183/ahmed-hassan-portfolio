@@ -9,14 +9,20 @@ for (const width of [320, 375, 768, 1024, 1440]) {
     page.on("console", (message) => { if (message.type() === "error") errors.push(message.text()); });
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/");
-    const flagship = page.locator(".system-entry--solar");
+    const detail = await page.context().newPage();
+    await detail.setViewportSize({ width, height: 900 });
+    await detail.goto("/en/cases/solar-pv-engineering");
+    const flagship = detail.locator(".system-entry--solar");
     await expect(flagship.locator(".system-title")).toHaveText("Solar PV Engineering, Costing & Quotation System");
     await expect(flagship.locator(".flagship-badge")).toHaveText("FLAGSHIP CASE");
     await expect(flagship.locator(".flagship-proof li")).toHaveText(["40Interconnected Worksheets", "1,500+Formulas", "8Structured Data Tables", "4Charts", "NoMacros"]);
     await expect(flagship.locator(".flagship-capabilities h4")).toHaveText(["ENGINEERING", "COMMERCIAL", "FINANCIAL", "CONTROL & QA"]);
     await expect(flagship.locator(".engineering-workflow li")).toHaveText(["Customer Input", "Engineering Design", "BOQ", "Costing", "Pricing", "Client Quotation", "Financial Analysis", "Dashboard"]);
     await expect(flagship.locator(".flagship-assurance")).toContainText("The client-facing quotation is separated from internal purchase cost, margin and profit information.");
-    await expect(page.locator(".maintenance-tiers li")).toHaveText(["Economic", "Advanced", "Premium"]);
+    const maintenance = await page.context().newPage();
+    await maintenance.setViewportSize({ width, height: 900 });
+    await maintenance.goto("/en/cases/maintenance-revenue-product");
+    await expect(maintenance.locator(".maintenance-tiers li")).toHaveText(["Economic", "Advanced", "Premium"]);
     await flagship.locator(".system-summary").press("Enter");
     await expect(flagship.locator(".system-body")).toBeHidden();
     await flagship.locator(".system-summary").press("Space");
@@ -25,7 +31,7 @@ for (const width of [320, 375, 768, 1024, 1440]) {
     for (const artifact of [...salesSystems.map((system) => system.artifact), supportingWork[0].artifact, ...flagshipSecondaryArtifacts]) {
         const secondaryIndex = flagshipSecondaryArtifacts.findIndex((item) => item.path === artifact.path);
         if (secondaryIndex >= 0) await flagship.getByRole("tab").nth(secondaryIndex + 1).click();
-        const image = page.getByAltText(artifact.alt, { exact: true });
+        const image = (artifact.path.includes("solar-pv") ? detail : artifact.path.includes("maintenance") ? maintenance : page).getByAltText(artifact.alt, { exact: true });
         await image.scrollIntoViewIfNeeded();
         await expect.poll(() => image.evaluate((element: HTMLImageElement) => element.complete && element.naturalWidth > 0)).toBe(true);
         await expect(image).toHaveAttribute("src", /\/_next\/image\?/);
@@ -67,6 +73,7 @@ for (const width of [320, 375, 768, 1024, 1440]) {
     await page.locator("#experience").screenshot({ path: `test-results/phase-3.1-experience-${width}.png`, style });
     await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
     await page.screenshot({ path: `test-results/phase-3.1-home-${width}.png`, fullPage: true });
+    await detail.close(); await maintenance.close();
     expect(errors).toEqual([]);
   });
 }
@@ -81,8 +88,9 @@ test("real prepared portrait renders through next/image", async ({ page }) => {
 });
 
 test("flagship progression is finite and respects reduced motion", async ({ page }) => {
-  await page.goto("/");
+  await page.goto("/en/cases/solar-pv-engineering");
   const progress = page.locator(".build-progress");
+  await expect(progress.locator("li > span > bdi")).toHaveText(["01", "02", "03", "04"]);
   await progress.scrollIntoViewIfNeeded();
   await expect(progress).toHaveClass(/is-revealed/);
   const timing = await progress.locator("li").evaluateAll((elements) => elements.map((element) => {

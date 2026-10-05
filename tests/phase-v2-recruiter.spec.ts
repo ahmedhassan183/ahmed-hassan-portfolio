@@ -7,7 +7,7 @@ for (const locale of ["en", "ar"] as const) {
     const order = await page.locator("main > section").evaluateAll((sections) =>
       sections.map((section) => section.id || section.classList[0]),
     );
-    expect(order).toEqual(["hero", "sales", "systems", "experience", "supporting", "contact"]);
+    expect(order).toEqual(["hero", "sales", "systems", "experience", "growth-feature", "supporting", "contact"]);
 
     await expect(page.locator("#sales .capability-block")).toHaveCount(3);
     await expect(page.locator("#sales .capability-skills li")).toHaveCount(12);
@@ -18,7 +18,7 @@ for (const locale of ["en", "ar"] as const) {
       : ["Kahla Optical", "2021–2025", "Innovation for Solar System", "منذ 2025"]);
     await expect(page.locator("#experience .training-note")).toBeVisible();
     await expect(page.locator("#supporting .supporting-entry")).toHaveCount(4);
-    await expect(page.locator("#supporting")).toContainText(locale === "en" ? "Sahara 2026 Field Execution System" : "نظام التنفيذ الميداني لمعرض Sahara 2026");
+    await expect(page.locator("#supporting")).toContainText(locale === "en" ? "Sahara Expo 2026 — B2B Field Development" : "Sahara Expo 2026 — تطوير أعمال ميداني وشراكات B2B");
 
     const primaryContact = page.locator("#contact .contact-actions .button--primary");
     await expect(primaryContact).toHaveText(locale === "en" ? "Contact Ahmed" : "تواصل مع أحمد");

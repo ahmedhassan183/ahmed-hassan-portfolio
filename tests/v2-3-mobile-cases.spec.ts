@@ -22,11 +22,12 @@ for (const locale of ["en", "ar"] as const) {
       await page.emulateMedia({ reducedMotion: "reduce" });
       await page.goto(`/${locale}`);
       await page.evaluate(() => document.fonts.ready);
-      const cases = page.locator("#systems .system-entry");
-      await expect(cases).toHaveCount(3);
-      await expect(page.locator("#systems .system-number")).toHaveText(["01", "02", "03"]);
-
-      for (const entry of await cases.all()) {
+      await expect(page.locator("[data-case-summary]")).toHaveCount(3);
+      const d = locale === "ar" ? ar : en;
+      for (const [index, project] of d.work.projects.entries()) {
+        await page.goto(`/${locale}/cases/${project.id}`);
+        const entry = page.locator(".system-entry");
+        await expect(entry.locator(".system-number")).toHaveText(`0${index + 1}`);
         await expect(entry).toHaveAttribute("open", "");
         const number = entry.locator(".system-number");
         await expectSingleLine(number.locator("bdi"));
@@ -82,6 +83,7 @@ for (const locale of ["en", "ar"] as const) {
         expect(unit.contained).toBe(true);
       }
 
+      await page.goto(`/${locale}`);
       const supportingNumbers = page.locator("#supporting .supporting-number");
       await expect(supportingNumbers).toHaveText(["01", "02", "03", "04"]);
       for (const number of await supportingNumbers.all()) {
@@ -102,17 +104,18 @@ for (const locale of ["en", "ar"] as const) {
     const d = locale === "ar" ? ar : en;
     await page.setViewportSize({ width: 375, height: 812 });
     await page.goto(`/${locale}`);
-    const cases = page.locator("#systems .system-entry");
-    await expect(cases).toHaveCount(3);
-    for (let i = 0; i < d.work.projects.length; i++) {
-      const entry = cases.nth(i);
-      const project = d.work.projects[i];
+    await expect(page.locator("[data-case-summary]")).toHaveCount(3);
+    await expect(page.locator(".commercial-proof strong")).toHaveText(d.hero.proof.map(p => p.value));
+    await expect(page.locator(".commercial-proof span")).toHaveText(d.hero.proof.map(p => p.label));
+    for (const project of d.work.projects) {
+      await page.goto(`/${locale}/cases/${project.id}`);
+      const entry = page.locator(".system-entry");
       await expect(entry.locator(".system-title")).toHaveText(project.title);
       await expect(entry.locator(".system-description")).toHaveText(project.description);
-      await expect(entry.locator(".system-fields dd")).toHaveText([
-        project.problem, project.role, project.built, project.adoption, project.purpose,
-      ]);
+      await expect(entry.locator(".system-fields dd")).toHaveText([project.problem, project.role, project.built, project.adoption, project.purpose]);
     }
+    await page.goto(`/${locale}/cases/b2b-market-account-development`);
+    const cases = page.locator(".system-entry");
     const process = cases.first().locator(".market-evidence > div").first();
     const commercial = cases.first().locator(".market-evidence > div").last();
     await expect(process.locator("p")).toHaveText(d.work.marketProof.process);
@@ -124,9 +127,12 @@ for (const locale of ["en", "ar"] as const) {
       d.work.marketProof.role, d.work.marketProof.model, d.work.marketProof.sales,
       d.work.marketProof.senour, d.work.marketProof.fayoum,
     ]);
-    await expect(cases.nth(1).locator(".flagship-proof strong")).toHaveText(d.work.proof.map(p => p.value));
-    await expect(cases.nth(1).locator(".flagship-proof span")).toHaveText(d.work.proof.map(p => p.label));
+    await page.goto(`/${locale}/cases/solar-pv-engineering`);
+    await expect(cases.first().locator(".flagship-proof strong")).toHaveText(d.work.proof.map(p => p.value));
+    await expect(cases.first().locator(".flagship-proof span")).toHaveText(d.work.proof.map(p => p.label));
+    await page.goto(`/${locale}/cases/maintenance-revenue-product`);
     await expect(cases.last().locator(".maintenance-tiers li")).toHaveText(d.work.tiers);
+    await page.goto(`/${locale}`);
     await expect(page.locator(".commercial-proof strong")).toHaveText(d.hero.proof.map(p => p.value));
     await expect(page.locator(".commercial-proof span")).toHaveText(d.hero.proof.map(p => p.label));
   });
