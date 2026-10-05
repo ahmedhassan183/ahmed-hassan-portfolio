@@ -67,7 +67,7 @@ for (const width of [320, 375, 768, 1024, 1440]) {
       expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
     }
     // Keyboard users can collapse, open and move between each full-row disclosure.
-    await expect(page.locator(".supporting-entry")).toHaveCount(3);
+    await expect(page.locator(".supporting-entry")).toHaveCount(4);
     await expect(page.locator(".supporting-entry").first().getByAltText(supportingWork[0].artifact.alt, { exact: true })).toBeVisible();
     await entries.nth(2).locator("summary").press("Enter");
     await expect(entries.nth(2)).not.toHaveAttribute("open");
@@ -115,7 +115,7 @@ test.describe("Phase 2 without client JavaScript", () => {
     await expect(page.locator(".system-entry").nth(1)).toHaveAttribute("open", "");
     await expect(page.locator(".system-entry").nth(1).locator(".system-built dd")).toBeVisible();
     await expect(page.locator(".system-entry[open]")).toHaveCount(3);
-    await expect(page.locator(".supporting-entry")).toHaveCount(3);
+    await expect(page.locator(".supporting-entry")).toHaveCount(4);
     await expect(page.locator(".supporting-entry").first().getByAltText(supportingWork[0].artifact.alt, { exact: true })).toBeVisible();
   });
 });

@@ -20,7 +20,7 @@ for (const locale of ["en", "ar"] as const) {
     const growth = page.locator(".journey-step").nth(3);
     await expect(growth).toContainText(locale === "en" ? "Personally closed 18 solar installation opportunities" : "أغلقت بنفسي 18 فرصة");
     await expect(growth).toContainText(locale === "en" ? "120+ site surveys and customer visits" : "أكثر من 120 معاينة وزيارة");
-    const sahara = page.locator(".supporting-entry").nth(1);
+    const sahara = page.locator('[data-supporting-id="sahara-2026"]');
     await expect(sahara).toContainText(locale === "en" ? "Sahara 2026 Field Execution System" : "نظام التنفيذ الميداني لمعرض Sahara 2026");
     await expect(sahara).toContainText(locale === "en" ? "20 prioritized accounts" : "20 جهة ذات أولوية");
 

@@ -22,9 +22,9 @@ for (const locale of ["en", "ar"] as const) for (const width of [375, 1440]) for
     expect(await training.evaluate(n => n.nextElementSibling?.classList.contains("partnership-evidence"))).toBe(true);
     await expect(training.locator(".enablement-outcome")).toHaveText(locale === "en" ? "2 trainees hired after course completion" : "تم تعيين متدربين اثنين بعد انتهاء البرنامج");
     await expect(page.locator(".system-entry--flagship")).toHaveCount(3);
-    const sahara = page.locator("#supporting .supporting-entry").nth(1);
-    await expect(sahara.locator("h3")).toHaveText(d.work.supporting.items[1].title);
-    await expect(sahara.locator("p").first()).toHaveText(d.work.supporting.items[1].description);
+    const sahara = page.locator('[data-supporting-id="sahara-2026"]');
+    await expect(sahara.locator("h3")).toHaveText(d.work.supporting.items[2].title);
+    await expect(sahara.locator("p").first()).toHaveText(d.work.supporting.items[2].description);
     await expect(sahara.locator(".supporting-status")).toHaveText(locale === "en" ? "Current preparation; event targets are not achieved results." : "تحضير حالي؛ أهداف المعرض ليست نتائج محققة.");
     expect((await new AxeBuilder({ page }).include(".partnership-evidence").include(".training-note").withTags(["wcag2a", "wcag2aa", "wcag21aa"]).analyze()).violations).toEqual([]);
     await snapshot.locator(".partnership-cta").click();

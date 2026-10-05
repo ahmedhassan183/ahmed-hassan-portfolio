@@ -50,7 +50,7 @@ test("evidence patch preserves hierarchy, flagship count and Sahara status", asy
     "contact",
   ]);
 
-  const sahara = page.locator("#supporting .supporting-entry").nth(1);
+  const sahara = page.locator('[data-supporting-id="sahara-2026"]');
   await expect(sahara).toContainText("Current preparation; event targets are not achieved results.");
   await expect(sahara).not.toContainText(/meetings achieved|companies met|qualified leads achieved|RFQs generated|site visits generated|partnerships generated|deals|revenue|pipeline value/i);
 

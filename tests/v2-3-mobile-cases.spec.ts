@@ -83,7 +83,7 @@ for (const locale of ["en", "ar"] as const) {
       }
 
       const supportingNumbers = page.locator("#supporting .supporting-number");
-      await expect(supportingNumbers).toHaveText(["01", "02", "03"]);
+      await expect(supportingNumbers).toHaveText(["01", "02", "03", "04"]);
       for (const number of await supportingNumbers.all()) {
         await expectSingleLine(number.locator("bdi"));
         await expect(number).toHaveCSS("white-space", "nowrap");

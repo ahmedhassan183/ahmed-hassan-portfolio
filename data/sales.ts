@@ -93,6 +93,13 @@ export const supportingWork = [
     artifact: { path: "/work/90-day-sales-system.webp", type: "OPERATING MANUAL", label: "90-Day Sales Execution Operating System", alt: "Sanitized excerpt from Ahmed’s 90-Day Execution Operating Manual" },
   },
   {
+    id: "social-growth",
+    title: "90-Day Social Media Growth & Lead Generation System",
+    description: "Designed and handed off a 90-day commercial social-media system connecting content strategy, qualification, WhatsApp conversations and sales-pipeline measurement.",
+    status: "Strategy, execution system and team handoff completed. Performance results pending measurement.",
+    artifact: null,
+  },
+  {
     id: "sahara-2026",
     title: "Sahara 2026 Field Execution System",
     description: "Pre-event outreach for 20 prioritized accounts across associations, irrigation and solar partners, with qualification, CRM capture and same-day next steps.",

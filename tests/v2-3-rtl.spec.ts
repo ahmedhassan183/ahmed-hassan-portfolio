@@ -62,7 +62,7 @@ test("Arabic mobile keeps RTL flow, isolated mixed content and zero overflow at 
     ".market-evidence",
     ".flagship-scope",
     ".journey-step--solar .journey-focus",
-    ".supporting-entry:nth-child(2) .supporting-copy",
+    '[data-supporting-id="sahara-2026"] .supporting-copy',
     ".contact-methods",
   ].join(","));
   for (const block of await mixedBlocks.all()) {
