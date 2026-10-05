@@ -183,3 +183,90 @@
   .case-summary-copy .button { width: 100%; white-space: normal; }
   .journey-full-detail { grid-column: 1 / -1; }
 }
+
+/* V2.8.1: small hierarchy and readability refinements to the approved design. */
+:root, :root[data-theme="light"] { --surface-soft: #e9eff6; --line: #d8e2ef; --line-strong: #bacbdc; }
+.portrait-role { font-size: .8125rem; }
+.portrait-sector { font-size: .75rem; }
+.portrait-badge { font-size: .78125rem; }
+.flow-heading, .evidence-label { font-size: .75rem; font-weight: 600; }
+.commercial-proof span { font-size: .8125rem; line-height: 1.6; }
+.case-kicker { font-weight: 550; color: var(--text-body); }
+.case-summary-copy .case-kicker { display: block; font-size: .75rem; }
+.case-summary-copy .case-kicker > bdi:first-child { display: inline-block; margin-inline-end: 12px; }
+[dir="rtl"] .case-summary-copy .case-kicker > bdi:first-child { margin-inline: 12px 0; }
+.case-page-header .case-kicker > bdi { color: var(--link); font-size: .75rem; font-weight: 550; }
+.metric-rail dt { font-size: .8125rem; line-height: 1.6; font-weight: 550; color: var(--text-body); }
+.case-summary-copy .case-status { display: inline-flex; max-inline-size: 100%; padding: 8px 10px; border-inline-start: 2px solid var(--color-accent); background: var(--surface-soft); font-size: .8125rem; line-height: 1.6; color: var(--text-body); margin-block: 12px 16px; }
+.case-summary-copy .button, .partnership-cta, .feature-intro .button { min-height: 44px; padding: 11px 16px; background: var(--blue-soft); border-color: var(--line-strong); color: var(--link); font-weight: 600; }
+.case-summary-copy .button { justify-content: space-between; min-inline-size: 180px; }
+.case-summary-copy .button:hover, .partnership-cta:hover, .feature-intro .button:hover { background: var(--surface-soft); border-color: var(--color-accent); }
+.case-summary-copy .button > span { flex-shrink: 0; }
+[dir="rtl"] .case-summary-copy .button > span { transform: scaleX(-1); }
+.sales-journey .journey-step--solar { border-inline-start: 3px solid var(--color-accent); }
+.journey-full-detail { border-block-start: 1px solid var(--border); margin-block-start: 8px; }
+.journey-evidence-list strong { font-size: .8125rem; line-height: 1.5; }
+.evidence-block { border: 1px solid var(--border); }
+.training-note .evidence-intro h3 { font-size: .8125rem; }
+.enablement-outcome { background: var(--blue-soft); padding: 24px; }
+.enablement-outcome strong { font-weight: 700; }
+.partnership-evidence .metric-rail > div:first-child dd { font-size: 1.125rem; color: var(--link); }
+.partnership-evidence .metric-rail > div:nth-child(2) dd { font-size: 1.35rem; }
+.partnership-evidence .metric-rail > div:last-child dd { font-size: 1.9rem; font-weight: 700; }
+.feature-status p { line-height: 1.6; margin-block: 8px; }
+.feature-status p:last-child { border: 1px dashed var(--line-strong); padding: 10px; background: var(--surface-high); }
+.supporting-copy .project-category { font-size: .75rem; line-height: 1.6; font-weight: 600; color: var(--text-body); }
+.supporting-copy .project-category::before { content: ""; display: inline-block; inline-size: 18px; block-size: 2px; background: var(--color-accent); margin-inline-end: 8px; vertical-align: middle; }
+.supporting-copy .supporting-status { font-size: .8125rem; line-height: 1.6; font-weight: 550; }
+.supporting-entry[data-supporting-id="sahara-2026"], .supporting-entry[data-supporting-id="growth-playbook"] { border-block-start: 2px solid var(--line-strong); }
+.proof-chips li { font-size: .78125rem; line-height: 1.6; color: var(--text-body); border: 1px solid var(--border); }
+.sahara-phase-labels { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 12px 0 0; }
+.sahara-phase-labels li { font-size: .75rem; font-weight: 600; color: var(--color-navy); }
+.sahara-phase-labels li:not(:last-child)::after { content: "→"; margin-inline-start: 8px; color: var(--color-accent); }
+[dir="rtl"] .sahara-phase-labels li:not(:last-child)::after { content: "←"; }
+.sahara-detail summary { color: var(--link); text-decoration: underline; text-underline-offset: 4px; font-weight: 550; }
+.sahara-detail summary:hover { color: var(--color-accent); }
+.contact-method__label { font-size: .71875rem; line-height: 1.6; }
+[lang="ar"] .metric-rail dt, [lang="ar"] .supporting-copy .project-category, [lang="ar"] .journey-evidence-list strong { font-size: .875rem; letter-spacing: 0; }
+[lang="ar"] .journey-evidence-list span { font-size: .9375rem; line-height: 1.7; }
+[lang="ar"] .supporting-copy .supporting-status { font-size: .875rem; line-height: 1.7; }
+[lang="ar"] .contact-method__label { font-size: .78125rem; letter-spacing: 0; }
+@media (min-width: 900px) {
+  .desktop-nav a { font-size: 15.5px; font-weight: 500; color: var(--color-navy); }
+  .desktop-nav a:focus-visible::after, .desktop-nav a:hover::after { transform: scaleX(1); block-size: 2px; }
+  .desktop-preferences .theme-control select { font-size: .8125rem; width: 85px; }
+  .desktop-preferences .language-control a { font-size: .78125rem; color: var(--text-body); }
+  .desktop-preferences .language-control a[aria-current] { color: var(--link); background: var(--blue-soft); }
+  [lang="en"] .hero h1 { font-size: clamp(2.28rem, 3.42vw, 3.23rem); }
+}
+@media (max-width: 600px) {
+  .capability-block { padding: 16px; }
+  .case-summary-copy { padding: 16px; }
+  .case-summary-copy p { margin-block: 8px; }
+  .case-summary-copy .metric-rail { gap: 10px; margin-block: 12px; }
+  .case-summary-copy .case-status { margin-block: 10px 12px; padding: 6px 8px; }
+  .case-summary-grid { gap: 18px; }
+  .commercial-proof span { font-size: .8125rem; }
+  .evidence-block { padding: 18px; }
+  .enablement-outcome { padding: 16px; }
+  .supporting-entry { padding: 16px; }
+  .proof-chips { gap: 6px; margin-block: 12px; }
+  #contact .contact-methods { margin-block-start: 16px; }
+  .selected-systems.portfolio-section { padding-block: 32px; }
+  .case-summary-grid { gap: 16px; }
+  .case-summary-copy .metric-rail { gap: 8px; margin-block: 10px; }
+  .case-summary-copy .metric-rail > div { gap: 4px; }
+  .case-summary-copy .case-status { padding-block: 4px; line-height: 1.55; }
+  .sales-journey .journey-step:not(.journey-step--solar) { padding: 12px; gap: 6px 12px; }
+  .journey-step:not(.journey-step--solar) .journey-full-detail { margin-block-start: 2px; }
+  .partnership-evidence .metric-rail { padding: 12px; margin-block: 16px; }
+  .executive-feature { gap: 16px; }
+  .feature-evidence .metric-rail { margin-block: 0 14px; }
+  .feature-evidence .compact-process { margin-block: 12px; }
+  .feature-status p:last-child { padding: 8px; }
+  .supporting-copy .project-category { margin-block-end: 8px; }
+  .supporting-copy h3 { margin-block-end: 10px; }
+  .supporting-copy .supporting-status { padding-block: 8px; }
+  .sahara-phase-labels { margin-block-start: 8px; }
+  [lang="ar"] .capability-skills { row-gap: 8px; }
+}
