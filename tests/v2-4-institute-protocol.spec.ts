@@ -64,9 +64,10 @@ test("public assets contain no protocol document, signature pages or raw legal i
   for (const path of ["/work/institute-protocol.pdf", "/work/institute-protocol-signatures.webp", "/work/institute-protocol-raw.jpg"]) expect((await request.get(path)).status()).toBe(404);
 });
 
-test("editable resume prioritizes signed protocol without planned delivery or visit achievements", async () => {
+test("editable resume preserves signed protocol and verified first field execution without unsupported delivery claims", async () => {
   const source = await readFile("resume/Ahmed-Hassan-Resume.html", "utf8");
-  expect(source).toContain("Initiated and developed the relationship with the Higher Technological Institute of Beni Suef, leading direct communication and follow-up meetings through to a formally signed cooperation protocol for applied renewable-energy training and industry collaboration.");
+  expect(source).toContain("Originated and developed the relationship with the Higher Technological Institute of Beni Suef through to a signed cooperation protocol, then supported field execution; the first completed activity involved 10 students.");
+  expect(source).toContain("Initiated and developed the relationship with the Higher Technological Institute of Beni Suef through to a formally signed cooperation protocol, then supported the transition into field execution, beginning with a completed field activity involving 10 students observing live solar-structure fabrication and assembly.");
   expect(source).not.toMatch(/solar-energy training laboratory|monthly technical sessions|field visits commenced|field visits completed|students will be hired|Ahmed personally signed/i);
   expect(source.match(/class="page page-/g)).toHaveLength(2);
 });
