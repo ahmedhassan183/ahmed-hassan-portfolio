@@ -86,7 +86,7 @@ test("case metadata, hreflang and sitemap expose exactly the two localized case 
     for (const language of ["en", "ar", "x-default"]) await expect(page.locator(`link[hreflang="${language}"]`)).toHaveAttribute("href", absoluteUrl(`/${language === "x-default" ? "en" : language}${partnershipPath}`));
   }
   const xml = await (await request.get("/sitemap.xml")).text();
-  expect(xml.match(/<loc>/g)).toHaveLength(6);
+  expect(xml.match(/<loc>/g)).toHaveLength(12); // Six existing routes plus six localized flagship routes.
   for (const locale of ["en", "ar"]) expect(xml).toContain(`<loc>${absoluteUrl(`/${locale}${partnershipPath}`)}</loc>`);
   expect((await request.get(`/en/partnerships/nonexistent`)).status()).toBe(404);
 });

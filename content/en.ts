@@ -15,10 +15,10 @@ export const en = {
     eyebrow: "Growth & Business Development", eyebrowDetail: " · B2B Sales · Sales Operations",
     before: "I Develop ", accent: "B2B Opportunities", after: " — And Build the Sales Systems That Move Them Forward.",
     description: "Growth Manager at Innovation for Solar System, combining direct solar sales, field visits and agricultural partnership development with B2B prospecting, account growth, CRM and commercial systems.",
-    explore: "Explore My Commercial Work", talk: "Contact Ahmed", approach: "THE APPROACH", steps: ["Prospect", "Qualify", "Develop", "Close", "Grow"], note: "Hands-on sales. Connected commercial systems.",
+    explore: "View Commercial Work", talk: "Contact Ahmed", approach: "THE APPROACH", steps: ["Prospect", "Qualify", "Develop", "Close", "Grow"], note: "Hands-on sales. Connected commercial systems.",
     portraitAlt: site.portrait.alt, portraitLabel: "PROFESSIONAL PORTRAIT", portraitPending: "Ahmed’s photograph, coming soon.", sector: "Renewable Energy / Solar", officialTitle: "Growth Manager", responsibility: "Sales & Marketing Lead", responsibilityHint: "Functional responsibility: leading Sales & Marketing", instructor: "Solar Sales Instructor",
     flow: "THE SALES SYSTEM", flowContext: "CRM / Pipeline", stages: ["Prospecting", "Qualification", "Opportunity", "Proposal", "Follow-Up", "Closing", "Account Growth"],
-    proofLabel: "Commercial proof", proof: [{ value: "18", label: "Solar installation opportunities personally closed" }, { value: "120+", label: "Site surveys & customer visits" }, { value: "7 stations", label: "320 kW through Senour Agricultural Association" }],
+    proofLabel: "Commercial proof", proof: [{ value: "18", label: "Solar installation opportunities personally closed" }, { value: "120+", label: "Site surveys & customer visits" }, { value: "7 stations", label: "Senour Agricultural Association channel" }, { value: "320 kW", label: "Combined channel capacity to date" }],
   },
   authority: { label: "HOW I SELL & GROW", heading: "From the first conversation ", accent: "to the next opportunity.", description: "Direct selling, daily opportunity discipline and partner development, backed by the cases below.", capabilities: salesCapabilities },
   work: {

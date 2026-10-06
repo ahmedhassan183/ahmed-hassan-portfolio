@@ -12,6 +12,7 @@ for (const locale of ["en", "ar"] as const) {
 
     await expect(training).toBeVisible();
     await expect(training.locator("h3")).toHaveText(locale === "en" ? "SALES ENABLEMENT & TALENT DEVELOPMENT" : "تمكين المبيعات وتطوير المواهب");
+    await training.locator(".enablement-details summary").click();
     await expect(training.locator(".enablement-steps > div")).toHaveCount(3);
     await expect(training.locator(".enablement-outcome")).toHaveText(locale === "en" ? "2 trainees hired after course completion" : "تم تعيين متدربين اثنين بعد انتهاء البرنامج");
     await expect(training).toContainText(locale === "en" ? "Selected two trainees who were hired into Innovation immediately after completing the program." : "اختار متدربين اثنين تم تعيينهما داخل Innovation فور انتهاء البرنامج.");
@@ -40,19 +41,20 @@ test("evidence patch preserves hierarchy, flagship count and Sahara status", asy
   await expect(page.locator(".hero .commercial-proof")).not.toContainText(/trainee|hired/i);
   await expect(page.locator("#systems .system-entry--flagship")).toHaveCount(3);
   const sections = page.locator("main > section");
-  await expect(sections).toHaveCount(6);
+  await expect(sections).toHaveCount(7);
   await expect(sections.first()).toHaveClass(/\bhero\b/);
   expect(await sections.evaluateAll((nodes) => nodes.slice(1).map((section) => section.id))).toEqual([
     "sales",
     "systems",
     "experience",
+    "growth-feature",
     "supporting",
     "contact",
   ]);
 
   const sahara = page.locator('[data-supporting-id="sahara-2026"]');
-  await expect(sahara).toContainText("Current preparation; event targets are not achieved results.");
-  await expect(sahara).not.toContainText(/meetings achieved|companies met|qualified leads achieved|RFQs generated|site visits generated|partnerships generated|deals|revenue|pipeline value/i);
+  await expect(sahara).toContainText("ON-SITE EXECUTION COMPLETED · COMMERCIAL FOLLOW-UP ACTIVE");
+  await expect(sahara).not.toContainText(/meetings achieved|qualified leads achieved|RFQs generated|site visits generated|partnerships generated|closed deals achieved|revenue generated|pipeline value/i);
 
   for (const locale of ["en", "ar"] as const) {
     await page.goto(`/${locale}`);

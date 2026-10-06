@@ -101,9 +101,9 @@ export const supportingWork = [
   },
   {
     id: "sahara-2026",
-    title: "Sahara 2026 Field Execution System",
-    description: "Pre-event outreach for 20 prioritized accounts across associations, irrigation and solar partners, with qualification, CRM capture and same-day next steps.",
-    status: "Current preparation; event targets are not achieved results.",
+    title: "Sahara Expo 2026 — B2B Field Development",
+    description: "Prepared target-account research, then attended Sahara Expo 2026 with Innovation for Solar Systems for on-site meetings, commercial discussions and active follow-up on potential cooperation.",
+    status: "ON-SITE EXECUTION COMPLETED · COMMERCIAL FOLLOW-UP ACTIVE",
     artifact: null,
   },
   {

@@ -10,6 +10,8 @@ for (const width of [320, 375, 768, 1024, 1440]) {
     await expect.poll(() => portrait.evaluate((image: HTMLImageElement) => image.complete && image.naturalWidth > 0)).toBe(true);
     await expect(portrait).toHaveCSS("object-fit", "cover");
     await expect(portrait).toHaveCSS("object-position", "50% 16%");
+    await page.locator(".hero").screenshot({ path: `test-results/phase-3.1-hero-${width}.png`, style: ".site-header, .skip-link { visibility: hidden !important; }" });
+    await page.goto("/en/cases/solar-pv-engineering");
     const tabs = page.getByRole("tab");
     await expect(tabs).toHaveCount(3);
     await expect(tabs.first()).toHaveAttribute("aria-selected", "true");
@@ -61,7 +63,7 @@ for (const width of [320, 375, 768, 1024, 1440]) {
     await expect(inspect).toBeFocused();
     await expect(page.locator("body")).not.toHaveCSS("overflow", "hidden");
     await tabs.first().click();
-    await page.locator(".hero").screenshot({ path: `test-results/phase-3.1-hero-${width}.png`, style: ".site-header, .skip-link { visibility: hidden !important; }" });
+    await page.locator(".case-page-header").screenshot({ path: `test-results/phase-3.1-case-${width}.png`, style: ".site-header, .skip-link { visibility: hidden !important; }" });
   });
 }
 
@@ -71,6 +73,7 @@ test("image inspection and secondary artifacts remain accessible without JavaScr
   await page.goto("/");
   await expect(page.locator(".portrait-image")).toBeVisible();
   await expect(page.getByRole("link", { name: /Inspect image/ })).toHaveCount(4);
+  await page.goto("/en/cases/solar-pv-engineering");
   const directLinks = page.locator(".artifact-direct-links").getByRole("link");
   await directLinks.first().focus();
   await page.keyboard.press("Tab");
