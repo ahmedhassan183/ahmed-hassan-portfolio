@@ -1,8 +1,9 @@
 import { expect, test } from "@playwright/test";
 import { execFileSync } from "node:child_process";
 import { readFileSync } from "node:fs";
+import { beforeResumeV29, expectResumeV29Pdf } from "./resume-v2-9";
 
-test("V2.8.1 keeps approved content, routes, SEO, dependencies, assets and resume byte-identical", () => {
+test("V2.8.1 keeps approved content, routes, SEO, dependencies and assets locked, with only authorized V2.9 resume additions", () => {
   const baseline = "9305f992ac0ddb07b50e47fb6bb54adae2b366fb";
   const files = execFileSync("git", ["ls-tree", "-r", "--name-only", baseline], { encoding: "utf8" }).trim().split("\n");
   const protectedFiles = files.filter(file => /^(content|data|resume|public)\//.test(file)
@@ -13,9 +14,13 @@ test("V2.8.1 keeps approved content, routes, SEO, dependencies, assets and resum
   for (const file of protectedFiles) {
     const original = execFileSync("git", ["show", `${baseline}:${file}`], { maxBuffer: 64 * 1024 * 1024 });
     const current = readFileSync(file);
+    if (file === "public/Ahmed-Hassan-Sales-Business-Development-Resume.pdf") {
+      expectResumeV29Pdf(current);
+      continue;
+    }
     // Git normalizes text line endings on Windows; binary assets stay exact.
     if (/\.(?:tsx?|json|html|css|mjs|svg|xml|txt|md)$/.test(file)) {
-      expect(current.toString("utf8").replace(/\r\n/g, "\n"), file).toBe(original.toString("utf8"));
+      expect(beforeResumeV29(file, current.toString("utf8")), file).toBe(original.toString("utf8"));
     } else {
       expect(current.equals(original), `${file} must remain byte-identical`).toBe(true);
     }

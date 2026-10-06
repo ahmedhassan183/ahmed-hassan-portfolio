@@ -169,6 +169,17 @@ footer {
   font-size: 8pt;
 }
 
+/* Keep the added development evidence secondary and within the two-page layout. */
+.page-two section { margin-top: 4mm; }
+.page-two .system { margin-top: 2.5mm; }
+.page-two .education-item + .education-item { margin-top: 2mm; }
+.page-two .compact-section { margin-top: 3mm; }
+.development-item { margin-top: 1.5mm; }
+.development-item h3 { color: #1a3447; font-size: 9.5pt; line-height: 1.32; }
+.development-item p { margin-top: .5mm; }
+.development-item ul { margin-top: 1mm; }
+.development-item li + li { margin-top: .25mm; }
+
 @media print {
   :root { background: #fff; }
   .page { margin: 0; box-shadow: none; }
