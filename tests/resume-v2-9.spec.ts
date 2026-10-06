@@ -5,6 +5,9 @@ import { pathToFileURL } from "node:url";
 import { beforeResumeV29, expectResumeV29Pdf } from "./resume-v2-9";
 
 test("V2.9 resume adds only the approved portfolio and development evidence", () => {
+  const path = "resume/Ahmed-Hassan-Resume.html";
+  const approvedV29 = execFileSync("git", ["show", `9ad44822fca54f17f517e48aae17af42ddf992e7:${path}`], { encoding: "utf8" });
+  expect(readFileSync(path, "utf8").replaceAll("\r\n", "\n")).toBe(approvedV29.replaceAll("Innovation for Solar System", "Innovation for Solar Systems").replaceAll("\r\n", "\n"));
   for (const path of ["resume/Ahmed-Hassan-Resume.html", "resume/resume.css", "resume/generate.mjs"]) {
     const baseline = execFileSync("git", ["show", `cc836782f07ea05a9d4789b784915fc644d66e9d:${path}`], { encoding: "utf8" });
     expect(beforeResumeV29(path, readFileSync(path, "utf8"))).toBe(baseline.replaceAll("\r\n", "\n"));

@@ -38,9 +38,12 @@ const developmentStyles = `
 export function beforeResumeV29(path: string, text: string) {
   const source = text.replaceAll("\r\n", "\n");
   if (path === "resume/Ahmed-Hassan-Resume.html") {
+    // V2.9.1 authorizes exactly four employer-name corrections, with no other rewrite.
+    expect(source.match(/\bInnovation for Solar Systems\b/g)).toHaveLength(4);
+    expect(source).not.toMatch(/\bInnovation for Solar System\b/);
     expect(source.split(portfolioAddition)).toHaveLength(2);
     expect(source.split(developmentAddition)).toHaveLength(2);
-    return source.replace(portfolioAddition, "").replace(developmentAddition, "");
+    return source.replaceAll("Innovation for Solar Systems", "Innovation for Solar System").replace(portfolioAddition, "").replace(developmentAddition, "");
   }
   if (path === "resume/resume.css") {
     expect(source.split(developmentStyles)).toHaveLength(2);
@@ -50,8 +53,8 @@ export function beforeResumeV29(path: string, text: string) {
 }
 
 export function expectResumeV29Pdf(bytes: Buffer) {
-  // Lock the visually reviewed, two-page V2.9 output rather than the superseded PDF.
-  expect(createHash("sha256").update(bytes).digest("hex")).toBe("24fcc2a810e27a3a9b6cb6ed73d6d7cb8ab6ff59eccda3f1849ba185aa5f3539");
+  // Lock the visually reviewed, two-page V2.9.1 output with the official employer name.
+  expect(createHash("sha256").update(bytes).digest("hex")).toBe("23aa1a20a621dc74062d0f93b4ca661dfeae8091c9ebbcac618721d119a58a57");
   expect(bytes.subarray(0, 5).toString()).toBe("%PDF-");
   for (const link of ["https://ahmed-hassan-portfolio-jj53.vercel.app/", "https://www.linkedin.com/in/ahmedhassan-growth", "mailto:a7md07san@gmail.com", "tel:+201018797298"]) {
     expect(bytes.toString("latin1")).toContain(`/URI (${link})`);
